@@ -43,15 +43,9 @@ namespace NNtelrcom.Pages
             {
                 foreach (string filename in openFileDialog.FileNames) lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
                 string file = openFileDialog.FileName;
-                try
-                {
-                    string text = File.ReadAllText(file);
-                    size = text.Length;
-                }
-                catch (IOException)
-                {
-                }
+
                 
+
             }
             
 
