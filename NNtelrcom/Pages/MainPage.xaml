@@ -9,6 +9,9 @@
       Title="MainPage">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical" Margin="45">
+        <Button Name="file" Content="file" Width="60" Height="30" Click="file_Click" Background="red"></Button>
+            <ListBox Name="lbFiles" Width="282" Height="73" />
+        </StackPanel>
     </Grid>
 </Page>
