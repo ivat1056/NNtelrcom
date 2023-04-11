@@ -1,0 +1,1724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище NNModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ATC">
+          <Key>
+            <PropertyRef Name="IDATC" />
+          </Key>
+          <Property Name="IDATC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMKD" Type="int" />
+          <Property Name="CallID" Type="nvarchar(max)" />
+          <Property Name="CallLegID" Type="nvarchar(max)" />
+          <Property Name="IDEvent" Type="int" />
+          <Property Name="IDCallTermination" Type="int" />
+          <Property Name="SetupDateTime" Type="nvarchar(max)" />
+          <Property Name="ReleaseDateTime" Type="nvarchar(max)" />
+          <Property Name="CallDuration" Type="nvarchar(max)" />
+          <Property Name="AnswerDateTime" Type="nvarchar(max)" />
+          <Property Name="SpeechDuration" Type="nvarchar(max)" />
+          <Property Name="FaxDuration" Type="int" />
+          <Property Name="HostPort_A" Type="int" />
+          <Property Name="HostPort_B" Type="int" />
+          <Property Name="IDtype" Type="int" />
+          <Property Name="IDTypeCat" Type="int" />
+          <Property Name="IDEmptyDate" Type="int" />
+          <Property Name="IDPBX" Type="int" />
+          <Property Name="IDrecord_number" Type="int" />
+          <Property Name="IDGateIN" Type="int" />
+          <Property Name="IDGateOUT" Type="int" />
+          <Property Name="SessionID" Type="nvarchar(max)" />
+          <Property Name="IDCgPhCdPh" Type="int" />
+        </EntityType>
+        <EntityType Name="CallTermination">
+          <Key>
+            <PropertyRef Name="IDCallTermination" />
+          </Key>
+          <Property Name="IDCallTermination" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTypeEstablishFlag" Type="int" />
+          <Property Name="IDTypeReleaseDirection" Type="int" />
+          <Property Name="IDQ931Cause" Type="int" />
+          <Property Name="IDCause" Type="int" />
+        </EntityType>
+        <EntityType Name="Cat">
+          <Key>
+            <PropertyRef Name="IDTypeCatID" />
+          </Key>
+          <Property Name="IDTypeCatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CgPCdPh">
+          <Key>
+            <PropertyRef Name="IDCgPhCdPh" />
+          </Key>
+          <Property Name="IDCgPhCdPh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CdPN_root_out" Type="nvarchar(max)" />
+          <Property Name="CgPN_root_out" Type="nvarchar(max)" />
+          <Property Name="CdPN_root_in" Type="nvarchar(max)" />
+          <Property Name="CdPN_ext_out" Type="nvarchar(max)" />
+          <Property Name="CgPN_ext_out" Type="nvarchar(max)" />
+          <Property Name="CgPN_root_in" Type="nvarchar(max)" />
+          <Property Name="CdPN_ext_in" Type="nvarchar(max)" />
+          <Property Name="CgPN_ext_in" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Employ">
+          <Key>
+            <PropertyRef Name="IDEmploy" />
+          </Key>
+          <Property Name="IDEmploy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IDRole" Type="int" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="IDEvent" />
+          </Key>
+          <Property Name="IDEvent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Fax">
+          <Key>
+            <PropertyRef Name="IDFax" />
+          </Key>
+          <Property Name="IDFax" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GateIN">
+          <Key>
+            <PropertyRef Name="IDGateIN" />
+          </Key>
+          <Property Name="IDGateIN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GateOut">
+          <Key>
+            <PropertyRef Name="IDGateOut" />
+          </Key>
+          <Property Name="IDGateOut" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HostA">
+          <Key>
+            <PropertyRef Name="IDHostA" />
+          </Key>
+          <Property Name="IDHostA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HostB">
+          <Key>
+            <PropertyRef Name="IDHostB" />
+          </Key>
+          <Property Name="IDHostB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MainPBX">
+          <Key>
+            <PropertyRef Name="IDPBX" />
+          </Key>
+          <Property Name="IDPBX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDpbx_in" Type="int" />
+          <Property Name="IDpbx_out" Type="int" />
+          <Property Name="IDPBXType" Type="int" />
+        </EntityType>
+        <EntityType Name="MKD_ID">
+          <Key>
+            <PropertyRef Name="MKD_ID" />
+          </Key>
+          <Property Name="MKD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="IDOrganization" />
+          </Key>
+          <Property Name="IDOrganization" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOrganization" Type="nvarchar(max)" />
+          <Property Name="INN" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PBX_In">
+          <Key>
+            <PropertyRef Name="IDpbx_in" />
+          </Key>
+          <Property Name="IDpbx_in" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PBX_Out">
+          <Key>
+            <PropertyRef Name="IDpbx_out" />
+          </Key>
+          <Property Name="IDpbx_out" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PBXType">
+          <Key>
+            <PropertyRef Name="IDPBXType" />
+          </Key>
+          <Property Name="IDPBXType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PhonesOrganizations">
+          <Key>
+            <PropertyRef Name="IDPhoneOrganozation" />
+          </Key>
+          <Property Name="IDPhoneOrganozation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDOrganixation" Type="int" />
+          <Property Name="IDRate" Type="int" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Q931Cause">
+          <Key>
+            <PropertyRef Name="IDQ931Cause" />
+          </Key>
+          <Property Name="IDQ931Cause" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="IDRate" />
+          </Key>
+          <Property Name="IDRate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IDTyprRate" Type="int" />
+          <Property Name="Cost" Type="nvarchar(max)" />
+          <Property Name="Direction" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RecordNumber">
+          <Key>
+            <PropertyRef Name="IDRecordNumber" />
+          </Key>
+          <Property Name="IDRecordNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeCause">
+          <Key>
+            <PropertyRef Name="IDCause" />
+          </Key>
+          <Property Name="IDCause" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeEstablishFlag">
+          <Key>
+            <PropertyRef Name="IDTypeEstablishFlag" />
+          </Key>
+          <Property Name="IDTypeEstablishFlag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeRate">
+          <Key>
+            <PropertyRef Name="IDTypeRate" />
+          </Key>
+          <Property Name="IDTypeRate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TypeReleaseDirection">
+          <Key>
+            <PropertyRef Name="IDTypeReleaseDirection" />
+          </Key>
+          <Property Name="IDTypeReleaseDirection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UnusedParameters">
+          <Key>
+            <PropertyRef Name="IDEmptyDate" />
+          </Key>
+          <Property Name="IDEmptyDate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PN_List" Type="nvarchar(max)" />
+          <Property Name="OgPN_root" Type="nvarchar(max)" />
+          <Property Name="RdPN_root" Type="nvarchar(max)" />
+          <Property Name="OgPN_ext" Type="nvarchar(max)" />
+          <Property Name="RdPN_ext" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_ATC_CallTermination">
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallTermination">
+              <PropertyRef Name="IDCallTermination" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDCallTermination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Cat">
+          <End Role="Cat" Type="Self.Cat" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat">
+              <PropertyRef Name="IDTypeCatID" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDTypeCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_CgPCdPh">
+          <End Role="CgPCdPh" Type="Self.CgPCdPh" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgPCdPh">
+              <PropertyRef Name="IDCgPhCdPh" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDCgPhCdPh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="IDEvent" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Fax">
+          <End Role="Fax" Type="Self.Fax" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fax">
+              <PropertyRef Name="IDFax" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="FaxDuration" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_GateIN">
+          <End Role="GateIN" Type="Self.GateIN" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateIN">
+              <PropertyRef Name="IDGateIN" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDGateIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_GateOut">
+          <End Role="GateOut" Type="Self.GateOut" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateOut">
+              <PropertyRef Name="IDGateOut" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDGateOUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_HostA">
+          <End Role="HostA" Type="Self.HostA" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HostA">
+              <PropertyRef Name="IDHostA" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="HostPort_A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_HostB">
+          <End Role="HostB" Type="Self.HostB" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HostB">
+              <PropertyRef Name="IDHostB" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="HostPort_B" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_MainPBX">
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainPBX">
+              <PropertyRef Name="IDPBX" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDPBX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_MKD_ID">
+          <End Role="MKD_ID" Type="Self.MKD_ID" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MKD_ID">
+              <PropertyRef Name="MKD_ID" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDMKD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_RecordNumber">
+          <End Role="RecordNumber" Type="Self.RecordNumber" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordNumber">
+              <PropertyRef Name="IDRecordNumber" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDrecord_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IDType" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_UnusedParameters">
+          <End Role="UnusedParameters" Type="Self.UnusedParameters" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnusedParameters">
+              <PropertyRef Name="IDEmptyDate" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDEmptyDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_Q931Cause">
+          <End Role="Q931Cause" Type="Self.Q931Cause" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Q931Cause">
+              <PropertyRef Name="IDQ931Cause" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDQ931Cause" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_TypeCause">
+          <End Role="TypeCause" Type="Self.TypeCause" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCause">
+              <PropertyRef Name="IDCause" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDCause" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_TypeEstablishFlag">
+          <End Role="TypeEstablishFlag" Type="Self.TypeEstablishFlag" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeEstablishFlag">
+              <PropertyRef Name="IDTypeEstablishFlag" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDTypeEstablishFlag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_TypeReleaseDirection">
+          <End Role="TypeReleaseDirection" Type="Self.TypeReleaseDirection" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeReleaseDirection">
+              <PropertyRef Name="IDTypeReleaseDirection" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDTypeReleaseDirection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employ_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employ" Type="Self.Employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="Employ">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainPBX_PBX_In">
+          <End Role="PBX_In" Type="Self.PBX_In" Multiplicity="0..1" />
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PBX_In">
+              <PropertyRef Name="IDpbx_in" />
+            </Principal>
+            <Dependent Role="MainPBX">
+              <PropertyRef Name="IDpbx_in" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainPBX_PBX_Out">
+          <End Role="PBX_Out" Type="Self.PBX_Out" Multiplicity="0..1" />
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PBX_Out">
+              <PropertyRef Name="IDpbx_out" />
+            </Principal>
+            <Dependent Role="MainPBX">
+              <PropertyRef Name="IDpbx_out" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainPBX_PBXType">
+          <End Role="PBXType" Type="Self.PBXType" Multiplicity="0..1" />
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PBXType">
+              <PropertyRef Name="IDPBXType" />
+            </Principal>
+            <Dependent Role="MainPBX">
+              <PropertyRef Name="IDPBXType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhonesOrganizations_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="PhonesOrganizations" Type="Self.PhonesOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="IDOrganization" />
+            </Principal>
+            <Dependent Role="PhonesOrganizations">
+              <PropertyRef Name="IDOrganixation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhonesOrganizations_Rate">
+          <End Role="Rate" Type="Self.Rate" Multiplicity="0..1" />
+          <End Role="PhonesOrganizations" Type="Self.PhonesOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate">
+              <PropertyRef Name="IDRate" />
+            </Principal>
+            <Dependent Role="PhonesOrganizations">
+              <PropertyRef Name="IDRate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_TypeRate">
+          <End Role="TypeRate" Type="Self.TypeRate" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeRate">
+              <PropertyRef Name="IDTypeRate" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="IDTyprRate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище NNModelContainer">
+          <EntitySet Name="ATC" EntityType="Self.ATC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CallTermination" EntityType="Self.CallTermination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat" EntityType="Self.Cat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgPCdPh" EntityType="Self.CgPCdPh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employ" EntityType="Self.Employ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fax" EntityType="Self.Fax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GateIN" EntityType="Self.GateIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GateOut" EntityType="Self.GateOut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostA" EntityType="Self.HostA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostB" EntityType="Self.HostB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainPBX" EntityType="Self.MainPBX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MKD_ID" EntityType="Self.MKD_ID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PBX_In" EntityType="Self.PBX_In" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PBX_Out" EntityType="Self.PBX_Out" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PBXType" EntityType="Self.PBXType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhonesOrganizations" EntityType="Self.PhonesOrganizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Q931Cause" EntityType="Self.Q931Cause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordNumber" EntityType="Self.RecordNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeCause" EntityType="Self.TypeCause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeEstablishFlag" EntityType="Self.TypeEstablishFlag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeRate" EntityType="Self.TypeRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeReleaseDirection" EntityType="Self.TypeReleaseDirection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnusedParameters" EntityType="Self.UnusedParameters" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ATC_CallTermination" Association="Self.FK_ATC_CallTermination">
+            <End Role="CallTermination" EntitySet="CallTermination" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Cat" Association="Self.FK_ATC_Cat">
+            <End Role="Cat" EntitySet="Cat" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_CgPCdPh" Association="Self.FK_ATC_CgPCdPh">
+            <End Role="CgPCdPh" EntitySet="CgPCdPh" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Event" Association="Self.FK_ATC_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Fax" Association="Self.FK_ATC_Fax">
+            <End Role="Fax" EntitySet="Fax" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_GateIN" Association="Self.FK_ATC_GateIN">
+            <End Role="GateIN" EntitySet="GateIN" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_GateOut" Association="Self.FK_ATC_GateOut">
+            <End Role="GateOut" EntitySet="GateOut" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_HostA" Association="Self.FK_ATC_HostA">
+            <End Role="HostA" EntitySet="HostA" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_HostB" Association="Self.FK_ATC_HostB">
+            <End Role="HostB" EntitySet="HostB" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_MainPBX" Association="Self.FK_ATC_MainPBX">
+            <End Role="MainPBX" EntitySet="MainPBX" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_MKD_ID" Association="Self.FK_ATC_MKD_ID">
+            <End Role="MKD_ID" EntitySet="MKD_ID" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_RecordNumber" Association="Self.FK_ATC_RecordNumber">
+            <End Role="RecordNumber" EntitySet="RecordNumber" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Type" Association="Self.FK_ATC_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_UnusedParameters" Association="Self.FK_ATC_UnusedParameters">
+            <End Role="UnusedParameters" EntitySet="UnusedParameters" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_Q931Cause" Association="Self.FK_CallTermination_Q931Cause">
+            <End Role="Q931Cause" EntitySet="Q931Cause" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_TypeCause" Association="Self.FK_CallTermination_TypeCause">
+            <End Role="TypeCause" EntitySet="TypeCause" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_TypeEstablishFlag" Association="Self.FK_CallTermination_TypeEstablishFlag">
+            <End Role="TypeEstablishFlag" EntitySet="TypeEstablishFlag" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_TypeReleaseDirection" Association="Self.FK_CallTermination_TypeReleaseDirection">
+            <End Role="TypeReleaseDirection" EntitySet="TypeReleaseDirection" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employ_Role" Association="Self.FK_Employ_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employ" EntitySet="Employ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainPBX_PBX_In" Association="Self.FK_MainPBX_PBX_In">
+            <End Role="PBX_In" EntitySet="PBX_In" />
+            <End Role="MainPBX" EntitySet="MainPBX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainPBX_PBX_Out" Association="Self.FK_MainPBX_PBX_Out">
+            <End Role="PBX_Out" EntitySet="PBX_Out" />
+            <End Role="MainPBX" EntitySet="MainPBX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainPBX_PBXType" Association="Self.FK_MainPBX_PBXType">
+            <End Role="PBXType" EntitySet="PBXType" />
+            <End Role="MainPBX" EntitySet="MainPBX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhonesOrganizations_Organizations" Association="Self.FK_PhonesOrganizations_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="PhonesOrganizations" EntitySet="PhonesOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhonesOrganizations_Rate" Association="Self.FK_PhonesOrganizations_Rate">
+            <End Role="Rate" EntitySet="Rate" />
+            <End Role="PhonesOrganizations" EntitySet="PhonesOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_TypeRate" Association="Self.FK_Rate_TypeRate">
+            <End Role="TypeRate" EntitySet="TypeRate" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ATC">
+          <Key>
+            <PropertyRef Name="IDATC" />
+          </Key>
+          <Property Name="IDATC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMKD" Type="Int32" />
+          <Property Name="CallID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CallLegID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDEvent" Type="Int32" />
+          <Property Name="IDCallTermination" Type="Int32" />
+          <Property Name="SetupDateTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReleaseDateTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CallDuration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerDateTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SpeechDuration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FaxDuration" Type="Int32" />
+          <Property Name="HostPort_A" Type="Int32" />
+          <Property Name="HostPort_B" Type="Int32" />
+          <Property Name="IDtype" Type="Int32" />
+          <Property Name="IDTypeCat" Type="Int32" />
+          <Property Name="IDEmptyDate" Type="Int32" />
+          <Property Name="IDPBX" Type="Int32" />
+          <Property Name="IDrecord_number" Type="Int32" />
+          <Property Name="IDGateIN" Type="Int32" />
+          <Property Name="IDGateOUT" Type="Int32" />
+          <Property Name="SessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDCgPhCdPh" Type="Int32" />
+          <NavigationProperty Name="CallTermination" Relationship="Self.FK_ATC_CallTermination" FromRole="ATC" ToRole="CallTermination" />
+          <NavigationProperty Name="Cat" Relationship="Self.FK_ATC_Cat" FromRole="ATC" ToRole="Cat" />
+          <NavigationProperty Name="CgPCdPh" Relationship="Self.FK_ATC_CgPCdPh" FromRole="ATC" ToRole="CgPCdPh" />
+          <NavigationProperty Name="Event" Relationship="Self.FK_ATC_Event" FromRole="ATC" ToRole="Event" />
+          <NavigationProperty Name="Fax" Relationship="Self.FK_ATC_Fax" FromRole="ATC" ToRole="Fax" />
+          <NavigationProperty Name="GateIN" Relationship="Self.FK_ATC_GateIN" FromRole="ATC" ToRole="GateIN" />
+          <NavigationProperty Name="GateOut" Relationship="Self.FK_ATC_GateOut" FromRole="ATC" ToRole="GateOut" />
+          <NavigationProperty Name="HostA" Relationship="Self.FK_ATC_HostA" FromRole="ATC" ToRole="HostA" />
+          <NavigationProperty Name="HostB" Relationship="Self.FK_ATC_HostB" FromRole="ATC" ToRole="HostB" />
+          <NavigationProperty Name="MainPBX" Relationship="Self.FK_ATC_MainPBX" FromRole="ATC" ToRole="MainPBX" />
+          <NavigationProperty Name="MKD_ID" Relationship="Self.FK_ATC_MKD_ID" FromRole="ATC" ToRole="MKD_ID" />
+          <NavigationProperty Name="RecordNumber" Relationship="Self.FK_ATC_RecordNumber" FromRole="ATC" ToRole="RecordNumber" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_ATC_Type" FromRole="ATC" ToRole="Type" />
+          <NavigationProperty Name="UnusedParameters" Relationship="Self.FK_ATC_UnusedParameters" FromRole="ATC" ToRole="UnusedParameters" />
+        </EntityType>
+        <EntityType Name="CallTermination">
+          <Key>
+            <PropertyRef Name="IDCallTermination" />
+          </Key>
+          <Property Name="IDCallTermination" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTypeEstablishFlag" Type="Int32" />
+          <Property Name="IDTypeReleaseDirection" Type="Int32" />
+          <Property Name="IDQ931Cause" Type="Int32" />
+          <Property Name="IDCause" Type="Int32" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_CallTermination" FromRole="CallTermination" ToRole="ATC" />
+          <NavigationProperty Name="Q931Cause" Relationship="Self.FK_CallTermination_Q931Cause" FromRole="CallTermination" ToRole="Q931Cause" />
+          <NavigationProperty Name="TypeCause" Relationship="Self.FK_CallTermination_TypeCause" FromRole="CallTermination" ToRole="TypeCause" />
+          <NavigationProperty Name="TypeEstablishFlag" Relationship="Self.FK_CallTermination_TypeEstablishFlag" FromRole="CallTermination" ToRole="TypeEstablishFlag" />
+          <NavigationProperty Name="TypeReleaseDirection" Relationship="Self.FK_CallTermination_TypeReleaseDirection" FromRole="CallTermination" ToRole="TypeReleaseDirection" />
+        </EntityType>
+        <EntityType Name="Cat">
+          <Key>
+            <PropertyRef Name="IDTypeCatID" />
+          </Key>
+          <Property Name="IDTypeCatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_Cat" FromRole="Cat" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="CgPCdPh">
+          <Key>
+            <PropertyRef Name="IDCgPhCdPh" />
+          </Key>
+          <Property Name="IDCgPhCdPh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CdPN_root_out" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CgPN_root_out" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CdPN_root_in" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CdPN_ext_out" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CgPN_ext_out" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CgPN_root_in" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CdPN_ext_in" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CgPN_ext_in" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_CgPCdPh" FromRole="CgPCdPh" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="Employ">
+          <Key>
+            <PropertyRef Name="IDEmploy" />
+          </Key>
+          <Property Name="IDEmploy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDRole" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employ_Role" FromRole="Employ" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="IDEvent" />
+          </Key>
+          <Property Name="IDEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_Event" FromRole="Event" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="Fax">
+          <Key>
+            <PropertyRef Name="IDFax" />
+          </Key>
+          <Property Name="IDFax" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_Fax" FromRole="Fax" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="GateIN">
+          <Key>
+            <PropertyRef Name="IDGateIN" />
+          </Key>
+          <Property Name="IDGateIN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_GateIN" FromRole="GateIN" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="GateOut">
+          <Key>
+            <PropertyRef Name="IDGateOut" />
+          </Key>
+          <Property Name="IDGateOut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_GateOut" FromRole="GateOut" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="HostA">
+          <Key>
+            <PropertyRef Name="IDHostA" />
+          </Key>
+          <Property Name="IDHostA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_HostA" FromRole="HostA" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="HostB">
+          <Key>
+            <PropertyRef Name="IDHostB" />
+          </Key>
+          <Property Name="IDHostB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_HostB" FromRole="HostB" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="MainPBX">
+          <Key>
+            <PropertyRef Name="IDPBX" />
+          </Key>
+          <Property Name="IDPBX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDpbx_in" Type="Int32" />
+          <Property Name="IDpbx_out" Type="Int32" />
+          <Property Name="IDPBXType" Type="Int32" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_MainPBX" FromRole="MainPBX" ToRole="ATC" />
+          <NavigationProperty Name="PBX_In" Relationship="Self.FK_MainPBX_PBX_In" FromRole="MainPBX" ToRole="PBX_In" />
+          <NavigationProperty Name="PBX_Out" Relationship="Self.FK_MainPBX_PBX_Out" FromRole="MainPBX" ToRole="PBX_Out" />
+          <NavigationProperty Name="PBXType" Relationship="Self.FK_MainPBX_PBXType" FromRole="MainPBX" ToRole="PBXType" />
+        </EntityType>
+        <EntityType Name="MKD_ID">
+          <Key>
+            <PropertyRef Name="MKD_ID1" />
+          </Key>
+          <Property Name="MKD_ID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_MKD_ID" FromRole="MKD_ID" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="IDOrganization" />
+          </Key>
+          <Property Name="IDOrganization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOrganization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PhonesOrganizations" Relationship="Self.FK_PhonesOrganizations_Organizations" FromRole="Organizations" ToRole="PhonesOrganizations" />
+        </EntityType>
+        <EntityType Name="PBX_In">
+          <Key>
+            <PropertyRef Name="IDpbx_in" />
+          </Key>
+          <Property Name="IDpbx_in" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MainPBX" Relationship="Self.FK_MainPBX_PBX_In" FromRole="PBX_In" ToRole="MainPBX" />
+        </EntityType>
+        <EntityType Name="PBX_Out">
+          <Key>
+            <PropertyRef Name="IDpbx_out" />
+          </Key>
+          <Property Name="IDpbx_out" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MainPBX" Relationship="Self.FK_MainPBX_PBX_Out" FromRole="PBX_Out" ToRole="MainPBX" />
+        </EntityType>
+        <EntityType Name="PBXType">
+          <Key>
+            <PropertyRef Name="IDPBXType" />
+          </Key>
+          <Property Name="IDPBXType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MainPBX" Relationship="Self.FK_MainPBX_PBXType" FromRole="PBXType" ToRole="MainPBX" />
+        </EntityType>
+        <EntityType Name="PhonesOrganizations">
+          <Key>
+            <PropertyRef Name="IDPhoneOrganozation" />
+          </Key>
+          <Property Name="IDPhoneOrganozation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDOrganixation" Type="Int32" />
+          <Property Name="IDRate" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Organizations" Relationship="Self.FK_PhonesOrganizations_Organizations" FromRole="PhonesOrganizations" ToRole="Organizations" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK_PhonesOrganizations_Rate" FromRole="PhonesOrganizations" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="Q931Cause">
+          <Key>
+            <PropertyRef Name="IDQ931Cause" />
+          </Key>
+          <Property Name="IDQ931Cause" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CallTermination" Relationship="Self.FK_CallTermination_Q931Cause" FromRole="Q931Cause" ToRole="CallTermination" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="IDRate" />
+          </Key>
+          <Property Name="IDRate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDTyprRate" Type="Int32" />
+          <Property Name="Cost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Direction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PhonesOrganizations" Relationship="Self.FK_PhonesOrganizations_Rate" FromRole="Rate" ToRole="PhonesOrganizations" />
+          <NavigationProperty Name="TypeRate" Relationship="Self.FK_Rate_TypeRate" FromRole="Rate" ToRole="TypeRate" />
+        </EntityType>
+        <EntityType Name="RecordNumber">
+          <Key>
+            <PropertyRef Name="IDRecordNumber" />
+          </Key>
+          <Property Name="IDRecordNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_RecordNumber" FromRole="RecordNumber" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employ" Relationship="Self.FK_Employ_Role" FromRole="Role" ToRole="Employ" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_Type" FromRole="Type" ToRole="ATC" />
+        </EntityType>
+        <EntityType Name="TypeCause">
+          <Key>
+            <PropertyRef Name="IDCause" />
+          </Key>
+          <Property Name="IDCause" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CallTermination" Relationship="Self.FK_CallTermination_TypeCause" FromRole="TypeCause" ToRole="CallTermination" />
+        </EntityType>
+        <EntityType Name="TypeEstablishFlag">
+          <Key>
+            <PropertyRef Name="IDTypeEstablishFlag" />
+          </Key>
+          <Property Name="IDTypeEstablishFlag" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CallTermination" Relationship="Self.FK_CallTermination_TypeEstablishFlag" FromRole="TypeEstablishFlag" ToRole="CallTermination" />
+        </EntityType>
+        <EntityType Name="TypeRate">
+          <Key>
+            <PropertyRef Name="IDTypeRate" />
+          </Key>
+          <Property Name="IDTypeRate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK_Rate_TypeRate" FromRole="TypeRate" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="TypeReleaseDirection">
+          <Key>
+            <PropertyRef Name="IDTypeReleaseDirection" />
+          </Key>
+          <Property Name="IDTypeReleaseDirection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CallTermination" Relationship="Self.FK_CallTermination_TypeReleaseDirection" FromRole="TypeReleaseDirection" ToRole="CallTermination" />
+        </EntityType>
+        <EntityType Name="UnusedParameters">
+          <Key>
+            <PropertyRef Name="IDEmptyDate" />
+          </Key>
+          <Property Name="IDEmptyDate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PN_List" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OgPN_root" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RdPN_root" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OgPN_ext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RdPN_ext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ATC" Relationship="Self.FK_ATC_UnusedParameters" FromRole="UnusedParameters" ToRole="ATC" />
+        </EntityType>
+        <Association Name="FK_ATC_CallTermination">
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallTermination">
+              <PropertyRef Name="IDCallTermination" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDCallTermination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Cat">
+          <End Role="Cat" Type="Self.Cat" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat">
+              <PropertyRef Name="IDTypeCatID" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDTypeCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_CgPCdPh">
+          <End Role="CgPCdPh" Type="Self.CgPCdPh" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgPCdPh">
+              <PropertyRef Name="IDCgPhCdPh" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDCgPhCdPh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Event">
+          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="IDEvent" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Fax">
+          <End Role="Fax" Type="Self.Fax" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fax">
+              <PropertyRef Name="IDFax" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="FaxDuration" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_GateIN">
+          <End Role="GateIN" Type="Self.GateIN" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateIN">
+              <PropertyRef Name="IDGateIN" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDGateIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_GateOut">
+          <End Role="GateOut" Type="Self.GateOut" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GateOut">
+              <PropertyRef Name="IDGateOut" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDGateOUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_HostA">
+          <End Role="HostA" Type="Self.HostA" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HostA">
+              <PropertyRef Name="IDHostA" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="HostPort_A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_HostB">
+          <End Role="HostB" Type="Self.HostB" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HostB">
+              <PropertyRef Name="IDHostB" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="HostPort_B" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_MainPBX">
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainPBX">
+              <PropertyRef Name="IDPBX" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDPBX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_MKD_ID">
+          <End Role="MKD_ID" Type="Self.MKD_ID" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MKD_ID">
+              <PropertyRef Name="MKD_ID1" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDMKD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_RecordNumber">
+          <End Role="RecordNumber" Type="Self.RecordNumber" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordNumber">
+              <PropertyRef Name="IDRecordNumber" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDrecord_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IDType" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATC_UnusedParameters">
+          <End Role="UnusedParameters" Type="Self.UnusedParameters" Multiplicity="0..1" />
+          <End Role="ATC" Type="Self.ATC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnusedParameters">
+              <PropertyRef Name="IDEmptyDate" />
+            </Principal>
+            <Dependent Role="ATC">
+              <PropertyRef Name="IDEmptyDate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_Q931Cause">
+          <End Role="Q931Cause" Type="Self.Q931Cause" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Q931Cause">
+              <PropertyRef Name="IDQ931Cause" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDQ931Cause" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_TypeCause">
+          <End Role="TypeCause" Type="Self.TypeCause" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCause">
+              <PropertyRef Name="IDCause" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDCause" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_TypeEstablishFlag">
+          <End Role="TypeEstablishFlag" Type="Self.TypeEstablishFlag" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeEstablishFlag">
+              <PropertyRef Name="IDTypeEstablishFlag" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDTypeEstablishFlag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallTermination_TypeReleaseDirection">
+          <End Role="TypeReleaseDirection" Type="Self.TypeReleaseDirection" Multiplicity="0..1" />
+          <End Role="CallTermination" Type="Self.CallTermination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeReleaseDirection">
+              <PropertyRef Name="IDTypeReleaseDirection" />
+            </Principal>
+            <Dependent Role="CallTermination">
+              <PropertyRef Name="IDTypeReleaseDirection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employ_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employ" Type="Self.Employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="Employ">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainPBX_PBX_In">
+          <End Role="PBX_In" Type="Self.PBX_In" Multiplicity="0..1" />
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PBX_In">
+              <PropertyRef Name="IDpbx_in" />
+            </Principal>
+            <Dependent Role="MainPBX">
+              <PropertyRef Name="IDpbx_in" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainPBX_PBX_Out">
+          <End Role="PBX_Out" Type="Self.PBX_Out" Multiplicity="0..1" />
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PBX_Out">
+              <PropertyRef Name="IDpbx_out" />
+            </Principal>
+            <Dependent Role="MainPBX">
+              <PropertyRef Name="IDpbx_out" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainPBX_PBXType">
+          <End Role="PBXType" Type="Self.PBXType" Multiplicity="0..1" />
+          <End Role="MainPBX" Type="Self.MainPBX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PBXType">
+              <PropertyRef Name="IDPBXType" />
+            </Principal>
+            <Dependent Role="MainPBX">
+              <PropertyRef Name="IDPBXType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhonesOrganizations_Organizations">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="PhonesOrganizations" Type="Self.PhonesOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="IDOrganization" />
+            </Principal>
+            <Dependent Role="PhonesOrganizations">
+              <PropertyRef Name="IDOrganixation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhonesOrganizations_Rate">
+          <End Role="Rate" Type="Self.Rate" Multiplicity="0..1" />
+          <End Role="PhonesOrganizations" Type="Self.PhonesOrganizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate">
+              <PropertyRef Name="IDRate" />
+            </Principal>
+            <Dependent Role="PhonesOrganizations">
+              <PropertyRef Name="IDRate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_TypeRate">
+          <End Role="TypeRate" Type="Self.TypeRate" Multiplicity="0..1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeRate">
+              <PropertyRef Name="IDTypeRate" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="IDTyprRate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EP" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ATC" EntityType="Self.ATC" />
+          <EntitySet Name="CallTermination" EntityType="Self.CallTermination" />
+          <EntitySet Name="Cat" EntityType="Self.Cat" />
+          <EntitySet Name="CgPCdPh" EntityType="Self.CgPCdPh" />
+          <EntitySet Name="Employ" EntityType="Self.Employ" />
+          <EntitySet Name="Event" EntityType="Self.Event" />
+          <EntitySet Name="Fax" EntityType="Self.Fax" />
+          <EntitySet Name="GateIN" EntityType="Self.GateIN" />
+          <EntitySet Name="GateOut" EntityType="Self.GateOut" />
+          <EntitySet Name="HostA" EntityType="Self.HostA" />
+          <EntitySet Name="HostB" EntityType="Self.HostB" />
+          <EntitySet Name="MainPBX" EntityType="Self.MainPBX" />
+          <EntitySet Name="MKD_ID" EntityType="Self.MKD_ID" />
+          <EntitySet Name="Organizations" EntityType="Self.Organizations" />
+          <EntitySet Name="PBX_In" EntityType="Self.PBX_In" />
+          <EntitySet Name="PBX_Out" EntityType="Self.PBX_Out" />
+          <EntitySet Name="PBXType" EntityType="Self.PBXType" />
+          <EntitySet Name="PhonesOrganizations" EntityType="Self.PhonesOrganizations" />
+          <EntitySet Name="Q931Cause" EntityType="Self.Q931Cause" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" />
+          <EntitySet Name="RecordNumber" EntityType="Self.RecordNumber" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <EntitySet Name="TypeCause" EntityType="Self.TypeCause" />
+          <EntitySet Name="TypeEstablishFlag" EntityType="Self.TypeEstablishFlag" />
+          <EntitySet Name="TypeRate" EntityType="Self.TypeRate" />
+          <EntitySet Name="TypeReleaseDirection" EntityType="Self.TypeReleaseDirection" />
+          <EntitySet Name="UnusedParameters" EntityType="Self.UnusedParameters" />
+          <AssociationSet Name="FK_ATC_CallTermination" Association="Self.FK_ATC_CallTermination">
+            <End Role="CallTermination" EntitySet="CallTermination" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Cat" Association="Self.FK_ATC_Cat">
+            <End Role="Cat" EntitySet="Cat" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_CgPCdPh" Association="Self.FK_ATC_CgPCdPh">
+            <End Role="CgPCdPh" EntitySet="CgPCdPh" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Event" Association="Self.FK_ATC_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Fax" Association="Self.FK_ATC_Fax">
+            <End Role="Fax" EntitySet="Fax" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_GateIN" Association="Self.FK_ATC_GateIN">
+            <End Role="GateIN" EntitySet="GateIN" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_GateOut" Association="Self.FK_ATC_GateOut">
+            <End Role="GateOut" EntitySet="GateOut" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_HostA" Association="Self.FK_ATC_HostA">
+            <End Role="HostA" EntitySet="HostA" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_HostB" Association="Self.FK_ATC_HostB">
+            <End Role="HostB" EntitySet="HostB" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_MainPBX" Association="Self.FK_ATC_MainPBX">
+            <End Role="MainPBX" EntitySet="MainPBX" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_MKD_ID" Association="Self.FK_ATC_MKD_ID">
+            <End Role="MKD_ID" EntitySet="MKD_ID" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_RecordNumber" Association="Self.FK_ATC_RecordNumber">
+            <End Role="RecordNumber" EntitySet="RecordNumber" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_Type" Association="Self.FK_ATC_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATC_UnusedParameters" Association="Self.FK_ATC_UnusedParameters">
+            <End Role="UnusedParameters" EntitySet="UnusedParameters" />
+            <End Role="ATC" EntitySet="ATC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_Q931Cause" Association="Self.FK_CallTermination_Q931Cause">
+            <End Role="Q931Cause" EntitySet="Q931Cause" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_TypeCause" Association="Self.FK_CallTermination_TypeCause">
+            <End Role="TypeCause" EntitySet="TypeCause" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_TypeEstablishFlag" Association="Self.FK_CallTermination_TypeEstablishFlag">
+            <End Role="TypeEstablishFlag" EntitySet="TypeEstablishFlag" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallTermination_TypeReleaseDirection" Association="Self.FK_CallTermination_TypeReleaseDirection">
+            <End Role="TypeReleaseDirection" EntitySet="TypeReleaseDirection" />
+            <End Role="CallTermination" EntitySet="CallTermination" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employ_Role" Association="Self.FK_Employ_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employ" EntitySet="Employ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainPBX_PBX_In" Association="Self.FK_MainPBX_PBX_In">
+            <End Role="PBX_In" EntitySet="PBX_In" />
+            <End Role="MainPBX" EntitySet="MainPBX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainPBX_PBX_Out" Association="Self.FK_MainPBX_PBX_Out">
+            <End Role="PBX_Out" EntitySet="PBX_Out" />
+            <End Role="MainPBX" EntitySet="MainPBX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainPBX_PBXType" Association="Self.FK_MainPBX_PBXType">
+            <End Role="PBXType" EntitySet="PBXType" />
+            <End Role="MainPBX" EntitySet="MainPBX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhonesOrganizations_Organizations" Association="Self.FK_PhonesOrganizations_Organizations">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="PhonesOrganizations" EntitySet="PhonesOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhonesOrganizations_Rate" Association="Self.FK_PhonesOrganizations_Rate">
+            <End Role="Rate" EntitySet="Rate" />
+            <End Role="PhonesOrganizations" EntitySet="PhonesOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_TypeRate" Association="Self.FK_Rate_TypeRate">
+            <End Role="TypeRate" EntitySet="TypeRate" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище NNModelContainer" CdmEntityContainer="EP">
+          <EntitySetMapping Name="ATC">
+            <EntityTypeMapping TypeName="NNModel.ATC">
+              <MappingFragment StoreEntitySet="ATC">
+                <ScalarProperty Name="IDATC" ColumnName="IDATC" />
+                <ScalarProperty Name="IDMKD" ColumnName="IDMKD" />
+                <ScalarProperty Name="CallID" ColumnName="CallID" />
+                <ScalarProperty Name="CallLegID" ColumnName="CallLegID" />
+                <ScalarProperty Name="IDEvent" ColumnName="IDEvent" />
+                <ScalarProperty Name="IDCallTermination" ColumnName="IDCallTermination" />
+                <ScalarProperty Name="SetupDateTime" ColumnName="SetupDateTime" />
+                <ScalarProperty Name="ReleaseDateTime" ColumnName="ReleaseDateTime" />
+                <ScalarProperty Name="CallDuration" ColumnName="CallDuration" />
+                <ScalarProperty Name="AnswerDateTime" ColumnName="AnswerDateTime" />
+                <ScalarProperty Name="SpeechDuration" ColumnName="SpeechDuration" />
+                <ScalarProperty Name="FaxDuration" ColumnName="FaxDuration" />
+                <ScalarProperty Name="HostPort_A" ColumnName="HostPort_A" />
+                <ScalarProperty Name="HostPort_B" ColumnName="HostPort_B" />
+                <ScalarProperty Name="IDtype" ColumnName="IDtype" />
+                <ScalarProperty Name="IDTypeCat" ColumnName="IDTypeCat" />
+                <ScalarProperty Name="IDEmptyDate" ColumnName="IDEmptyDate" />
+                <ScalarProperty Name="IDPBX" ColumnName="IDPBX" />
+                <ScalarProperty Name="IDrecord_number" ColumnName="IDrecord_number" />
+                <ScalarProperty Name="IDGateIN" ColumnName="IDGateIN" />
+                <ScalarProperty Name="IDGateOUT" ColumnName="IDGateOUT" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="IDCgPhCdPh" ColumnName="IDCgPhCdPh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CallTermination">
+            <EntityTypeMapping TypeName="NNModel.CallTermination">
+              <MappingFragment StoreEntitySet="CallTermination">
+                <ScalarProperty Name="IDCallTermination" ColumnName="IDCallTermination" />
+                <ScalarProperty Name="IDTypeEstablishFlag" ColumnName="IDTypeEstablishFlag" />
+                <ScalarProperty Name="IDTypeReleaseDirection" ColumnName="IDTypeReleaseDirection" />
+                <ScalarProperty Name="IDQ931Cause" ColumnName="IDQ931Cause" />
+                <ScalarProperty Name="IDCause" ColumnName="IDCause" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat">
+            <EntityTypeMapping TypeName="NNModel.Cat">
+              <MappingFragment StoreEntitySet="Cat">
+                <ScalarProperty Name="IDTypeCatID" ColumnName="IDTypeCatID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgPCdPh">
+            <EntityTypeMapping TypeName="NNModel.CgPCdPh">
+              <MappingFragment StoreEntitySet="CgPCdPh">
+                <ScalarProperty Name="IDCgPhCdPh" ColumnName="IDCgPhCdPh" />
+                <ScalarProperty Name="CdPN_root_out" ColumnName="CdPN_root_out" />
+                <ScalarProperty Name="CgPN_root_out" ColumnName="CgPN_root_out" />
+                <ScalarProperty Name="CdPN_root_in" ColumnName="CdPN_root_in" />
+                <ScalarProperty Name="CdPN_ext_out" ColumnName="CdPN_ext_out" />
+                <ScalarProperty Name="CgPN_ext_out" ColumnName="CgPN_ext_out" />
+                <ScalarProperty Name="CgPN_root_in" ColumnName="CgPN_root_in" />
+                <ScalarProperty Name="CdPN_ext_in" ColumnName="CdPN_ext_in" />
+                <ScalarProperty Name="CgPN_ext_in" ColumnName="CgPN_ext_in" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employ">
+            <EntityTypeMapping TypeName="NNModel.Employ">
+              <MappingFragment StoreEntitySet="Employ">
+                <ScalarProperty Name="IDEmploy" ColumnName="IDEmploy" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="NNModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="IDEvent" ColumnName="IDEvent" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fax">
+            <EntityTypeMapping TypeName="NNModel.Fax">
+              <MappingFragment StoreEntitySet="Fax">
+                <ScalarProperty Name="IDFax" ColumnName="IDFax" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GateIN">
+            <EntityTypeMapping TypeName="NNModel.GateIN">
+              <MappingFragment StoreEntitySet="GateIN">
+                <ScalarProperty Name="IDGateIN" ColumnName="IDGateIN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GateOut">
+            <EntityTypeMapping TypeName="NNModel.GateOut">
+              <MappingFragment StoreEntitySet="GateOut">
+                <ScalarProperty Name="IDGateOut" ColumnName="IDGateOut" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostA">
+            <EntityTypeMapping TypeName="NNModel.HostA">
+              <MappingFragment StoreEntitySet="HostA">
+                <ScalarProperty Name="IDHostA" ColumnName="IDHostA" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostB">
+            <EntityTypeMapping TypeName="NNModel.HostB">
+              <MappingFragment StoreEntitySet="HostB">
+                <ScalarProperty Name="IDHostB" ColumnName="IDHostB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainPBX">
+            <EntityTypeMapping TypeName="NNModel.MainPBX">
+              <MappingFragment StoreEntitySet="MainPBX">
+                <ScalarProperty Name="IDPBX" ColumnName="IDPBX" />
+                <ScalarProperty Name="IDpbx_in" ColumnName="IDpbx_in" />
+                <ScalarProperty Name="IDpbx_out" ColumnName="IDpbx_out" />
+                <ScalarProperty Name="IDPBXType" ColumnName="IDPBXType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MKD_ID">
+            <EntityTypeMapping TypeName="NNModel.MKD_ID">
+              <MappingFragment StoreEntitySet="MKD_ID">
+                <ScalarProperty Name="MKD_ID1" ColumnName="MKD_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="NNModel.Organizations">
+              <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="IDOrganization" ColumnName="IDOrganization" />
+                <ScalarProperty Name="NameOrganization" ColumnName="NameOrganization" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PBX_In">
+            <EntityTypeMapping TypeName="NNModel.PBX_In">
+              <MappingFragment StoreEntitySet="PBX_In">
+                <ScalarProperty Name="IDpbx_in" ColumnName="IDpbx_in" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PBX_Out">
+            <EntityTypeMapping TypeName="NNModel.PBX_Out">
+              <MappingFragment StoreEntitySet="PBX_Out">
+                <ScalarProperty Name="IDpbx_out" ColumnName="IDpbx_out" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PBXType">
+            <EntityTypeMapping TypeName="NNModel.PBXType">
+              <MappingFragment StoreEntitySet="PBXType">
+                <ScalarProperty Name="IDPBXType" ColumnName="IDPBXType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhonesOrganizations">
+            <EntityTypeMapping TypeName="NNModel.PhonesOrganizations">
+              <MappingFragment StoreEntitySet="PhonesOrganizations">
+                <ScalarProperty Name="IDPhoneOrganozation" ColumnName="IDPhoneOrganozation" />
+                <ScalarProperty Name="IDOrganixation" ColumnName="IDOrganixation" />
+                <ScalarProperty Name="IDRate" ColumnName="IDRate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Q931Cause">
+            <EntityTypeMapping TypeName="NNModel.Q931Cause">
+              <MappingFragment StoreEntitySet="Q931Cause">
+                <ScalarProperty Name="IDQ931Cause" ColumnName="IDQ931Cause" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate">
+            <EntityTypeMapping TypeName="NNModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="IDRate" ColumnName="IDRate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDTyprRate" ColumnName="IDTyprRate" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordNumber">
+            <EntityTypeMapping TypeName="NNModel.RecordNumber">
+              <MappingFragment StoreEntitySet="RecordNumber">
+                <ScalarProperty Name="IDRecordNumber" ColumnName="IDRecordNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="NNModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="NNModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeCause">
+            <EntityTypeMapping TypeName="NNModel.TypeCause">
+              <MappingFragment StoreEntitySet="TypeCause">
+                <ScalarProperty Name="IDCause" ColumnName="IDCause" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeEstablishFlag">
+            <EntityTypeMapping TypeName="NNModel.TypeEstablishFlag">
+              <MappingFragment StoreEntitySet="TypeEstablishFlag">
+                <ScalarProperty Name="IDTypeEstablishFlag" ColumnName="IDTypeEstablishFlag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeRate">
+            <EntityTypeMapping TypeName="NNModel.TypeRate">
+              <MappingFragment StoreEntitySet="TypeRate">
+                <ScalarProperty Name="IDTypeRate" ColumnName="IDTypeRate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeReleaseDirection">
+            <EntityTypeMapping TypeName="NNModel.TypeReleaseDirection">
+              <MappingFragment StoreEntitySet="TypeReleaseDirection">
+                <ScalarProperty Name="IDTypeReleaseDirection" ColumnName="IDTypeReleaseDirection" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnusedParameters">
+            <EntityTypeMapping TypeName="NNModel.UnusedParameters">
+              <MappingFragment StoreEntitySet="UnusedParameters">
+                <ScalarProperty Name="IDEmptyDate" ColumnName="IDEmptyDate" />
+                <ScalarProperty Name="PN_List" ColumnName="PN_List" />
+                <ScalarProperty Name="OgPN_root" ColumnName="OgPN_root" />
+                <ScalarProperty Name="RdPN_root" ColumnName="RdPN_root" />
+                <ScalarProperty Name="OgPN_ext" ColumnName="OgPN_ext" />
+                <ScalarProperty Name="RdPN_ext" ColumnName="RdPN_ext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

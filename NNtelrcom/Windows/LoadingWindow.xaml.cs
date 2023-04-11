@@ -24,6 +24,7 @@ namespace NNtelrcom.Windows
         public LoadingWindow()
         {
             InitializeComponent();
+            Base.ep = new EP();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
