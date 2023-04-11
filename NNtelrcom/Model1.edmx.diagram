@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8227be2ef904bf6813809ab09e6fde1" Name="Diagram1">
+        <EntityTypeShape EntityType="NNModel.ATC" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.CallTermination" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Cat" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.CgPCdPh" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Employ" Width="1.5" PointX="10" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Event" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Fax" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.GateIN" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.GateOut" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.HostA" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.HostB" Width="1.5" PointX="3" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.MainPBX" Width="1.5" PointX="3" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.MKD_ID" Width="1.5" PointX="3" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Organizations" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.PBX_In" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.PBX_Out" Width="1.5" PointX="0.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.PBXType" Width="1.5" PointX="0.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.PhonesOrganizations" Width="1.5" PointX="12.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Q931Cause" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Rate" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.RecordNumber" Width="1.5" PointX="3" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Role" Width="1.5" PointX="7.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.Type" Width="1.5" PointX="3" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.TypeCause" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.TypeEstablishFlag" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.TypeRate" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.TypeReleaseDirection" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NNModel.UnusedParameters" Width="1.5" PointX="3" PointY="41.875" IsExpanded="true" />
+        <AssociationConnector Association="NNModel.FK_ATC_CallTermination" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_Cat" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_CgPCdPh" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_Fax" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_GateIN" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_GateOut" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_HostA" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_HostB" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_MainPBX" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_MKD_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_RecordNumber" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_ATC_UnusedParameters" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_CallTermination_Q931Cause" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_CallTermination_TypeCause" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_CallTermination_TypeEstablishFlag" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_CallTermination_TypeReleaseDirection" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_Employ_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_MainPBX_PBX_In" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_MainPBX_PBX_Out" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_MainPBX_PBXType" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_PhonesOrganizations_Organizations" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_PhonesOrganizations_Rate" ManuallyRouted="false" />
+        <AssociationConnector Association="NNModel.FK_Rate_TypeRate" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
