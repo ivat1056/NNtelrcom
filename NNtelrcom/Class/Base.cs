@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NNtelrcom.Class
 {
-    internal class Base
+    public class Base
     {
+        public static EP2 ep;
     }
 }
