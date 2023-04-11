@@ -10,5 +10,6 @@ namespace NNtelrcom.Class
     public class FrameClass
     {
         public static Frame frame;
+
     }
 }
