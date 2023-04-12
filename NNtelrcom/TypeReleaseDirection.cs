@@ -17,13 +17,13 @@ namespace NNtelrcom
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeReleaseDirection()
         {
-            this.CallTermination = new HashSet<TypeEstablishFlagPage>();
+            this.CallTermination = new HashSet<CallTermination>();
         }
     
         public int IDTypeReleaseDirection { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TypeEstablishFlagPage> CallTermination { get; set; }
+        public virtual ICollection<CallTermination> CallTermination { get; set; }
     }
 }

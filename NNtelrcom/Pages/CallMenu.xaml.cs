@@ -43,7 +43,7 @@ namespace NNtelrcom.Pages
 
         private void TypeEstablishFlag_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new TypeEstablishFlagPage());
+            // FrameClass.frame.Navigate(new TypeEstablishFlagPage());
         }
 
         private void TypeCause_Click(object sender, RoutedEventArgs e)

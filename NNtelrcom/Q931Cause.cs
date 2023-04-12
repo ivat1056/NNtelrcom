@@ -17,7 +17,7 @@ namespace NNtelrcom
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Q931Cause()
         {
-            this.CallTermination = new HashSet<TypeEstablishFlagPage>();
+            this.CallTermination = new HashSet<CallTermination>();
         }
     
         public int IDQ931Cause { get; set; }
@@ -25,6 +25,6 @@ namespace NNtelrcom
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TypeEstablishFlagPage> CallTermination { get; set; }
+        public virtual ICollection<CallTermination> CallTermination { get; set; }
     }
 }

@@ -12,10 +12,10 @@ namespace NNtelrcom
     using System;
     using System.Collections.Generic;
     
-    public partial class TypeEstablishFlagPage
+    public partial class CallTermination
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypeEstablishFlagPage()
+        public CallTermination()
         {
             this.ATC = new HashSet<ATC>();
         }
