@@ -1,0 +1,20 @@
+﻿<Page x:Class="NNtelrcom.Pages.CallMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NNtelrcom.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CallMenu">
+
+    <Grid>
+        <StackPanel Margin="20" Orientation="Vertical">
+            <Button Name="CallTermination" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="CallTermination" Click="CallTermination_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="Q931Cause" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="Q931Cause" Click="Q931Cause_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="TypeReleaseDirection" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="TypeReleaseDirection IN" Click="TypeReleaseDirection_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="TypeCause" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="PBX OUT" Click="TypeCause_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="TypeEstablishFlag" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="TypeEstablishFlag" Click="TypeEstablishFlag_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+        </StackPanel>
+    </Grid>
+</Page>

@@ -26,7 +26,7 @@ namespace NNtelrcom
         }
     
         public virtual DbSet<ATC> ATC { get; set; }
-        public virtual DbSet<CallTermination> CallTermination { get; set; }
+        public virtual DbSet<TypeEstablishFlagPage> CallTermination { get; set; }
         public virtual DbSet<Cat> Cat { get; set; }
         public virtual DbSet<CgPCdPh> CgPCdPh { get; set; }
         public virtual DbSet<Employ> Employ { get; set; }

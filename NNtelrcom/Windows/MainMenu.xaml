@@ -1,4 +1,5 @@
 ﻿<Window x:Class="NNtelrcom.Windows.MainMenu"
+
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,12 +12,27 @@
         TextOptions.TextRenderingMode="Auto"  
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
+        
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    
-    
+
+
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio="0.9" Duration="0:0:0.5"/>
+        </Storyboard>
+
+
+        <Storyboard x:Key="CloseMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-170,0,0,0" DecelerationRatio="0.9" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
+
+
+
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -24,20 +40,22 @@
             <RowDefinition Height="6*"/>
 
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        
+        
+        <StackPanel x:Name="Nav" Grid.Row="0" Grid.ColumnSpan="2">
             <materialDesign:ColorZone
-              Padding="0"
               Mode="PrimaryLight">
                 <StackPanel Orientation="Horizontal">
-                    <ToggleButton Name="MenuNave" Style="{StaticResource MaterialDesignHamburgerToggleButton}"/>
+                    <ToggleButton Name="MenuNave" MouseLeftButtonDown="MenuNave_MouseLeftButtonDown"   Click="MenuNave_Click" Style="{StaticResource MaterialDesignHamburgerToggleButton}"/>
                     <TextBlock  Margin="16,0,0,0" FontSize="22" VerticalAlignment="Center" Text="НН Телеком" />
 
                     <Button Name="BtnUploy" Click="BtnUploy_Click"
-                          Width="140" Margin="350,0,35,0"
-                          Content="Загрузить файл" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                          Width="150" Margin="350,0,35,0"
+                          Content="Загрузить файлы" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                           Style="{StaticResource MaterialDesignPaperLightButton}"
                           ToolTip="Resource name: MaterialDesignPaperLightButton" 
                      />
+                    
 
                     <Button Margin="5" Name="BtnAcunt" 
                      IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -50,6 +68,142 @@
                 </StackPanel>
             </materialDesign:ColorZone>
         </StackPanel>
+
+
+
+        <StackPanel Panel.ZIndex="2" Name="LeftMenu" Orientation="Horizontal" HorizontalAlignment="Left" Margin='-175,0,0,34' Grid.RowSpan="3" Width="160">
+
+            <materialDesign:Card Width="160">
+                <TabControl materialDesign:ColorZoneAssist.Mode="Standard" materialDesign:ElevationAssist.Elevation="Dp0"  Style="{StaticResource MaterialDesignNavigationRailTabControl}" Margin="0,0,0,-35">
+                    
+                    <TabItem Width="160" Name="btnclose">
+                        <TabItem.Header >
+                            <StackPanel Width="auto" Height="auto"  >
+                                <materialDesign:PackIcon Width="24"  MouseLeftButtonDown="PackIcon_MouseLeftButtonDown"  Height="24" HorizontalAlignment="Center" Kind="ArrowLeft" />
+                                <TextBlock HorizontalAlignment="Center" Text="Свернуть" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+
+                    <TabItem Width="160" Name="Home">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Name="Homebt" MouseLeftButtonDown="Homebt_MouseLeftButtonDown"  Height="24" HorizontalAlignment="Center" Kind="Home" />
+                                <TextBlock HorizontalAlignment="Center" Text="Главная" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+
+                    <TabItem Width="160" Name="PersonalAccount">
+                        <TabItem.Header >
+                            <StackPanel Width="auto" Height="auto"  >
+                                <materialDesign:PackIcon Width="24" Name="AccountBoxOutline"  MouseLeftButtonDown="AccountBoxOutline_MouseLeftButtonDown"  Height="24" HorizontalAlignment="Center" Kind="AccountBoxOutline" />
+                                <TextBlock HorizontalAlignment="Center" Text="Личный кабинет" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+
+                    <TabItem Width="160" Name="Ext" >
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Name="extBtn" MouseLeftButtonDown="extBtn_MouseLeftButtonDown" Height="24" HorizontalAlignment="Center" Kind="ExitToApp" />
+                                <TextBlock HorizontalAlignment="Center" Text="Выход" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+
+                    <TabItem Width="160" Name="Administration">
+                        <TabItem.Header>
+                            <StackPanel Width="auto"  Height="auto">
+                                <materialDesign:PackIcon Width="24"  Name="AdministrationBtn" MouseLeftButtonDown="AdministrationBtn_MouseLeftButtonDown" Height="24" HorizontalAlignment="Center" Kind="Security" />
+                                <TextBlock HorizontalAlignment="Center" Text="Администрирование" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+
+                    <TabItem Width="160" Name="ATC" >
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Name="ATCBtn" MouseLeftButtonDown="ATCBtn_MouseLeftButtonDown" Height="24" HorizontalAlignment="Center" Kind="Server" />
+                                <TextBlock HorizontalAlignment="Center" Text="ATC" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    
+                    
+                    
+                    <Grid Width="100" Height="400" />
+                </TabControl>
+            </materialDesign:Card>
+        </StackPanel>
+
+
+
+        <StackPanel Grid.Row="1" Name="MenuATC" Margin="0,0,0,0" >
+        <materialDesign:Card Height="auto"  Width="auto">
+            <TabControl HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Bottom" Height="370">
+                    <TabItem Margin="4">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Lan" />
+                                <TextBlock HorizontalAlignment="Center" Text="PBX" />
+                            </StackPanel>
+                        </TabItem.Header>
+
+                        <StackPanel Orientation="Vertical">
+                            <Frame Name="frame"></Frame>
+                        </StackPanel>
+                        
+                    </TabItem>
+
+                    <TabItem Margin="4">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Phone" />
+                            <TextBlock HorizontalAlignment="Center" Text="Cd-Cg" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TextBlock>
+                        <Run Text="tab 2 content. Default look and behaviors." />
+                        <LineBreak />
+                        <LineBreak />
+                        <Run FontStyle="Italic"> Praesent sed dui arcu. Vivamus porta auctor sagittis </Run>
+                    </TextBlock>
+                </TabItem>
+                
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Images" />
+                                <TextBlock HorizontalAlignment="Center" Text="Исход" />
+                        </StackPanel>
+                    </TabItem.Header>
+                        <StackPanel Orientation="Vertical">
+                            <Frame Name="frame2"></Frame>
+                        </StackPanel>
+                    </TabItem>
+                
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Plus" />
+                            <TextBlock HorizontalAlignment="Center" Text="Еще" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TextBlock>
+        <Run Text="tab 4 content. Default look and behaviors." />
+        <LineBreak />
+        <LineBreak />
+        <Run FontStyle="Italic"></Run>
+                    </TextBlock>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+
+        </StackPanel>
+
+
+
 
 
     </Grid>

@@ -38,7 +38,7 @@ namespace NNtelrcom
         public string SessionID { get; set; }
         public Nullable<int> IDCgPhCdPh { get; set; }
     
-        public virtual CallTermination CallTermination { get; set; }
+        public virtual TypeEstablishFlagPage CallTermination { get; set; }
         public virtual Cat Cat { get; set; }
         public virtual CgPCdPh CgPCdPh { get; set; }
         public virtual Event Event { get; set; }
