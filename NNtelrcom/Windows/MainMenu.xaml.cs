@@ -42,11 +42,20 @@ namespace NNtelrcom.Windows
 
 
             Base.ep = new EP2();
-            Base2.ep2 = new EP2();
             FrameClass.frame = frame;
             FrameClass.frame.Navigate(new PBXMenu());
+
             FrameClass2.frame2 = frame2;
             FrameClass2.frame2.Navigate(new CallMenu());
+
+            FrameClass3.frame3 = frame3;
+            FrameClass3.frame3.Navigate(new CdCGPage());
+
+            FrameClass5.frame5 = frame5;
+            FrameClass5.frame5.Navigate(new EmtyTablePage());
+
+            FrameClass4.frame4 = frame4;
+            FrameClass4.frame4.Navigate(new AddMenu());
 
         }
         

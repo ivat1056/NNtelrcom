@@ -21,11 +21,11 @@ namespace NNtelrcom.Pages
     /// </summary>
     public partial class TypeReleaseDirectionPage : Page
     {
-        List<TypeReleaseDirection> typeReleaseDirections = Base2.ep2.TypeReleaseDirection.ToList();
+        List<TypeReleaseDirection> typeReleaseDirections = Base.ep.TypeReleaseDirection.ToList();
         public TypeReleaseDirectionPage()
         {
             InitializeComponent();
-            CallTer.ItemsSource = Base2.ep2.TypeReleaseDirection.ToList();
+            CallTer.ItemsSource = Base.ep.TypeReleaseDirection.ToList();
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {

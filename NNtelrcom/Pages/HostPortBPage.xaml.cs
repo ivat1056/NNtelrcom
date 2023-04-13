@@ -17,15 +17,14 @@ using System.Windows.Shapes;
 namespace NNtelrcom.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Q931CausePage.xaml
+    /// Логика взаимодействия для HostPortBPage.xaml
     /// </summary>
-    public partial class Q931CausePage : Page
+    public partial class HostPortBPage : Page
     {
-        List<Q931Cause> q931Causes = Base.ep.Q931Cause.ToList();
-        public Q931CausePage()
+        public HostPortBPage()
         {
             InitializeComponent();
-            CallTer.ItemsSource = Base.ep.Q931Cause.ToList();
+            DataList.ItemsSource = Base.ep.HostB.ToList();
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -46,9 +45,9 @@ namespace NNtelrcom.Pages
 
         private void btnDell_Click(object sender, RoutedEventArgs e)
         {
-            //if (CallTer.SelectedItems.Count != 0)
+            //if (PBXList.SelectedItems.Count != 0)
             //{
-            //    foreach (PBXType pBX in CallTer.SelectedItems)
+            //    foreach (PBXType pBX in PBXList.SelectedItems)
             //    {
             //        List<PBXType> hot = Base.ep.PBXType.Where(z => z.IDPBXType == pBX.IDPBXType).ToList();
             //        foreach (PBXType h in hot)

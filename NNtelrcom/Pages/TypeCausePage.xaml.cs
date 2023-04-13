@@ -21,12 +21,12 @@ namespace NNtelrcom.Pages
     /// </summary>
     public partial class TypeCausePage : Page
     {
-        List<TypeCause> typeCauseList = Base2.ep2.TypeCause.ToList();
+        List<TypeCause> typeCauseList = Base.ep.TypeCause.ToList();
 
         public TypeCausePage()
         {
             InitializeComponent();
-            CallTer.ItemsSource = Base2.ep2.TypeCause.ToList();
+            CallTer.ItemsSource = Base.ep.TypeCause.ToList();
 
         }
         private void ADD_Click(object sender, RoutedEventArgs e)

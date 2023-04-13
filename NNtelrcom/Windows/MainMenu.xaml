@@ -14,7 +14,7 @@
         TextElement.FontSize="14"
         
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="590" Width="1210"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
@@ -40,17 +40,19 @@
             <RowDefinition Height="6*"/>
 
         </Grid.RowDefinitions>
-        
-        
+
+
         <StackPanel x:Name="Nav" Grid.Row="0" Grid.ColumnSpan="2">
+
             <materialDesign:ColorZone
               Mode="PrimaryLight">
                 <StackPanel Orientation="Horizontal">
                     <ToggleButton Name="MenuNave" MouseLeftButtonDown="MenuNave_MouseLeftButtonDown"   Click="MenuNave_Click" Style="{StaticResource MaterialDesignHamburgerToggleButton}"/>
                     <TextBlock  Margin="16,0,0,0" FontSize="22" VerticalAlignment="Center" Text="НН Телеком" />
 
-                    <Button Name="BtnUploy" Click="BtnUploy_Click"
-                          Width="150" Margin="350,0,35,0"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="800,0,0,0" >
+                    <Button Name="BtnUploy" Click="BtnUploy_Click" Margin="0,0,0,0"
+                          Width="150" 
                           Content="Загрузить файлы" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                           Style="{StaticResource MaterialDesignPaperLightButton}"
                           ToolTip="Resource name: MaterialDesignPaperLightButton" 
@@ -63,7 +65,7 @@
                       ToolTip="MaterialDesignFloatingActionMiniSecondaryButton">
                         <materialDesign:PackIcon  Width="28" Height="28" Kind="AccountCircleOutline" />
                     </Button>
-
+                    </StackPanel>
 
                 </StackPanel>
             </materialDesign:ColorZone>
@@ -141,7 +143,7 @@
 
         <StackPanel Grid.Row="1" Name="MenuATC" Margin="0,0,0,0" >
         <materialDesign:Card Height="auto"  Width="auto">
-            <TabControl HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Bottom" Height="370">
+                <TabControl DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}" Margin="0,0,0,0" TabStripPlacement="Bottom" Height="auto">
                     <TabItem Margin="4">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
@@ -151,7 +153,7 @@
                         </TabItem.Header>
 
                         <StackPanel Orientation="Vertical">
-                            <Frame Name="frame"></Frame>
+                            <Frame  Name="frame"></Frame>
                         </StackPanel>
                         
                     </TabItem>
@@ -163,13 +165,10 @@
                             <TextBlock HorizontalAlignment="Center" Text="Cd-Cg" />
                         </StackPanel>
                     </TabItem.Header>
-                    <TextBlock>
-                        <Run Text="tab 2 content. Default look and behaviors." />
-                        <LineBreak />
-                        <LineBreak />
-                        <Run FontStyle="Italic"> Praesent sed dui arcu. Vivamus porta auctor sagittis </Run>
-                    </TextBlock>
-                </TabItem>
+                        <StackPanel Orientation="Vertical">
+                            <Frame Name="frame3"></Frame>
+                        </StackPanel>
+                    </TabItem>
                 
                 <TabItem>
                     <TabItem.Header>
@@ -181,23 +180,34 @@
                         <StackPanel Orientation="Vertical">
                             <Frame Name="frame2"></Frame>
                         </StackPanel>
+                 </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="FolderInformationOutline" />
+                                <TextBlock HorizontalAlignment="Center" Text="Пустые" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel Orientation="Vertical">
+                            <Frame Name="frame5"></Frame>
+                        </StackPanel>
                     </TabItem>
-                
-                <TabItem>
+
+                    <TabItem>
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Plus" />
                             <TextBlock HorizontalAlignment="Center" Text="Еще" />
                         </StackPanel>
                     </TabItem.Header>
-                    <TextBlock>
-        <Run Text="tab 4 content. Default look and behaviors." />
-        <LineBreak />
-        <LineBreak />
-        <Run FontStyle="Italic"></Run>
-                    </TextBlock>
+                        <StackPanel Orientation="Vertical">
+                            <Frame Name="frame4"></Frame>
+                        </StackPanel>
                 </TabItem>
-            </TabControl>
+
+                    
+                </TabControl>
         </materialDesign:Card>
 
         </StackPanel>

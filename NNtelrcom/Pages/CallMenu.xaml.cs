@@ -28,27 +28,27 @@ namespace NNtelrcom.Pages
 
         private void CallTermination_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new CallTerminationPage());
+            FrameClass2.frame2.Navigate(new CallTerminationPage());
         }
 
         private void Q931Cause_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new Q931CausePage());
+            FrameClass2.frame2.Navigate(new Q931CausePage());
         }
 
         private void TypeReleaseDirection_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new TypeReleaseDirectionPage());
+            FrameClass2.frame2.Navigate(new TypeReleaseDirectionPage());
         }
 
         private void TypeEstablishFlag_Click(object sender, RoutedEventArgs e)
         {
-            // FrameClass.frame.Navigate(new TypeEstablishFlagPage());
+            FrameClass2.frame2.Navigate(new TypeEstablishFlag());
         }
 
         private void TypeCause_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new TypeCausePage());
+            FrameClass2.frame2.Navigate(new TypeCausePage());
         }
     }
 }

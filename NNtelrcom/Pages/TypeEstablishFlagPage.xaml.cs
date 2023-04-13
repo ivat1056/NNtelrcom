@@ -25,7 +25,7 @@ namespace NNtelrcom.Pages
         public TypeEstablishFlag()
         {
             InitializeComponent();
-            CallTer.ItemsSource = Base2.ep2.TypeEstablishFlag.ToList();
+            CallTer.ItemsSource = Base.ep.TypeEstablishFlag.ToList();
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {

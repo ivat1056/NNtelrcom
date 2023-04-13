@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace NNtelrcom.Class
 {
-    internal class Base2
+    internal class FrameClass3
     {
-        public static EP2 ep2;
+        public static Frame frame3;
     }
 }
