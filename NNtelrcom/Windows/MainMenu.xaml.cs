@@ -57,6 +57,9 @@ namespace NNtelrcom.Windows
             FrameClass4.frame4 = frame4;
             FrameClass4.frame4.Navigate(new AddMenu());
 
+            FrameClass6.frame = frame6;
+            FrameClass6.frame.Navigate(new GeneralMenuPage());
+
         }
         
 
