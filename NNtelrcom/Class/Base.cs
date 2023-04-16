@@ -8,6 +8,6 @@ namespace NNtelrcom.Class
 {
     public class Base
     {
-        public static EP2 ep;
+        public static EP3 ep;
     }
 }

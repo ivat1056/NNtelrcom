@@ -12,15 +12,15 @@ namespace NNtelrcom
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Floor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public Floor()
         {
             this.Users = new HashSet<Users>();
         }
     
-        public int Role_ID { get; set; }
+        public int Floor_ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

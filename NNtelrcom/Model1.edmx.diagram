@@ -4,61 +4,69 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8227be2ef904bf6813809ab09e6fde1" Name="Diagram1">
-        <EntityTypeShape EntityType="NNModel.ATC" Width="1.5" PointX="5.25" PointY="1.25" />
-        <EntityTypeShape EntityType="NNModel.CallTermination" Width="1.5" PointX="3" PointY="22.375" />
-        <EntityTypeShape EntityType="NNModel.Cat" Width="1.5" PointX="3" PointY="12.375" />
-        <EntityTypeShape EntityType="NNModel.CgPCdPh" Width="1.5" PointX="3" PointY="40.625" />
-        <EntityTypeShape EntityType="NNModel.Employ" Width="1.5" PointX="10" PointY="9" />
-        <EntityTypeShape EntityType="NNModel.Event" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="NNModel.Fax" Width="1.5" PointX="3" PointY="17" />
-        <EntityTypeShape EntityType="NNModel.GateIN" Width="1.5" PointX="3" PointY="29" />
-        <EntityTypeShape EntityType="NNModel.GateOut" Width="1.5" PointX="3" PointY="33.625" />
-        <EntityTypeShape EntityType="NNModel.HostA" Width="1.5" PointX="3" PointY="36" />
-        <EntityTypeShape EntityType="NNModel.HostB" Width="1.5" PointX="3" PointY="14.625" />
-        <EntityTypeShape EntityType="NNModel.MainPBX" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="NNModel.MKD_ID" Width="1.5" PointX="3" PointY="38.375" />
-        <EntityTypeShape EntityType="NNModel.Organizations" Width="1.5" PointX="10" PointY="5" />
-        <EntityTypeShape EntityType="NNModel.PBX_In" Width="1.5" PointX="0.75" PointY="7.625" />
-        <EntityTypeShape EntityType="NNModel.PBX_Out" Width="1.5" PointX="0.75" PointY="4.5" />
-        <EntityTypeShape EntityType="NNModel.PBXType" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="NNModel.PhonesOrganizations" Width="1.5" PointX="12.25" PointY="1" />
-        <EntityTypeShape EntityType="NNModel.Q931Cause" Width="1.5" PointX="0.75" PointY="26.375" />
-        <EntityTypeShape EntityType="NNModel.Rate" Width="1.5" PointX="10" PointY="1" />
-        <EntityTypeShape EntityType="NNModel.RecordNumber" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="NNModel.Role" Width="1.5" PointX="7.75" PointY="9.375" />
-        <EntityTypeShape EntityType="NNModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="NNModel.Type" Width="1.5" PointX="3" PointY="31.25" />
-        <EntityTypeShape EntityType="NNModel.TypeCause" Width="1.5" PointX="0.75" PointY="21.75" />
-        <EntityTypeShape EntityType="NNModel.TypeEstablishFlag" Width="1.5" PointX="0.75" PointY="24.125" />
-        <EntityTypeShape EntityType="NNModel.TypeRate" Width="1.5" PointX="7.75" PointY="1.375" />
-        <EntityTypeShape EntityType="NNModel.TypeReleaseDirection" Width="1.5" PointX="0.75" PointY="19.375" />
-        <EntityTypeShape EntityType="NNModel.UnusedParameters" Width="1.5" PointX="3" PointY="44.375" />
-        <AssociationConnector Association="NNModel.FK_ATC_CallTermination" />
-        <AssociationConnector Association="NNModel.FK_ATC_Cat" />
-        <AssociationConnector Association="NNModel.FK_ATC_CgPCdPh" />
-        <AssociationConnector Association="NNModel.FK_ATC_Event" />
-        <AssociationConnector Association="NNModel.FK_ATC_Fax" />
-        <AssociationConnector Association="NNModel.FK_ATC_GateIN" />
-        <AssociationConnector Association="NNModel.FK_ATC_GateOut" />
-        <AssociationConnector Association="NNModel.FK_ATC_HostA" />
-        <AssociationConnector Association="NNModel.FK_ATC_HostB" />
-        <AssociationConnector Association="NNModel.FK_ATC_MainPBX" />
-        <AssociationConnector Association="NNModel.FK_ATC_MKD_ID" />
-        <AssociationConnector Association="NNModel.FK_ATC_RecordNumber" />
-        <AssociationConnector Association="NNModel.FK_ATC_Type" />
-        <AssociationConnector Association="NNModel.FK_ATC_UnusedParameters" />
-        <AssociationConnector Association="NNModel.FK_CallTermination_Q931Cause" />
-        <AssociationConnector Association="NNModel.FK_CallTermination_TypeCause" />
-        <AssociationConnector Association="NNModel.FK_CallTermination_TypeEstablishFlag" />
-        <AssociationConnector Association="NNModel.FK_CallTermination_TypeReleaseDirection" />
-        <AssociationConnector Association="NNModel.FK_Employ_Role" />
-        <AssociationConnector Association="NNModel.FK_MainPBX_PBX_In" />
-        <AssociationConnector Association="NNModel.FK_MainPBX_PBX_Out" />
-        <AssociationConnector Association="NNModel.FK_MainPBX_PBXType" />
-        <AssociationConnector Association="NNModel.FK_PhonesOrganizations_Organizations" />
-        <AssociationConnector Association="NNModel.FK_PhonesOrganizations_Rate" />
-        <AssociationConnector Association="NNModel.FK_Rate_TypeRate" />
+      <Diagram DiagramId="0311cd7e13dc4191bf43aea9a89f04d6" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ATC" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CallTermination" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Cat" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CgPCdPh" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Employ" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Event" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Fax" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Floor" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GateIN" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GateOut" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Home_photo" Width="1.5" PointX="12" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HomeTa" Width="1.5" PointX="9.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HostA" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HostB" Width="1.5" PointX="3" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MainPBX" Width="1.5" PointX="3" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MKD_ID" Width="1.5" PointX="3" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Organizations" Width="1.5" PointX="10" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PBX_In" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PBX_Out" Width="1.5" PointX="0.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PBXType" Width="1.5" PointX="0.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PhonesOrganizations" Width="1.5" PointX="12.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Photo" Width="1.5" PointX="12.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Q931Cause" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rate" Width="1.5" PointX="10" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RecordNumber" Width="1.5" PointX="3" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="7.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Type" Width="1.5" PointX="3" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TypeCause" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TypeEstablishFlag" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TypeRate" Width="1.5" PointX="7.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TypeReleaseDirection" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UnusedParameters" Width="1.5" PointX="3" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_ATC_CallTermination" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_Cat" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_CgPCdPh" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_Fax" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_GateIN" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_GateOut" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_HostA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_HostB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_MainPBX" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_MKD_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_RecordNumber" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ATC_UnusedParameters" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CallTermination_Q931Cause" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CallTermination_TypeCause" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CallTermination_TypeEstablishFlag" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CallTermination_TypeReleaseDirection" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Users_Floor" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Home_photo_Home" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MainPBX_PBX_In" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MainPBX_PBX_Out" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MainPBX_PBXType" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PhonesOrganizations_Organizations" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PhonesOrganizations_Rate" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Photo_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Rate_TypeRate" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Users_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

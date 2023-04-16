@@ -41,7 +41,7 @@ namespace NNtelrcom.Windows
             MenuATC.MouseLeftButtonUp += ATCBtn_MouseLeftButtonDown;
 
 
-            Base.ep = new EP2();
+            Base.ep = new EP3();
             FrameClass.frame = frame;
             FrameClass.frame.Navigate(new PBXMenu());
 

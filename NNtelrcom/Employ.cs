@@ -21,7 +21,5 @@ namespace NNtelrcom
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> IDRole { get; set; }
-    
-        public virtual Role Role { get; set; }
     }
 }

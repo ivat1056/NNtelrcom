@@ -12,18 +12,27 @@ namespace NNtelrcom
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public Users()
         {
-            this.Users = new HashSet<Users>();
+            this.Photo = new HashSet<Photo>();
         }
     
-        public int Role_ID { get; set; }
+        public int ID { get; set; }
+        public string Surname { get; set; }
         public string Name { get; set; }
+        public string Middle_name { get; set; }
+        public int Floor_ID { get; set; }
+        public Nullable<System.DateTime> Date_of_birth { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public Nullable<int> Role_ID { get; set; }
     
+        public virtual Floor Floor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Photo> Photo { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

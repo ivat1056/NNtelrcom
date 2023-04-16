@@ -13,10 +13,10 @@ namespace NNtelrcom
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EP2 : DbContext
+    public partial class EP3 : DbContext
     {
-        public EP2()
-            : base("name=EP2")
+        public EP3()
+            : base("name=EP3")
         {
         }
     
@@ -32,8 +32,11 @@ namespace NNtelrcom
         public virtual DbSet<Employ> Employ { get; set; }
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Fax> Fax { get; set; }
+        public virtual DbSet<Floor> Floor { get; set; }
         public virtual DbSet<GateIN> GateIN { get; set; }
         public virtual DbSet<GateOut> GateOut { get; set; }
+        public virtual DbSet<Home_photo> Home_photo { get; set; }
+        public virtual DbSet<HomeTa> HomeTa { get; set; }
         public virtual DbSet<HostA> HostA { get; set; }
         public virtual DbSet<HostB> HostB { get; set; }
         public virtual DbSet<MainPBX> MainPBX { get; set; }
@@ -43,6 +46,7 @@ namespace NNtelrcom
         public virtual DbSet<PBX_Out> PBX_Out { get; set; }
         public virtual DbSet<PBXType> PBXType { get; set; }
         public virtual DbSet<PhonesOrganizations> PhonesOrganizations { get; set; }
+        public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Q931Cause> Q931Cause { get; set; }
         public virtual DbSet<Rate> Rate { get; set; }
         public virtual DbSet<RecordNumber> RecordNumber { get; set; }
@@ -54,5 +58,6 @@ namespace NNtelrcom
         public virtual DbSet<TypeRate> TypeRate { get; set; }
         public virtual DbSet<TypeReleaseDirection> TypeReleaseDirection { get; set; }
         public virtual DbSet<UnusedParameters> UnusedParameters { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

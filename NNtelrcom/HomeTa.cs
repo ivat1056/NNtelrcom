@@ -12,18 +12,19 @@ namespace NNtelrcom
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class HomeTa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public HomeTa()
         {
-            this.Users = new HashSet<Users>();
+            this.Home_photo = new HashSet<Home_photo>();
         }
     
-        public int Role_ID { get; set; }
+        public int ID_Home { get; set; }
         public string Name { get; set; }
+        public string Cost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Home_photo> Home_photo { get; set; }
     }
 }
