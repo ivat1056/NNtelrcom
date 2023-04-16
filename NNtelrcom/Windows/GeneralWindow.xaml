@@ -1,0 +1,156 @@
+﻿<Window x:Class="NNtelrcom.Windows.GeneralWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NNtelrcom.Windows"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"  
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="600" Width="1210"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio="0.9" Duration="0:0:0.5"/>
+        </Storyboard>
+
+
+        <Storyboard x:Key="CloseMenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-1322,0,0,0" DecelerationRatio="0.9" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        
+
+        <StackPanel x:Name="Nav" Grid.Row="0" Grid.ColumnSpan="3" >
+
+            <materialDesign:ColorZone
+              Mode="PrimaryLight">
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="MenuNave" MouseLeftButtonDown="MenuNave_MouseLeftButtonDown" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}" ToolTip="MaterialDesignFloatingActionMiniSecondaryButton" Height="36" Width="37">
+                        <materialDesign:PackIcon Kind="Filter" Width="20" Height="20" />
+                    </Button>
+
+                    <TextBlock  Margin="16,0,0,0" FontSize="22" VerticalAlignment="Center" Text="НН Телеком" />
+
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </StackPanel>
+
+        <DataGrid Name="dgGeneral" Grid.Row="1" Grid.RowSpan="2"  Margin="1" FontSize="12" AutoGenerateColumns="False" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Идентификатор imSwitch" Binding="{Binding MKD_ID.Name}" Visibility="Collapsed" x:Name="Check1"  Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Уникальный идентификатор вызова" Binding="{Binding CallID}" Visibility="Collapsed" x:Name="Check2"  Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Уникальный идентификатор линии" Binding="{Binding CallLegID}" Visibility="Collapsed" x:Name="Check3"  Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя события" Binding="{Binding  Event.Name}" x:Name="Check4" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Состояние соединения перед отбоем" Binding="{Binding  CallTermination.TypeEstablishFlag.Name}" x:Name="Check5" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Сторона, инициировавшая отбой вызова" Binding="{Binding  CallTermination.TypeReleaseDirection.Name}" Visibility="Collapsed" x:Name="Check6"  Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Причина отбоя согласно спецификации" Binding="{Binding  CallTermination.Q931Cause.Name}" Visibility="Collapsed" x:Name="Check7"  Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Причина завершения вызова " Binding="{Binding  CallTermination.TypeCause.Name}" Visibility="Collapsed" Width="1*" x:Name="Check8" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата и время установления соединения" Binding="{Binding  SetupDateTime}" x:Name="Check9" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата и время разрыва соединения" Binding="{Binding  ReleaseDateTime}"  x:Name="Check10" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Продолжительность вызова в секундах" Binding="{Binding  CallDuration}" x:Name="Check11" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата и время ответа" Binding="{Binding  AnswerDateTime}" x:Name="Check12" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="Продолжительность разговорной фазы в секундах" Binding="{Binding  SpeechDuration}" x:Name="Check13" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Продолжительность факсовой сессии в секундах" Binding="{Binding  Fax.Name}" x:Name="Check14" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="IP-адрес и порт хоста, с которого был инициирован вызов" Binding="{Binding  HostA.Name}" x:Name="Check15" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ip и порт хоста, на который был отправлен этот вызовов" Binding="{Binding  HostB.Name}" x:Name="Check16" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Типы вызова" Binding="{Binding  Type.Name}" x:Name="Check17" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Категория абонента" Binding="{Binding  Cat.Name}" x:Name="Check18" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Параметр не используется" Binding="{Binding  UnusedParameters.PN_List}" x:Name="Check19" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний номер абонента в root-формате" Binding="{Binding  UnusedParameters.OgPN_root}" x:Name="Check20" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний номер абонента в root-формате" Binding="{Binding  UnusedParameters.RdPN_root}" x:Name="Check21" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний номер абонента" Binding="{Binding  UnusedParameters.OgPN_ext}" x:Name="Check22" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний номер абонента" Binding="{Binding  UnusedParameters.RdPN_ext}" x:Name="Check23" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pbx входящей маршрутизации" Binding="{Binding  MainPBX.PBX_In.Name}" x:Name="Check24" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pbx исходящей маршрутизации" Binding="{Binding  MainPBX.PBX_Out.Name}" x:Name="Check25" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="Pbx, обработавший вызов" Binding="{Binding  MainPBX.PBXType.Name}" x:Name="Check26" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Порядковый номер записи о коннекции для одного вызова" Binding="{Binding  RecordNumber.Name}" Visibility="Collapsed" x:Name="Check27"  Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя входящего шлюза" Binding="{Binding  GateIN.Name}" x:Name="Check28" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя исходящего шлюза" Binding="{Binding  GateOut.Name}" x:Name="Check29" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Идентификатор сессии" Binding="{Binding  SessionID}" x:Name="Check30" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Исходящий номер вызываемого абонента в root-формате" Binding="{Binding  CgPCdPh.CdPN_root_out}" x:Name="Check31" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Исходящий номер вызывающего абонента в root-формате" Binding="{Binding  CgPCdPh.CgPN_root_out}" x:Name="Check32" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Входящий номер вызываемого абонента в root-формате" Binding="{Binding  CgPCdPh.CdPN_root_in}" x:Name="Check33" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний исходящий номер вызываемого абонента" Binding="{Binding  CgPCdPh.CdPN_ext_out}" x:Name="Check34" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний исходящий номер вызывающего абонента" Binding="{Binding  CgPCdPh.CgPN_ext_out}" x:Name="Check35" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Входящий номер вызывающего абонента в root-формате" Binding="{Binding  CgPCdPh.CgPN_root_in}" x:Name="Check36" Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний входящий номер вызываемого абонента" Binding="{Binding  CgPCdPh.CdPN_ext_in}"   x:Name="Check37"  Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Внешний входящий номер вызывающего абонента" Binding="{Binding  CgPCdPh.CgPN_ext_in}"   x:Name="Check38"  Visibility="Collapsed" Width="1*"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        
+
+        <StackPanel Panel.ZIndex="3" Name="LeftMenu" Orientation="Horizontal" Margin='-1336,45,-800,0' Grid.RowSpan="3">
+            <StackPanel >
+                <Button x:Name="btnclose" Content="Скрыть фильтры"  Click="btnclose_Click"/>
+                <CheckBox Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"  Name="Checked1" Checked="Checked1_Checked" Unchecked="Checked1_Unchecked" Content="Внешний входящий номер вызывающего абонента" />
+                <CheckBox  Content="Уникальный идентификатор вызова" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"  Name="Checked2" Checked="Checked2_Checked" Unchecked="Checked2_Unchecked"  />
+                <CheckBox  Content="Уникальный идентификатор линии" Name="Checked3"  Checked="Checked3_Checked" Unchecked="Checked3_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Имя события" Name="Checked4"  Checked="Checked4_Checked" Unchecked="Checked4_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Состояние соединения перед отбоем" Name="Checked5"  Checked="Checked5_Checked" Unchecked="Checked5_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Сторона, инициировавшая отбой вызова" Name="Checked6"  Checked="Checked6_Checked" Unchecked="Checked6_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Причина отбоя согласно спецификации" Name="Checked7"  Checked="Checked7_Checked" Unchecked="Checked7_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Причина завершения вызова" Name="Checked8"  Checked="Checked8_Checked" Unchecked="Checked8_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Дата и время установления соединения" Name="Checked9"  Checked="Checked9_Checked"  Unchecked="Checked9_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Дата и время разрыва соединения" Name="Checked10"  Checked="Checked10_Checked"  Unchecked="Checked10_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Продолжительность вы    зова в секундах" Name="Checked11"  Checked="Checked11_Checked"  Unchecked="Checked11_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Дата и время ответа" Name="Checked12"  Checked="Checked12_Checked"  Unchecked="Checked12_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+            </StackPanel>
+
+            <StackPanel >
+                <CheckBox  Content="Продолжительность разговорной фазы в секундах" Name="Checked13"  Checked="Checked13_Checked"  Unchecked="Checked13_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Продолжительность факсовой сессии в секундах" Name="Checked14"  Checked="Checked14_Checked"  Unchecked="Checked14_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="IP-адрес и порт хоста, с которого был инициирован вызов" Name="Checked15"  Checked="Checked15_Checked"  Unchecked="Checked15_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Ip и порт хоста, на который был отправлен этот вызовов" Name="Checked16"  Checked="Checked16_Checked"  Unchecked="Checked16_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Типы вызова" Name="Checked17"  Checked="Checked17_Checked"  Unchecked="Checked17_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Категория абонента" Name="Checked18"  Checked="Checked18_Checked"  Unchecked="Checked18_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Параметр не используется" Name="Checked19"  Checked="Checked19_Checked"  Unchecked="Checked19_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний номер абонента в root-формате" Name="Checked20"  Checked="Checked20_Checked"  Unchecked="Checked20_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний номер абонента в root-формате" Name="Checked21"  Checked="Checked21_Checked"  Unchecked="Checked21_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний номер абонента" Name="Checked22"  Checked="Checked22_Checked"  Unchecked="Checked22_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний номер абонента" Name="Checked23"  Checked="Checked23_Checked"  Unchecked="Checked23_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Pbx входящей маршрутизации" Name="Checked24"  Checked="Checked24_Checked"  Unchecked="Checked24_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Pbx исходящей маршрутизации" Name="Checked25"  Checked="Checked25_Checked"  Unchecked="Checked25_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+
+            </StackPanel>
+
+            <StackPanel    >
+                <CheckBox  Content="Pbx, обработавший вызов" Name="Checked26"  Checked="Checked26_Checked" Unchecked="Checked26_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Порядковый номер записи о коннекции для одного вызова" Name="Checked27"  Checked="Checked27_Checked" Unchecked="Checked27_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Имя входящего шлюза" Name="Checked28"  Checked="Checked28_Checked" Unchecked="Checked28_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Имя исходящего шлюза" Name="Checked29"  Checked="Checked29_Checked"  Unchecked="Checked29_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Идентификатор сессии" Name="Checked30"  Checked="Checked30_Checked"  Unchecked="Checked30_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Исходящий номер вызываемого абонента в root-формате" Name="Checked31"  Checked="Checked31_Checked"  Unchecked="Checked31_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Исходящий номер вызывающего абонента в root-формате" Name="Checked32"  Checked="Checked32_Checked"  Unchecked="Checked32_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Входящий номер вызываемого абонента в root-формате" Name="Checked33"  Checked="Checked33_Checked"  Unchecked="Checked33_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний исходящий номер вызываемого абонента" Name="Checked34"  Checked="Checked34_Checked"  Unchecked="Checked34_Unchecked" Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний исходящий номер вызывающего абонента" Name="Checked35"  Checked="Checked35_Checked"  Unchecked="Checked35_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Входящий номер вызывающего абонента в root-формате" Name="Checked36"  Checked="Checked36_Checked"  Unchecked="Checked36_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox  Content="Внешний входящий номер вызываемого абонента" Name="Checked37"  Checked="Checked37_Checked"  Unchecked="Checked37_Unchecked"  Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"   />
+                <CheckBox Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"  Name="Checked38" Checked="Checked38_Checked" Unchecked="Checked38_Unchecked" Content="Внешний входящий номер вызывающего абонента" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

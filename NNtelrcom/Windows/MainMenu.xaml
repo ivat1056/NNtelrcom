@@ -37,34 +37,27 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="auto"/>
 
         </Grid.RowDefinitions>
 
 
-        <StackPanel x:Name="Nav" Grid.Row="0" Grid.ColumnSpan="2">
+        <StackPanel x:Name="Nav" Grid.Row="0" Margin="0,0,0,37" >
 
             <materialDesign:ColorZone
               Mode="PrimaryLight">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Height="59">
                     <ToggleButton Name="MenuNave" MouseLeftButtonDown="MenuNave_MouseLeftButtonDown"   Click="MenuNave_Click" Style="{StaticResource MaterialDesignHamburgerToggleButton}"/>
                     <TextBlock  Margin="16,0,0,0" FontSize="22" VerticalAlignment="Center" Text="НН Телеком" />
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="800,0,0,0" >
-                    <Button Name="BtnUploy" Click="BtnUploy_Click" Margin="0,0,0,0"
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Stretch" Margin="100,0,0,0" VerticalAlignment="Stretch" FlowDirection="LeftToRight" >
+                        <Button Name="BtnUploy" Click="BtnUploy_Click" 
                           Width="150" 
                           Content="Загрузить файлы" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                           Style="{StaticResource MaterialDesignPaperLightButton}"
                           ToolTip="Resource name: MaterialDesignPaperLightButton" 
                      />
-                    
 
-                    <Button Margin="5" Name="BtnAcunt" 
-                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                      Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
-                      ToolTip="MaterialDesignFloatingActionMiniSecondaryButton">
-                        <materialDesign:PackIcon  Width="28" Height="28" Kind="AccountCircleOutline" />
-                    </Button>
                     </StackPanel>
 
                 </StackPanel>
@@ -77,7 +70,7 @@
 
             <materialDesign:Card Width="160">
                 <TabControl materialDesign:ColorZoneAssist.Mode="Standard" materialDesign:ElevationAssist.Elevation="Dp0"  Style="{StaticResource MaterialDesignNavigationRailTabControl}" Margin="0,0,0,-35">
-                    
+
                     <TabItem Width="160" Name="btnclose">
                         <TabItem.Header >
                             <StackPanel Width="auto" Height="auto"  >
@@ -131,9 +124,9 @@
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-                    
-                    
-                    
+
+
+
                     <Grid Width="100" Height="400" />
                 </TabControl>
             </materialDesign:Card>
@@ -143,7 +136,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Stretch" Name="MenuATC" HorizontalAlignment="Stretch"  >
             <materialDesign:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TabControl DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}"  TabStripPlacement="Bottom" >
+                <TabControl DockPanel.Dock="Bottom" Height="452" Width="auto"  Grid.Row="1"  HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}"  TabStripPlacement="Bottom"   >
 
                     <TabItem Margin="4">
                         <TabItem.Header>
@@ -153,9 +146,12 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <!--<StackPanel Orientation="Vertical">-->
-                            <Frame  Name="frame6"   HorizontalAlignment="Stretch" ></Frame>
-                        <!--</StackPanel>-->
+                        <StackPanel Orientation="Vertical" Margin="0,94,0,0">
+                            <StackPanel Orientation="Vertical" Height="121" >
+                                <Button Name="General1" HorizontalAlignment="Stretch" Margin="0,0,0,20"  Width="300" Content="С основными параметрами" Click="General1_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+                                <Button Name="General2" HorizontalAlignment="Stretch" Margin="0,0,0,20"  Width="300" Content="Со всеми параметрами" Click="General2_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+                            </StackPanel>
+                        </StackPanel>
 
                     </TabItem>
 
@@ -170,32 +166,32 @@
                         <StackPanel Orientation="Vertical">
                             <Frame  Name="frame"  HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
-                        
+
                     </TabItem>
 
                     <TabItem Margin="4">
-                    <TabItem.Header>
-                        <StackPanel Width="auto" Height="auto">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Phone" />
-                            <TextBlock HorizontalAlignment="Center" Text="Cd-Cg" />
-                        </StackPanel>
-                    </TabItem.Header>
+                                <TextBlock HorizontalAlignment="Center" Text="Cd-Cg" />
+                            </StackPanel>
+                        </TabItem.Header>
                         <StackPanel Orientation="Vertical">
                             <Frame Name="frame3" HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
                     </TabItem>
-                
-                <TabItem>
-                    <TabItem.Header>
-                        <StackPanel Width="auto" Height="auto">
-                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Images" />
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Images" />
                                 <TextBlock HorizontalAlignment="Center" Text="Исход" />
-                        </StackPanel>
-                    </TabItem.Header>
+                            </StackPanel>
+                        </TabItem.Header>
                         <StackPanel Orientation="Vertical">
                             <Frame Name="frame2" HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
-                 </TabItem>
+                    </TabItem>
 
                     <TabItem>
                         <TabItem.Header>
@@ -210,20 +206,20 @@
                     </TabItem>
 
                     <TabItem>
-                    <TabItem.Header>
-                        <StackPanel Width="auto" Height="auto">
-                            <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Plus" />
-                            <TextBlock HorizontalAlignment="Center" Text="Еще" />
-                        </StackPanel>
-                    </TabItem.Header>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Plus" />
+                                <TextBlock HorizontalAlignment="Center" Text="Еще" />
+                            </StackPanel>
+                        </TabItem.Header>
                         <StackPanel Orientation="Vertical">
                             <Frame Name="frame4" HorizontalAlignment="Stretch"></Frame>
                         </StackPanel>
-                </TabItem>
+                    </TabItem>
 
-                    
+
                 </TabControl>
-        </materialDesign:Card>
+            </materialDesign:Card>
 
         </StackPanel>
 

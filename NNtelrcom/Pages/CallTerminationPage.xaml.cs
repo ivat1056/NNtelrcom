@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NNtelrcom.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace NNtelrcom.Pages
         public CallTerminationPage()
         {
             InitializeComponent();
+            dgGeneral.ItemsSource = Base.ep.CallTermination.ToList();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass2.frame2.Navigate(new CallMenu());
         }
     }
 }

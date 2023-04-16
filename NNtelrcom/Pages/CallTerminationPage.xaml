@@ -9,6 +9,23 @@
       Title="CallTerminationPage">
 
     <Grid>
-        
+        <StackPanel>
+        <StackPanel Orientation="Vertical">
+        <DataGrid Name="dgGeneral" Grid.Row="1" Grid.RowSpan="2"  Margin="1" FontSize="12" AutoGenerateColumns="False" CanUserAddRows="False" Height="233" >
+            <DataGrid.Columns>
+                        <DataGridTextColumn Header="Состояние соединения перед отбоем" Binding="{Binding  TypeEstablishFlag.Name}" x:Name="Check5"  Width="1*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Сторона, инициировавшая отбой вызова" Binding="{Binding  TypeReleaseDirection.Name}"  x:Name="Check6"  Width="1*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Причина отбоя согласно спецификации" Binding="{Binding  Q931Cause.Name}"  x:Name="Check7"  Width="1*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Причина завершения вызова " Binding="{Binding  TypeCause.Name}"  Width="1*" x:Name="Check8" ></DataGridTextColumn>
+                        
+            
+            </DataGrid.Columns>
+
+        </DataGrid>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Width="auto">
+            <Button Name="Back" Width="auto" Click="Back_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Назад"/>
+        </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

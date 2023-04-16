@@ -35,7 +35,7 @@ namespace NNtelrcom.Pages
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frame.Navigate(new PBXMenu());
+            FrameClass2.frame2.Navigate(new CallMenu());
         }
 
 

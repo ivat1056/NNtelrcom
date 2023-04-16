@@ -9,6 +9,20 @@
       Title="MainPBXPage">
 
     <Grid>
-        
+        <StackPanel>
+        <StackPanel>
+        <DataGrid Name="dgGeneral" Height="300"  Margin="1" FontSize="12" AutoGenerateColumns="False" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Pbx входящей маршрутизации" Binding="{Binding  PBX_In.Name}" x:Name="Check24" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pbx исходящей маршрутизации" Binding="{Binding  PBX_Out.Name}" x:Name="Check25" Width="1*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Pbx, обработавший вызов" Binding="{Binding  PBXType.Name}" x:Name="Check26" Width="1*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+     
+        <StackPanel Orientation="Horizontal" Width="auto">
+            <Button Name="Back" Width="auto" Click="Back_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Назад"/>
+        </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

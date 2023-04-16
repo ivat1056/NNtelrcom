@@ -57,8 +57,8 @@ namespace NNtelrcom.Windows
             FrameClass4.frame4 = frame4;
             FrameClass4.frame4.Navigate(new AddMenu());
 
-            FrameClass6.frame = frame6;
-            FrameClass6.frame.Navigate(new GeneralMenuPage());
+            //FrameClass6.frame = frame6;
+            //FrameClass6.frame.Navigate(new GeneralMenuPage());
 
         }
         
@@ -132,6 +132,16 @@ namespace NNtelrcom.Windows
             ext.Show();
         }
 
-    
+        private void General1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void General2_Click(object sender, RoutedEventArgs e)
+        {
+
+            GeneralWindow generalPage = new GeneralWindow();
+            generalPage.Show();
+        }
     }
 }

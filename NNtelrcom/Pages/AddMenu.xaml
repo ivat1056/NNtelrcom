@@ -10,16 +10,16 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Button Name="MKDIDBtn" Grid.Column="0" Margin="10" Grid.Row="0"  HorizontalAlignment="Stretch" Content="MKD ID" Click="MKDIDBtn_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
         <Button Name="EventBtn" Grid.Column="1" Margin="10" Grid.Row="0"  HorizontalAlignment="Stretch" Content="Event" Click="EventBtn_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />

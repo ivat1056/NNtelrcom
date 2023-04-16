@@ -170,14 +170,8 @@
     <Compile Include="Pages\GateOutPage.xaml.cs">
       <DependentUpon>GateOutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GeneralMenuPage.xaml.cs">
-      <DependentUpon>GeneralMenuPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\GeneralPage1.xaml.cs">
       <DependentUpon>GeneralPage1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\GeneralPage2.xaml.cs">
-      <DependentUpon>GeneralPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\HostPortAPage.xaml.cs">
       <DependentUpon>HostPortAPage.xaml</DependentUpon>
@@ -266,6 +260,9 @@
     <Compile Include="UnusedParameters.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Windows\GeneralWindow.xaml.cs">
+      <DependentUpon>GeneralWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
@@ -325,15 +322,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\GeneralMenuPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\GeneralPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\GeneralPage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -390,6 +379,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TypeReleaseDirectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GeneralWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
