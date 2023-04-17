@@ -92,6 +92,8 @@ namespace NNtelrcom.Windows
                         string GateOUT = massiv[36];
                         string Session_ID = massiv[37];
 
+
+                        
                         CgPCdPh Cd = new CgPCdPh()
                         {
                             CdPN_root_out = CdPN_root_out1,
@@ -104,10 +106,17 @@ namespace NNtelrcom.Windows
                             CgPN_ext_in = CgPN_ext_in1
 
                         };
+                        int IDCh = Base.ep.CgPCdPh.FirstOrDefault(z => z.IDCgPhCdPh == z.IDCgPhCdPh );
+
                         Base.ep.CgPCdPh.Add(Cd);
                         Base.ep.SaveChanges();
-                        MessageBox.Show("Запись успешна добавлена");
-                        
+                        //CgPCdPh cd2 = Base.ep.CgPCdPh.FirstOrDefault(z => z.IDCgPhCdPh);
+                        //if (user2.UserRole == 1)
+                        //{
+                        //    Role = 1;
+                        //}
+
+
                     }
                     }
 
