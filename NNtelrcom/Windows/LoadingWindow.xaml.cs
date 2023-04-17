@@ -84,16 +84,16 @@ namespace NNtelrcom.Windows
 
                         string OgPN_ext = massiv[29];
                         string RdPN_ext = massiv[30];
-                        string pbx_in = massiv[31];
-                        string pbx_out = massiv[32];
-                        string pbx = massiv[33];
+                        string pbx_in1 = massiv[31];
+                        string pbx_out1 = massiv[32];
+                        string pbx1 = massiv[33];
                         string record_number = massiv[34];
                         string GateIN = massiv[35];
                         string GateOUT = massiv[36];
-                        string Session_ID = massiv[37];
+                        string Session_ID1 = massiv[37];
 
 
-                        
+
                         CgPCdPh Cd = new CgPCdPh()
                         {
                             CdPN_root_out = CdPN_root_out1,
@@ -103,18 +103,45 @@ namespace NNtelrcom.Windows
                             CgPN_ext_out = CgPN_ext_out1,
                             CgPN_root_in = CgPN_root_in1,
                             CdPN_ext_in = CdPN_ext_in1,
-                            CgPN_ext_in = CgPN_ext_in1
+                            CgPN_ext_in = CgPN_ext_in1,
+                            SessionID = Session_ID1
 
                         };
-                        int IDCh = Base.ep.CgPCdPh.FirstOrDefault(z => z.IDCgPhCdPh == z.IDCgPhCdPh );
 
                         Base.ep.CgPCdPh.Add(Cd);
                         Base.ep.SaveChanges();
-                        //CgPCdPh cd2 = Base.ep.CgPCdPh.FirstOrDefault(z => z.IDCgPhCdPh);
-                        //if (user2.UserRole == 1)
+
+                        
+                        CgPCdPh cd = Base.ep.CgPCdPh.FirstOrDefault(z => z.SessionID == Session_ID1);
+                        int CD = cd.IDCgPhCdPh;
+
+                        PBX_In pBX_In = Base.ep.PBX_In.FirstOrDefault(z => z.Name == pbx_in1);
+                        PBX_Out pBX_Out = Base.ep.PBX_Out.FirstOrDefault(z => z.Name == pbx_out1);
+                        PBXType pBXType = Base.ep.PBXType.FirstOrDefault(z => z.Name == pbx1);
+
+                        int PbxIn, PbxOut, PbxType;
+                        PbxIn = pBX_In.IDpbx_in;
+                        PbxOut = pBX_Out.IDpbx_out;
+                        PbxType = pBXType.IDPBXType;
+
+
+                        //MainPBX PBX = new MainPBX()
                         //{
-                        //    Role = 1;
-                        //}
+                        //    CdPN_root_out = CdPN_root_out1,
+                        //    CgPN_root_out = CgPN_root_out1,
+                        //    CdPN_root_in = CdPN_root_in1,
+                        //    CdPN_ext_out = CdPN_ext_out1,
+                        //    CgPN_ext_out = CgPN_ext_out1,
+                        //    CgPN_root_in = CgPN_root_in1,
+                        //    CdPN_ext_in = CdPN_ext_in1,
+                        //    CgPN_ext_in = CgPN_ext_in1,
+                        //    SessionID = Session_ID1
+
+                        //};
+
+                        Base.ep.CgPCdPh.Add(Cd);
+                        Base.ep.SaveChanges();
+
 
 
                     }
