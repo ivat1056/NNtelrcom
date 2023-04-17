@@ -24,6 +24,7 @@ namespace NNtelrcom
         public Nullable<int> IDpbx_in { get; set; }
         public Nullable<int> IDpbx_out { get; set; }
         public Nullable<int> IDPBXType { get; set; }
+        public string SessionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ATC> ATC { get; set; }

@@ -29,6 +29,7 @@ namespace NNtelrcom
         public string CgPN_root_in { get; set; }
         public string CdPN_ext_in { get; set; }
         public string CgPN_ext_in { get; set; }
+        public string SessionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ATC> ATC { get; set; }
