@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using NNtelrcom.Class;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,8 +49,66 @@ namespace NNtelrcom.Windows
                         {
                             string[] massiv = new string[37];
                             massiv = line.Split(';');
-                            string a = massiv[37];
-                        }
+                        string MKD_ID1 = massiv[0];
+                        string CallID1 = massiv[1];
+                        string CallLegIDD1 = massiv[2];
+                        string Event1 = massiv[3];
+
+                        string CdPN_root_out1 = massiv[4];
+                        string CgPN_root_out1 = massiv[5];
+
+                        string PN_List1 = massiv[6];
+                        string OgPN_root1 = massiv[7];
+                        string RdPN_root1 = massiv[8];
+                        string EstablishFlag1 = massiv[9];
+                        string ReleaseDirection1 = massiv[10];
+                        string Cause1  = massiv[11];
+                        string Q931Cause1 = massiv[12];
+                        string SetupDateTime1 = massiv[13];
+                        string ReleaseDateTime1 = massiv[14];
+                        string CallDuration1 = massiv[15];
+                        string AnswerDateTime1 = massiv[16];
+                        string SpeechDuration1 = massiv[17];
+                        string FaxDuration1 = massiv[18];
+                        string HostPort_A1 = massiv[19];
+                        string HostPort_B1 = massiv[20];
+                        string type1 = massiv[21];
+                        string Cat1 = massiv[22];
+
+                        string CdPN_root_in1 = massiv[23];
+                        string CgPN_root_in1 = massiv[24];
+                        string CdPN_ext_out1 = massiv[25];
+                        string CgPN_ext_out1 = massiv[26];
+                        string CdPN_ext_in1 = massiv[27];
+                        string CgPN_ext_in1 = massiv[28];
+
+                        string OgPN_ext = massiv[29];
+                        string RdPN_ext = massiv[30];
+                        string pbx_in = massiv[31];
+                        string pbx_out = massiv[32];
+                        string pbx = massiv[33];
+                        string record_number = massiv[34];
+                        string GateIN = massiv[35];
+                        string GateOUT = massiv[36];
+                        string Session_ID = massiv[37];
+
+                        CgPCdPh Cd = new CgPCdPh()
+                        {
+                            CdPN_root_out = CdPN_root_out1,
+                            CgPN_root_out = CgPN_root_out1,
+                            CdPN_root_in = CdPN_root_in1,
+                            CdPN_ext_out = CdPN_ext_out1,
+                            CgPN_ext_out = CgPN_ext_out1,
+                            CgPN_root_in = CgPN_root_in1,
+                            CdPN_ext_in = CdPN_ext_in1,
+                            CgPN_ext_in = CgPN_ext_in1
+
+                        };
+                        Base.ep.CgPCdPh.Add(Cd);
+                        Base.ep.SaveChanges();
+                        MessageBox.Show("Запись успешна добавлена");
+                        
+                    }
                     }
 
                 }
