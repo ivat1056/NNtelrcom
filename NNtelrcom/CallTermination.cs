@@ -25,6 +25,7 @@ namespace NNtelrcom
         public Nullable<int> IDTypeReleaseDirection { get; set; }
         public Nullable<int> IDQ931Cause { get; set; }
         public Nullable<int> IDCause { get; set; }
+        public string SessionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ATC> ATC { get; set; }
