@@ -42,6 +42,7 @@
           <Property Name="IDTypeReleaseDirection" Type="int" />
           <Property Name="IDQ931Cause" Type="int" />
           <Property Name="IDCause" Type="int" />
+          <Property Name="SessionID" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Cat">
           <Key>
@@ -1000,6 +1001,7 @@
           <Property Name="IDTypeReleaseDirection" Type="Int32" />
           <Property Name="IDQ931Cause" Type="Int32" />
           <Property Name="IDCause" Type="Int32" />
+          <Property Name="SessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ATC" Relationship="Model.FK_ATC_CallTermination" FromRole="CallTermination" ToRole="ATC" />
           <NavigationProperty Name="Q931Cause" Relationship="Model.FK_CallTermination_Q931Cause" FromRole="CallTermination" ToRole="Q931Cause" />
           <NavigationProperty Name="TypeCause" Relationship="Model.FK_CallTermination_TypeCause" FromRole="CallTermination" ToRole="TypeCause" />
@@ -1649,7 +1651,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1687,6 +1689,7 @@
           <EntitySetMapping Name="CallTermination">
             <EntityTypeMapping TypeName="Model.CallTermination">
               <MappingFragment StoreEntitySet="CallTermination">
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
                 <ScalarProperty Name="IDCause" ColumnName="IDCause" />
                 <ScalarProperty Name="IDQ931Cause" ColumnName="IDQ931Cause" />
                 <ScalarProperty Name="IDTypeReleaseDirection" ColumnName="IDTypeReleaseDirection" />
