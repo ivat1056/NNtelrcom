@@ -248,7 +248,8 @@ namespace NNtelrcom.Windows
                             SessionID = Session_ID1,
                             IDCgPhCdPh =CD
                         };
-
+                        Base.ep.ATC.Add(aTC);
+                        Base.ep.SaveChanges();
                     } 
                 
                     }
