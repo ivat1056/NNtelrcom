@@ -171,6 +171,7 @@
           <Property Name="Surname" Type="nvarchar(max)" />
           <Property Name="Patronymic" Type="nvarchar(max)" />
           <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="PBX_In">
           <Key>
@@ -228,6 +229,7 @@
           <Property Name="IDTyprRate" Type="int" />
           <Property Name="Cost" Type="nvarchar(max)" />
           <Property Name="Direction" Type="nvarchar(max)" />
+          <Property Name="NumberOfMinutes" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="RecordNumber">
           <Key>
@@ -530,6 +532,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employ_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employ" Type="Self.Employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Employ">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Home_photo_Home">
           <End Role="HomeTa" Type="Self.HomeTa" Multiplicity="1" />
           <End Role="Home_photo" Type="Self.Home_photo" Multiplicity="*" />
@@ -757,6 +771,10 @@
             <End Role="TypeReleaseDirection" EntitySet="TypeReleaseDirection" />
             <End Role="CallTermination" EntitySet="CallTermination" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employ_Role" Association="Self.FK_Employ_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employ" EntitySet="Employ" />
+          </AssociationSet>
           <AssociationSet Name="FK_Home_photo_Home" Association="Self.FK_Home_photo_Home">
             <End Role="HomeTa" EntitySet="HomeTa" />
             <End Role="Home_photo" EntitySet="Home_photo" />
@@ -909,6 +927,10 @@
             <End Role="TypeReleaseDirection" EntitySet="TypeReleaseDirection" />
             <End Role="CallTermination" EntitySet="CallTermination" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employ_Role" Association="Model.FK_Employ_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employ" EntitySet="Employ" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_Floor" Association="Model.FK_Users_Floor">
             <End Role="Floor" EntitySet="Floor" />
             <End Role="Users" EntitySet="Users" />
@@ -1043,6 +1065,7 @@
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IDRole" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Model.FK_Employ_Role" FromRole="Employ" ToRole="Role" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -1151,6 +1174,7 @@
           <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PhonesOrganizations" Relationship="Model.FK_PhonesOrganizations_Organizations" FromRole="Organizations" ToRole="PhonesOrganizations" />
         </EntityType>
         <EntityType Name="PBX_In">
@@ -1216,6 +1240,7 @@
           <Property Name="IDTyprRate" Type="Int32" />
           <Property Name="Cost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Direction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfMinutes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PhonesOrganizations" Relationship="Model.FK_PhonesOrganizations_Rate" FromRole="Rate" ToRole="PhonesOrganizations" />
           <NavigationProperty Name="TypeRate" Relationship="Model.FK_Rate_TypeRate" FromRole="Rate" ToRole="TypeRate" />
         </EntityType>
@@ -1233,6 +1258,7 @@
           </Key>
           <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employ" Relationship="Model.FK_Employ_Role" FromRole="Role" ToRole="Employ" />
           <NavigationProperty Name="Users" Relationship="Model.FK_Users_Role" FromRole="Role" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -1528,6 +1554,18 @@
             </Principal>
             <Dependent Role="CallTermination">
               <PropertyRef Name="IDTypeReleaseDirection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employ_Role">
+          <End Type="Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="Model.Employ" Role="Employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="Employ">
+              <PropertyRef Name="IDRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1832,6 +1870,7 @@
           <EntitySetMapping Name="Organizations">
             <EntityTypeMapping TypeName="Model.Organizations">
               <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -1897,6 +1936,7 @@
           <EntitySetMapping Name="Rate">
             <EntityTypeMapping TypeName="Model.Rate">
               <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="NumberOfMinutes" ColumnName="NumberOfMinutes" />
                 <ScalarProperty Name="Direction" ColumnName="Direction" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="IDTyprRate" ColumnName="IDTyprRate" />

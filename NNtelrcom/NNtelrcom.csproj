@@ -152,6 +152,9 @@
     <Compile Include="Pages\AddMenu.xaml.cs">
       <DependentUpon>AddMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CalculetionPage.xaml.cs">
+      <DependentUpon>CalculetionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CallMenu.xaml.cs">
       <DependentUpon>CallMenu.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,9 @@
     <Compile Include="Pages\MKDIDPage.xaml.cs">
       <DependentUpon>MKDIDPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\OrganizationPage.xaml.cs">
+      <DependentUpon>OrganizationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PBXINPage.xaml.cs">
       <DependentUpon>PBXINPage.xaml</DependentUpon>
     </Compile>
@@ -203,8 +209,17 @@
     <Compile Include="Pages\PBXPage.xaml.cs">
       <DependentUpon>PBXPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PhonePage.xaml.cs">
+      <DependentUpon>PhonePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Q931CausePage.xaml.cs">
       <DependentUpon>Q931CausePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RatePage.xaml.cs">
+      <DependentUpon>RatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RateTypePage.xaml.cs">
+      <DependentUpon>RateTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RecordPage.xaml.cs">
       <DependentUpon>RecordPage.xaml</DependentUpon>
@@ -298,6 +313,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CalculetionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CallMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -350,6 +369,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\OrganizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PBXINPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -366,7 +389,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PhonePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Q931CausePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RateTypePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

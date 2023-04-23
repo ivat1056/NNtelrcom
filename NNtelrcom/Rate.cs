@@ -25,6 +25,7 @@ namespace NNtelrcom
         public Nullable<int> IDTyprRate { get; set; }
         public string Cost { get; set; }
         public string Direction { get; set; }
+        public string NumberOfMinutes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhonesOrganizations> PhonesOrganizations { get; set; }
