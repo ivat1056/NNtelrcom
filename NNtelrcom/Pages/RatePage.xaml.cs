@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NNtelrcom.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,46 @@ namespace NNtelrcom.Pages
         public RatePage()
         {
             InitializeComponent();
+            dbList.ItemsSource = Base.ep.Rate.ToList();
+        }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.frameOrg.Visibility = Visibility.Hidden;
+
+        }
+
+        private void ADD_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDell_Click(object sender, RoutedEventArgs e)
+        {
+            //if (PBXList.SelectedItems.Count != 0)
+            //{
+            //    foreach (PBXType pBX in PBXList.SelectedItems)
+            //    {
+            //        List<PBXType> hot = Base.ep.PBXType.Where(z => z.IDPBXType == pBX.IDPBXType).ToList();
+            //        foreach (PBXType h in hot)
+            //        {
+            //            if (MessageBox.Show("Вы хотите удалить {0}", Name, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            //            {
+            //                Base.ep.PBXType.Remove(pBX);
+            //                Base.ep.SaveChanges();
+            //                MessageBox.Show("Успешное удаление!!!");
+            //            }
+
+
+            //        }
+            //    }
+            //}
         }
     }
 }

@@ -50,9 +50,9 @@ namespace NNtelrcom.Windows
             Phone.MouseLeftButtonUp += Phonebtn_MouseLeftButtonDown;
             Calc.MouseLeftButtonDown += Calc_MouseLeftButtonDown;
 
+            frameOrg.Visibility = Visibility.Hidden;
 
-
-
+            GeneralMenu.Visibility = Visibility.Visible;
 
             Base.ep = new EP3();
             FrameClass.frame = frame;
@@ -81,24 +81,28 @@ namespace NNtelrcom.Windows
         {
             GeneralMenu.Visibility = Visibility.Visible;
             MenuATC.Visibility = Visibility.Collapsed;
+            frameOrg.Visibility = Visibility.Hidden;
         }
 
         private void Atc_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             GeneralMenu.Visibility = Visibility.Hidden;
             MenuATC.Visibility = Visibility.Visible;
+            frameOrg.Visibility = Visibility.Hidden;
         }
 
         private void Atc_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GeneralMenu.Visibility = Visibility.Hidden;
             MenuATC.Visibility = Visibility.Visible;
+            frameOrg.Visibility = Visibility.Hidden;
         }
 
         private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GeneralMenu.Visibility = Visibility.Visible;
             MenuATC.Visibility = Visibility.Collapsed;
+            frameOrg.Visibility = Visibility.Hidden;
         }
 
         private void Calc_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -199,37 +203,45 @@ namespace NNtelrcom.Windows
 
         private void Ratebt_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-           GeneralMenu.Visibility = Visibility.Hidden;
             FrameClass.frameOrg.Navigate(new RatePage());
+            frameOrg.Visibility = Visibility.Visible;
         }
 
         private void Calcbtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            GeneralMenu.Visibility = Visibility.Hidden;
             FrameClass.frameOrg.Navigate(new CalculetionPage());
+            frameOrg.Visibility = Visibility.Visible;
         }
 
         private void Phonebtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            GeneralMenu.Visibility = Visibility.Hidden;
             FrameClass.frameOrg.Navigate(new PhonePage());
+            frameOrg.Visibility = Visibility.Visible;
         }
 
         private void OrganizationBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            GeneralMenu.Visibility = Visibility.Hidden;
+            
             FrameClass.frameOrg.Navigate(new OrganizationPage());
+            frameOrg.Visibility = Visibility.Visible;
+
         }
 
         private void TypeRatebtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            GeneralMenu.Visibility = Visibility.Hidden;
             FrameClass.frameOrg.Navigate(new RateTypePage());
+            frameOrg.Visibility = Visibility.Visible;
         }
 
         private void frameOrg_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
 
+        }
+
+        private void Calcbtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            FrameClass.frameOrg.Navigate(new CalculetionPage());
+            frameOrg.Visibility = Visibility.Visible;
         }
     }
 }

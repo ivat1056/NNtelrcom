@@ -9,6 +9,43 @@
       Title="OrganizationPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="dbList" Grid.Row="0" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название организации" Width="*" Binding="{Binding NameOrganization}"/>
+                <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Surname}"/>
+                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Отчество" Width="*" Binding="{Binding Patronymic}"/>
+                <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="ИНН" Width="*" Binding="{Binding INN}"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnUpdate" Click="btnUpdate_Click" Uid="{Binding IDOrganization}"  HorizontalAlignment="Center" FontSize="14"  Content="Редактировать"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDell" Click="btnDell_Click" Uid="{Binding IDOrganization}"  HorizontalAlignment="Center" FontSize="14"  Content="Удалить"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Width="auto">
+            <Button Name="Back" Width="auto" Click="Back_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Назад"/>
+            <Button Name="ADD" Width="auto" Click="ADD_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Content="Добавииь"/>
+
+        </StackPanel>
     </Grid>
 </Page>

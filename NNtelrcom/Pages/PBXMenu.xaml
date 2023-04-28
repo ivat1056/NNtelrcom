@@ -11,10 +11,10 @@
 
     <Grid>
         <StackPanel Height="400" Orientation="Vertical">
-        <Button Name="MainPbxBt" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="MainPBX" Click="MainPbxBt_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
-        <Button Name="PbxINBt" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="PBX IN" Click="PbxINBt_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
-        <Button Name="PbxOutBt" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="PBX OUT" Click="PbxOutBt_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
-        <Button Name="Pbx" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="PBX" Click="Pbx_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+        <Button Name="MainPbxBt" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="Общие PBX" Click="MainPbxBt_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="PbxINBt" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="Pbx входящей маршрутизации" Click="PbxINBt_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="PbxOutBt" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="Pbx исходящей маршрутизации" Click="PbxOutBt_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+            <Button Name="Pbx" HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="3" Width="300" Content="Pbx, обработавший вызов" Click="Pbx_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
         </StackPanel>
     </Grid>
 </Page>

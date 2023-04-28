@@ -255,8 +255,8 @@
 
             <StackPanel Orientation="Vertical" Height="375">
 
-                <StackPanel Width="170" Name="Calc" Orientation="Vertical" Height="276" Background="Aqua">
-                    <materialDesign:PackIcon Margin="5,50,5,0" HorizontalAlignment="Center" Width="172" x:Name="Calcbtn" MouseLeftButtonDown="Calcbtn_MouseLeftButtonDown" Height="94" Kind="CalculatorVariant" />
+                <StackPanel Width="170" Name="Calc" Orientation="Vertical" Height="276" MouseLeftButtonUp="Calcbtn_MouseLeftButtonUp" Background="Aqua">
+                    <materialDesign:PackIcon Margin="5,50,5,0" HorizontalAlignment="Center" Width="172" x:Name="Calcbtn"  MouseLeftButtonDown="Calcbtn_MouseLeftButtonDown" Height="94" Kind="CalculatorVariant" />
                     <TextBlock FontSize="30" Margin="10,70,0,0"  HorizontalAlignment="Center" Text="Расчет" Height="50" />
                 </StackPanel>
 
