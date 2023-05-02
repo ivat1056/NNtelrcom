@@ -135,7 +135,7 @@
 
 
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Stretch" Margin="0,100,0,0" Name="MenuATC" Visibility="Hidden"  HorizontalAlignment="Stretch"  >
+        <StackPanel Grid.Row="1" VerticalAlignment="Stretch" Margin="0,100,0,0" Name="MenuATC" Visibility="Visible"  HorizontalAlignment="Stretch"  >
             <materialDesign:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <TabControl DockPanel.Dock="Bottom" Height="452" Width="auto"  Grid.Row="1"  HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}"  TabStripPlacement="Bottom"   >
 
