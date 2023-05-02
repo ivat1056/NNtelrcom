@@ -243,5 +243,10 @@ namespace NNtelrcom.Windows
             FrameClass.frameOrg.Navigate(new CalculetionPage());
             frameOrg.Visibility = Visibility.Visible;
         }
+
+        private void StackPanel_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            General1.Visibility = Visibility.Visible;
+        }
     }
 }

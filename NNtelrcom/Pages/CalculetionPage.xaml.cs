@@ -30,9 +30,11 @@ namespace NNtelrcom.Pages
         List<PhonesOrganizations> PhonesOrganizations1 = Base.ep.PhonesOrganizations.ToList();
         List<ATC> atc1 = Base.ep.ATC.ToList() ;
         double multi;
+        double kol;
+        string IDRate;
 
         List<string> NumberAndSumma = new List<string>();
-        List<string> NumberAndSumma2 = new List<string>();
+       
 
 
         double SumTime = 0;
@@ -96,6 +98,9 @@ namespace NNtelrcom.Pages
                             PhonesOrganizations phones = Base.ep.PhonesOrganizations.FirstOrDefault(z => z.Phone == ph);
                             int IDType = Convert.ToInt32(phones.IDRate);
                             Rate rate = Base.ep.Rate.FirstOrDefault(z => z.IDRate == IDType);
+                            IDRate = rate.Name; 
+
+                            kol = Convert.ToDouble(rate.NumberOfMinutes);
                             IDType2 = Convert.ToInt32(rate.IDTyprRate); // type of rate 
                             Cost = Convert.ToDouble(rate.Cost); // cost of rate 
                             NumberAdd = number;
@@ -114,69 +119,95 @@ namespace NNtelrcom.Pages
                     string multi2 = Convert.ToString(multi);
                     NumberAndSumma.Add(multi2);
                     NumberAndSumma.Add(NumberAdd);
+                    NumberAndSumma.Add(IDRate);
                     multi = 0;
                     SumTime = 0;
                     NumberAdd = "";
                     Cost = 0;
                 }
+                if(IDType2 == 2)
+                {
+                    multi = (SumTime / 10) * Cost;
+                    string multi2 = Convert.ToString(multi);
+                    NumberAndSumma.Add(multi2);
+                    NumberAndSumma.Add(NumberAdd);
+                    NumberAndSumma.Add(IDRate);
+                    multi = 0;
+                    SumTime = 0;
+                    NumberAdd = "";
+                    Cost = 0;
+                }
+                if (IDType2 == 3)
+                {
+                    multi = (SumTime - 60 ) * Cost;
+                    string multi2 = Convert.ToString(multi);
+                    NumberAndSumma.Add(multi2);
+                    NumberAndSumma.Add(NumberAdd);
+                    NumberAndSumma.Add(IDRate);
+                    multi = 0;
+                    SumTime = 0;
+                    NumberAdd = "";
+                    Cost = 0;
+                }
+                if (IDType2 == 4)
+                {
+                    double Kol = 
+                    multi = ((SumTime / 60 ) - kol);
+                    if(multi < 0)
+                    {
+                    string multi2 = Convert.ToString(Cost);
+                    NumberAndSumma.Add(multi2);
+                    NumberAndSumma.Add(NumberAdd);
+                    NumberAndSumma.Add(IDRate);
+                    }
+                    else
+                    {
+                        Rate rate = Base.ep.Rate.FirstOrDefault(z => z.IDRate == 1);
+                        double sK = Convert.ToDouble(rate.Cost);
+                        multi = ((SumTime / 60) - kol) * sK ;
+                        string multi2 = Convert.ToString(Cost);
+                        NumberAndSumma.Add(multi2);
+                        NumberAndSumma.Add(NumberAdd);
+                        NumberAndSumma.Add(IDRate);
+                    }
+                    kol = 0;
+                    multi = 0;
+                    SumTime = 0;
+                    NumberAdd = "";
+                    IDRate = "";
+                    Cost = 0;
+                }
             }
 
-
-            
-
-
-            StringBuilder sb = new StringBuilder();
-            foreach (string elementin in NumberAndSumma)
-            {
-                sb.AppendLine(elementin);
-
-            }
+            int countNumber = NumberAndSumma.Count;
 
 
-            StringBuilder sb2 = new StringBuilder();
 
-            foreach (string elementin2 in NumberAndSumma2)
-            {
-                sb2.AppendLine(elementin2);
+            //StringBuilder sb = new StringBuilder();
+            //foreach (string elementin in NumberAndSumma)
+            //{
+            //    sb.AppendLine(elementin);
 
-            }
+            //}
+
+
+
             //MessageBox.Show(sb.ToString());
 
 
 
 
-            PdfDocument document = new PdfDocument();
-
-            PdfPage page = document.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(page);
-            XFont font = new XFont("Times New Roman", 10, XFontStyle.Bold);
-            XTextFormatter tf = new XTextFormatter(gfx);
-
-            XRect rect = new XRect(40, 100, 250, 220);
-            gfx.DrawRectangle(XBrushes.SeaShell, rect);
-            tf.DrawString(sb.ToString(), font, XBrushes.Black, rect, XStringFormats.TopLeft);
-
-            string filename = "FirstPDFDocument.pdf";
-            //Save PDF File
-            document.Save(filename);
-            //Load PDF File for viewing
-            Process.Start(filename);
-
-            ////Create PDF Document
             //PdfDocument document = new PdfDocument();
-            ////You will have to add Page in PDF Document
-            //PdfPage page = document.AddPage();
-            ////For drawing in PDF Page you will nedd XGraphics Object
-            //XGraphics gfx = XGraphics.FromPdfPage(page);
-            ////For Test you will have to define font to be used
-            //XFont font = new XFont("Times New Roman", 14, XFontStyle.Bold);
-            ////Finally use XGraphics & font object to draw text in PDF Page
-            //gfx.DrawString(sb.ToString(), font, XBrushes.Black,
 
-            //new XRect(0, 0, page.Width, page.Height), XStringFormats.TopLeft);
-            //gfx.DrawString(sb2.ToString(), font, XBrushes.Black,
-            //new XRect(0, 0, page.Width, page.Height), XStringFormats.TopLeft);
-            ////Specify file name of the PDF file
+            //PdfPage page = document.AddPage();
+            //XGraphics gfx = XGraphics.FromPdfPage(page);
+            //XFont font = new XFont("Times New Roman", 10, XFontStyle.Bold);
+            //XTextFormatter tf = new XTextFormatter(gfx);
+
+            //XRect rect = new XRect(40, 100, 250, 220);
+            //gfx.DrawRectangle(XBrushes.SeaShell, rect);
+            //tf.DrawString(sb.ToString(), font, XBrushes.Black, rect, XStringFormats.TopLeft);
+
             //string filename = "FirstPDFDocument.pdf";
             ////Save PDF File
             //document.Save(filename);
@@ -186,22 +217,159 @@ namespace NNtelrcom.Pages
 
 
 
-            //    PdfDocument document = new PdfDocument();
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Table Example";
 
-            //    PdfPage page = document.AddPage();
-            //    XGraphics gfx = XGraphics.FromPdfPage(page);
-            //    XFont font = new XFont("Times New Roman", 10, XFontStyle.Bold);
-            //    XTextFormatter tf = new XTextFormatter(gfx);
+            for (int p = 0; p < 1; p++)
+            {
+                // Page Options
+                PdfPage pdfPage = document.AddPage();
+                pdfPage.Height = 842;//842
+                pdfPage.Width = 590;
 
-            //    XRect rect = new XRect(40, 100, 250, 220);
-            //    gfx.DrawRectangle(XBrushes.SeaShell, rect);
-            //    tf.DrawString(sb.ToString(), font, XBrushes.Black, rect, XStringFormats.TopLeft);
+                // Get an XGraphics object for drawing
+                XGraphics graph = XGraphics.FromPdfPage(pdfPage);
 
-            //    string filename = "FirstPDFDocument.pdf";
-            //    //Save PDF File
-            //    document.Save(filename);
-            //    //Load PDF File for viewing
-            //    Process.Start(filename);
+                // Text format
+                XStringFormat format = new XStringFormat();
+                format.LineAlignment = XLineAlignment.Near;
+                format.Alignment = XStringAlignment.Near;
+                var tf = new XTextFormatter(graph);
+
+                XFont fontParagraph = new XFont("Verdana", 8, XFontStyle.Regular);
+
+                // Row elements
+                int el1_width = 80;
+                int el2_width = 380;
+
+                // page structure options
+                double lineHeight = 20;
+                int marginLeft = 20;
+                int marginTop = 20;
+
+                int el_height = 30;
+                int rect_height = 17;
+
+                int interLine_X_1 = 2;
+                int interLine_X_2 = 2 * interLine_X_1;
+
+                int offSetX_1 = el1_width;
+                int offSetX_2 = el1_width + el2_width;
+
+                XSolidBrush rect_style1 = new XSolidBrush(XColors.LightGray);
+                XSolidBrush rect_style2 = new XSolidBrush(XColors.DarkGreen);
+                XSolidBrush rect_style3 = new XSolidBrush(XColors.Red);
+
+                for (int i = 0; i < countNumber+1; i++)
+                {
+                    double dist_Y = lineHeight * (i + 1);
+                    double dist_Y2 = dist_Y - 2;
+
+                    // header della G
+                    if (i == 0)
+                    {
+                        graph.DrawRectangle(rect_style2, marginLeft, marginTop, pdfPage.Width - 2 * marginLeft, rect_height);
+
+                        tf.DrawString("Номер телефона", fontParagraph, XBrushes.White,
+                                      new XRect(marginLeft, marginTop, el1_width, el_height), format);
+
+                        tf.DrawString("Тариф", fontParagraph, XBrushes.White,
+                                      new XRect(marginLeft + offSetX_1 + interLine_X_1, marginTop, el2_width, el_height), format);
+
+                        tf.DrawString("Оплата", fontParagraph, XBrushes.White,
+                                      new XRect(marginLeft + offSetX_2 + 2 * interLine_X_2, marginTop, el1_width, el_height), format);
+
+                        foreach (string j in NumberAndSumma)
+                        {
+
+
+                            // stampo il primo elemento insieme all'header
+                            graph.DrawRectangle(rect_style1, marginLeft, dist_Y2 + marginTop, el1_width, rect_height);
+                            tf.DrawString(j, fontParagraph, XBrushes.Black,
+                                          new XRect(marginLeft, dist_Y + marginTop, el1_width, el_height), format);
+
+                            //ELEMENT 2 - BIG 380
+                            graph.DrawRectangle(rect_style1, marginLeft + offSetX_1 + interLine_X_1, dist_Y2 + marginTop, el2_width, rect_height);
+                            tf.DrawString(
+                                j+1,
+                                fontParagraph,
+                                XBrushes.Black,
+                                new XRect(marginLeft + offSetX_1 + interLine_X_1, dist_Y + marginTop, el2_width, el_height),
+                                format);
+
+
+                            //ELEMENT 3 - SMALL 80
+
+                            graph.DrawRectangle(rect_style1, marginLeft + offSetX_2 + interLine_X_2, dist_Y2 + marginTop, el1_width, rect_height);
+                            tf.DrawString(
+                                j+2,
+                                fontParagraph,
+                                XBrushes.Black,
+                                new XRect(marginLeft + offSetX_2 + 2 * interLine_X_2, dist_Y + marginTop, el1_width, el_height),
+                                format);
+                        }
+
+                    }
+                    else
+                    {
+
+                        //if (i % 2 == 1)
+                        //{
+                        //  graph.DrawRectangle(TextBackgroundBrush, marginLeft, lineY - 2 + marginTop, pdfPage.Width - marginLeft - marginRight, lineHeight - 2);
+                        //}
+
+                        //ELEMENT 1 - SMALL 80
+                        graph.DrawRectangle(rect_style1, marginLeft, marginTop + dist_Y2, el1_width, rect_height);
+                        tf.DrawString(
+
+                            "text1",
+                            fontParagraph,
+                            XBrushes.Black,
+                            new XRect(marginLeft, marginTop + dist_Y, el1_width, el_height),
+                            format);
+
+                        //ELEMENT 2 - BIG 380
+                        graph.DrawRectangle(rect_style1, marginLeft + offSetX_1 + interLine_X_1, dist_Y2 + marginTop, el2_width, rect_height);
+                        tf.DrawString(
+                            "text2",
+                            fontParagraph,
+                            XBrushes.Black,
+                            new XRect(marginLeft + offSetX_1 + interLine_X_1, marginTop + dist_Y, el2_width, el_height),
+                            format);
+
+
+                        //ELEMENT 3 - SMALL 80
+
+                        graph.DrawRectangle(rect_style1, marginLeft + offSetX_2 + interLine_X_2, dist_Y2 + marginTop, el1_width, rect_height);
+                        tf.DrawString(
+                            "text3",
+                            fontParagraph,
+                            XBrushes.Black,
+                            new XRect(marginLeft + offSetX_2 + 2 * interLine_X_2, marginTop + dist_Y, el1_width, el_height),
+                            format);
+
+                    }
+
+                }
+
+
+            }
+
+
+            const string filename = "FirstPDFDocument.pdf";
+            document.Save(filename);
+
+            //Load PDF File for viewing
+            Process.Start(filename);
+
+            //byte[] bytes = null;
+            //using (MemoryStream stream = new MemoryStream())
+            //{
+            //    document.Save(stream, true);
+            //    bytes = stream.ToArray();
+            //}
+
+            //SendFileToResponse(bytes, "HelloWorld_test.pdf");
         }
     }
 }

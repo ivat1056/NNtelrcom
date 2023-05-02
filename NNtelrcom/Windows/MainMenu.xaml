@@ -37,7 +37,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
 
@@ -228,8 +229,8 @@
 
         </StackPanel>
 
-        
-        
+
+
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Name="GeneralMenu" Visibility="Visible"  VerticalAlignment="Center" Height="449" Width="auto" >
 
             <StackPanel Orientation="Vertical">
@@ -293,7 +294,11 @@
 
 
 
-        <Frame Name="frameOrg" Grid.Row="1" Navigated="frameOrg_Navigated" Margin="0,0,0,0" />
+
+
+      
+        
+        <Frame Name="frameOrg" Grid.Row="1"  Navigated="frameOrg_Navigated" Height="auto" Width="auto"/>
 
 
     </Grid>
