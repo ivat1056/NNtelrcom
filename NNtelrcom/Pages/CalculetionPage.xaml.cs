@@ -262,7 +262,7 @@ namespace NNtelrcom.Pages
 
                 for (int i = 0; i < countNumber+1; i++)
                 {
-                    double dist_Y = lineHeight * (i + 1);
+                    double dist_Y = lineHeight * (i + 1); //
                     double dist_Y2 = dist_Y - 2;
 
                     // header della G
