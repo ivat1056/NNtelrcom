@@ -11,6 +11,7 @@ namespace NNtelrcom.Class
     {
         public static Frame frame;
         public static Frame frameOrg;
-
+        public static Frame frameAccaunt;
+        public static Frame administrationf;
     }
 }

@@ -21,6 +21,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NNtelrcom.Windows
 {
@@ -43,6 +44,12 @@ namespace NNtelrcom.Windows
             Home.MouseLeftButtonUp += Home_MouseLeftButtonUp;
             Atc.MouseLeftButtonDown += Atc_MouseLeftButtonDown;
             Atc.MouseLeftButtonUp += Atc_MouseLeftButtonUp;
+            PersonalAccount.MouseLeftButtonUp += AccountBoxOutline_MouseLeftButtonDown;
+            PersonalAccount.MouseLeftButtonUp += PersonalAccount_MouseLeftButtonUp;
+            Ext.MouseLeftButtonUp += Ext_MouseLeftButtonUp;
+            Ext.MouseLeftButtonUp += MenuNave_Click;
+            Administration.MouseLeftButtonUp += Administration_MouseLeftButtonUp;
+            Administration.MouseLeftButtonUp += AdministrationBtn_MouseLeftButtonDown;
 
             Rate.MouseLeftButtonUp += Ratebt_MouseLeftButtonDown;
             Organization.MouseLeftButtonUp += OrganizationBtn_MouseLeftButtonDown;
@@ -51,6 +58,8 @@ namespace NNtelrcom.Windows
             Calc.MouseLeftButtonDown += Calc_MouseLeftButtonDown;
 
             frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Hidden;
+            administrationFrame.Visibility = Visibility.Hidden;
 
             GeneralMenu.Visibility = Visibility.Visible;
 
@@ -73,8 +82,36 @@ namespace NNtelrcom.Windows
             FrameClass.frameOrg = frameOrg;
             FrameClass.frameOrg.Navigate(new OrganizationPage());
 
-            
+            //FrameClass.administrationf = administrationFrame;
+            //FrameClass.frameOrg.Navigate(new AdministrationPage());
+        }
 
+        private void Administration_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            
+            GeneralMenu.Visibility = Visibility.Collapsed;
+            MenuATC.Visibility = Visibility.Collapsed;
+            frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Visible;
+        }
+
+        private void Ext_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow loading = new MainWindow();
+            this.Close();
+            loading.Show();
+        }
+
+        private void PersonalAccount_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            FrameClass.frameAccaunt = PersonalAccauntframe;
+            FrameClass.frameAccaunt.Navigate(new PersonalAccauntPage());
+            GeneralMenu.Visibility = Visibility.Collapsed;
+            MenuATC.Visibility = Visibility.Collapsed;
+            frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Visible;
+            administrationFrame.Visibility = Visibility.Collapsed;
         }
 
         private void Home_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -82,6 +119,8 @@ namespace NNtelrcom.Windows
             GeneralMenu.Visibility = Visibility.Visible;
             MenuATC.Visibility = Visibility.Collapsed;
             frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Collapsed;
         }
 
         private void Atc_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -89,6 +128,8 @@ namespace NNtelrcom.Windows
             GeneralMenu.Visibility = Visibility.Hidden;
             MenuATC.Visibility = Visibility.Visible;
             frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Collapsed;
         }
 
         private void Atc_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -96,6 +137,8 @@ namespace NNtelrcom.Windows
             GeneralMenu.Visibility = Visibility.Hidden;
             MenuATC.Visibility = Visibility.Visible;
             frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Collapsed;
         }
 
         private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -103,6 +146,8 @@ namespace NNtelrcom.Windows
             GeneralMenu.Visibility = Visibility.Visible;
             MenuATC.Visibility = Visibility.Collapsed;
             frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Collapsed;
         }
 
         private void Calc_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -120,7 +165,7 @@ namespace NNtelrcom.Windows
 
         private void BtnUploy_Click(object sender, RoutedEventArgs e)
         {
-            LoadingWindow loading = new LoadingWindow();
+           LoadingWindow loading = new LoadingWindow();
             this.Close();
             loading.Show();
         }
@@ -133,15 +178,6 @@ namespace NNtelrcom.Windows
             
         }
         
-
-        public void CloseIcone()
-        {
-
-        }
-        public void MainPage()
-        {
-
-        }
 
 
         private void PackIcon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) // кнопка убрать меню
@@ -162,17 +198,30 @@ namespace NNtelrcom.Windows
         {
             GeneralMenu.Visibility = Visibility.Visible;
             MenuATC.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Collapsed;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
 
         }
 
         private void AccountBoxOutline_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) // Пункт личного кабинета
         {
-
+            FrameClass.frameAccaunt = PersonalAccauntframe;
+            FrameClass.frameAccaunt.Navigate(new PersonalAccauntPage());
+            GeneralMenu.Visibility = Visibility.Collapsed;
+            MenuATC.Visibility = Visibility.Collapsed;
+            frameOrg.Visibility = Visibility.Hidden;
+            administrationFrame.Visibility = Visibility.Collapsed;
+            PersonalAccauntframe.Visibility = Visibility.Visible;
         }
 
         private void AdministrationBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) // Пункт админ
         {
-
+           
+            GeneralMenu.Visibility = Visibility.Collapsed;
+            MenuATC.Visibility = Visibility.Collapsed;
+            frameOrg.Visibility = Visibility.Hidden;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Visible;
         }
 
         private void ATCBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) // Пункт атс
@@ -233,10 +282,7 @@ namespace NNtelrcom.Windows
             frameOrg.Visibility = Visibility.Visible;
         }
 
-        private void frameOrg_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-
-        }
+        
 
         private void Calcbtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -246,7 +292,9 @@ namespace NNtelrcom.Windows
 
         private void StackPanel_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            General1.Visibility = Visibility.Visible;
+            //General1.Visibility = Visibility.Visible;
         }
+
+        
     }
 }

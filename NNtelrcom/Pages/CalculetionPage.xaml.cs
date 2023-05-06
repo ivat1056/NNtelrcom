@@ -1,12 +1,20 @@
-﻿using NNtelrcom.Class;
+﻿using iTextSharp.text;
+using iTextSharp.text.html;
+using iTextSharp.text.pdf;
+using NNtelrcom.Class;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +26,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using static System.Net.Mime.MediaTypeNames;
 
 namespace NNtelrcom.Pages
@@ -32,6 +41,10 @@ namespace NNtelrcom.Pages
         double multi;
         double kol;
         string IDRate;
+        double summ;
+        int IDOrgan;
+        DateTime OnData1;
+        DateTime TwoData1;
 
         List<string> NumberAndSumma = new List<string>();
        
@@ -68,114 +81,135 @@ namespace NNtelrcom.Pages
 
         private void Calc_Click(object sender, RoutedEventArgs e)
         {
+            string OneDateStr = OneDateTx.SelectedDate.ToString();
+            string TwoDateStr = TwoDateTx.SelectedDate.ToString();
+            DateTime OnData = DateTime.Parse(OneDateStr);
+            DateTime TwoDate = DateTime.Parse(TwoDateStr);
+            OnData1 = OnData;
+            TwoData1 = TwoDate;
+
             Organizations organizations = Base.ep.Organizations.FirstOrDefault(z => z.NameOrganization == CBOrgan.Text);
             int o1 = organizations.IDOrganization;  // id organization 
             int IDType2 = 0;
             double Cost = 0;
             string NumberAdd = "";
-
+            
 
             foreach (PhonesOrganizations phonesOrganizations in PhonesOrganizations1)
             {
                 foreach (ATC at in atc1)
                 {
-                    int org = Convert.ToInt32(phonesOrganizations.IDOrganixation);
-                    string ph = phonesOrganizations.Phone;
+                     
+                    DateTime dataforatc = DateTime.Parse(at.SetupDateTime);
 
-                    if (org == o1)
+                    if ((dataforatc >= OnData) && (dataforatc <= TwoDate))
                     {
-                        
 
-                        int idCd1 = Convert.ToInt32(at.IDCgPhCdPh);
+                        int org = Convert.ToInt32(phonesOrganizations.IDOrganixation);
+                        string ph = phonesOrganizations.Phone;
 
-                        CgPCdPh callTermination = Base.ep.CgPCdPh.FirstOrDefault(z => z.IDCgPhCdPh == idCd1);
-                        string number = callTermination.CgPN_root_out; // номер из таблицы сdcg
-
-                        
-
-                        if (number == ph)
+                        if (org == o1)
                         {
-                            PhonesOrganizations phones = Base.ep.PhonesOrganizations.FirstOrDefault(z => z.Phone == ph);
-                            int IDType = Convert.ToInt32(phones.IDRate);
-                            Rate rate = Base.ep.Rate.FirstOrDefault(z => z.IDRate == IDType);
-                            IDRate = rate.Name; 
 
-                            kol = Convert.ToDouble(rate.NumberOfMinutes);
-                            IDType2 = Convert.ToInt32(rate.IDTyprRate); // type of rate 
-                            Cost = Convert.ToDouble(rate.Cost); // cost of rate 
-                            NumberAdd = number;
 
-                            string call = at.CallDuration;
-                            string сallR = call.Replace(".", ",");
-                            double a = Convert.ToDouble(сallR);
-                            SumTime = SumTime + a;
+                            int idCd1 = Convert.ToInt32(at.IDCgPhCdPh);
+
+                            CgPCdPh callTermination = Base.ep.CgPCdPh.FirstOrDefault(z => z.IDCgPhCdPh == idCd1);
+                            string number = callTermination.CgPN_root_out; // номер из таблицы сdcg
+
+
+
+                            if (number == ph)
+                            {
+                                PhonesOrganizations phones = Base.ep.PhonesOrganizations.FirstOrDefault(z => z.Phone == ph);
+                                int IDType = Convert.ToInt32(phones.IDRate);
+                                Rate rate = Base.ep.Rate.FirstOrDefault(z => z.IDRate == IDType);
+                                IDRate = rate.Name;
+                                IDOrgan = o1;
+
+                                kol = Convert.ToDouble(rate.NumberOfMinutes);
+                                IDType2 = Convert.ToInt32(rate.IDTyprRate); // type of rate 
+                                Cost = Convert.ToDouble(rate.Cost); // cost of rate 
+                                NumberAdd = number;
+
+                                string call = at.CallDuration;
+                                string сallR = call.Replace(".", ",");
+                                double a = Convert.ToDouble(сallR);
+                                SumTime = SumTime + a;
+                            }
                         }
-                    }
-                    
+                    } 
                 }
-                if (IDType2 == 1)
+                if (NumberAdd != "")
                 {
-                    multi = (SumTime / 60) * Cost;
-                    string multi2 = Convert.ToString(multi);
-                    NumberAndSumma.Add(multi2);
-                    NumberAndSumma.Add(NumberAdd);
-                    NumberAndSumma.Add(IDRate);
-                    multi = 0;
-                    SumTime = 0;
-                    NumberAdd = "";
-                    Cost = 0;
-                }
-                if(IDType2 == 2)
-                {
-                    multi = (SumTime / 10) * Cost;
-                    string multi2 = Convert.ToString(multi);
-                    NumberAndSumma.Add(multi2);
-                    NumberAndSumma.Add(NumberAdd);
-                    NumberAndSumma.Add(IDRate);
-                    multi = 0;
-                    SumTime = 0;
-                    NumberAdd = "";
-                    Cost = 0;
-                }
-                if (IDType2 == 3)
-                {
-                    multi = (SumTime - 60 ) * Cost;
-                    string multi2 = Convert.ToString(multi);
-                    NumberAndSumma.Add(multi2);
-                    NumberAndSumma.Add(NumberAdd);
-                    NumberAndSumma.Add(IDRate);
-                    multi = 0;
-                    SumTime = 0;
-                    NumberAdd = "";
-                    Cost = 0;
-                }
-                if (IDType2 == 4)
-                {
-                    double Kol = 
-                    multi = ((SumTime / 60 ) - kol);
-                    if(multi < 0)
+                    if (IDType2 == 1)
                     {
-                    string multi2 = Convert.ToString(Cost);
-                    NumberAndSumma.Add(multi2);
-                    NumberAndSumma.Add(NumberAdd);
-                    NumberAndSumma.Add(IDRate);
-                    }
-                    else
-                    {
-                        Rate rate = Base.ep.Rate.FirstOrDefault(z => z.IDRate == 1);
-                        double sK = Convert.ToDouble(rate.Cost);
-                        multi = ((SumTime / 60) - kol) * sK ;
-                        string multi2 = Convert.ToString(Cost);
-                        NumberAndSumma.Add(multi2);
+                        multi = (SumTime / 60) * Cost;
+                        string multi2 = Convert.ToString(multi);
                         NumberAndSumma.Add(NumberAdd);
                         NumberAndSumma.Add(IDRate);
+                        NumberAndSumma.Add(multi2);
+                        multi = 0;
+                        SumTime = 0;
+                        NumberAdd = "";
+                        Cost = 0;
                     }
-                    kol = 0;
-                    multi = 0;
-                    SumTime = 0;
-                    NumberAdd = "";
-                    IDRate = "";
-                    Cost = 0;
+                    if (IDType2 == 2)
+                    {
+                        multi = (SumTime / 10) * Cost;
+                        string multi2 = Convert.ToString(multi);
+                        NumberAndSumma.Add(NumberAdd);
+                        NumberAndSumma.Add(IDRate);
+                        NumberAndSumma.Add(multi2);
+                        multi = 0;
+                        SumTime = 0;
+                        NumberAdd = "";
+                        Cost = 0;
+                    }
+                    if (IDType2 == 3)
+                    {
+                        multi = (SumTime - 60) * Cost;
+                        string multi2 = Convert.ToString(multi);
+                        NumberAndSumma.Add(NumberAdd);
+                        NumberAndSumma.Add(IDRate);
+                        NumberAndSumma.Add(multi2);
+                        multi = 0;
+                        SumTime = 0;
+                        NumberAdd = "";
+                        Cost = 0;
+                    }
+                    if (IDType2 == 4)
+                    {
+                        double Kol =
+                        multi = ((SumTime / 60) - kol);
+                        if (multi < 0)
+                        {
+                            string multi2 = Convert.ToString(Cost);
+                            NumberAndSumma.Add(NumberAdd);
+                            NumberAndSumma.Add(IDRate);
+                            NumberAndSumma.Add(multi2);
+                            NumberAdd = "";
+                            Cost = 0;
+                        }
+                        else
+                        {
+                            Rate rate = Base.ep.Rate.FirstOrDefault(z => z.IDRate == 1);
+                            double sK = Convert.ToDouble(rate.Cost);
+                            multi = ((SumTime / 60) - kol) * sK;
+                            string multi2 = Convert.ToString(Cost);
+                            NumberAndSumma.Add(NumberAdd);
+                            NumberAndSumma.Add(IDRate);
+                            NumberAndSumma.Add(multi2);
+                            NumberAdd = "";
+                            Cost = 0;
+                        }
+                        kol = 0;
+                        multi = 0;
+                        SumTime = 0;
+                        NumberAdd = "";
+                        IDRate = "";
+                        Cost = 0;
+                    }
                 }
             }
 
@@ -183,193 +217,166 @@ namespace NNtelrcom.Pages
 
 
 
-            //StringBuilder sb = new StringBuilder();
-            //foreach (string elementin in NumberAndSumma)
-            //{
-            //    sb.AppendLine(elementin);
-
-            //}
-
-
-
-            //MessageBox.Show(sb.ToString());
-
-
-
-
-            //PdfDocument document = new PdfDocument();
-
-            //PdfPage page = document.AddPage();
-            //XGraphics gfx = XGraphics.FromPdfPage(page);
-            //XFont font = new XFont("Times New Roman", 10, XFontStyle.Bold);
-            //XTextFormatter tf = new XTextFormatter(gfx);
-
-            //XRect rect = new XRect(40, 100, 250, 220);
-            //gfx.DrawRectangle(XBrushes.SeaShell, rect);
-            //tf.DrawString(sb.ToString(), font, XBrushes.Black, rect, XStringFormats.TopLeft);
-
             //string filename = "FirstPDFDocument.pdf";
-            ////Save PDF File
             //document.Save(filename);
-            ////Load PDF File for viewing
             //Process.Start(filename);
+            //Set the default encoding to support Unicode characters
+
+           
+
+            Document doc = new Document();
+
+            FileStream fs = new FileStream("Test.pdf", FileMode.Create, FileAccess.Write, FileShare.None); // создание пдф файла 
+            string ttf = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF"); // шрифт 
+            var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            var font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+
+            string ttf2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+            BaseFont bf = BaseFont.CreateFont(ttf2, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font font2 = new iTextSharp.text.Font(bf, 20, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Paragraph p1 = new iTextSharp.text.Paragraph(new Chunk("Sample text", font2));
+
+            PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+            doc.Open();
 
 
 
+            //PdfContentByte cb = writer.DirectContent;
 
-            PdfDocument document = new PdfDocument();
-            document.Info.Title = "Table Example";
+            //// select the font properties
+            //BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            //cb.SetColorFill(BaseColor.DARK_GRAY);
+            //cb.SetFontAndSize(bf, 8);
 
-            for (int p = 0; p < 1; p++)
+            //// write the text in the pdf content
+            //cb.BeginText();
+            //string text = (new iTextSharp.text.Paragraph("Организация proba ", font));
+            //// put the alignment and coordinates here
+            //cb.ShowTextAligned(1, text, 100, 800, 0);
+            //cb.EndText();
+            //cb.BeginText();
+            //text = "Other random blabla...";
+            //// put the alignment and coordinates here
+            //cb.ShowTextAligned(2, text, 5, 5, 0);
+            //cb.EndText();
+
+            doc.Add(new iTextSharp.text.Paragraph("НН Телеком ", font2));
+
+           
+            int year = OnData1.Year;
+            int month = OnData1.Month;
+            int day = OnData1.Day;
+
+            int year2 = TwoData1.Year;
+            int month2 = TwoData1.Month;
+            int day2 = TwoData1.Day;
+            string monthapay = GetMonth(month);
+            string monthapay2 = GetMonth(month2);
+
+            string now = DateTime.Now.ToString("dd-MMMM-yyyy");
+            
+            
+
+            string TextData = "Дата формирования счета " + now ;
+            string DataCalc = "Расчет за " + day + " " + monthapay + " По " + day2 + " " + monthapay2; 
+            doc.Add(new iTextSharp.text.Paragraph(TextData, font));
+            doc.Add(new iTextSharp.text.Paragraph(DataCalc, font));
+            string Text = "Внимание! Оплата данного счета означает согласие с условиями предоставления услуг. Уведомление об оплате обязательно.";
+            doc.Add(new iTextSharp.text.Paragraph(Text,font));
+            string Text2 = " "; // пустая строчка 
+            doc.Add(new iTextSharp.text.Paragraph(Text2, font));
+            string Text4 = "Поставщик: ";
+            doc.Add(new iTextSharp.text.Paragraph(Text4, font));
+            Organizations organizations1 = Base.ep.Organizations.FirstOrDefault(z => z.IDOrganization == IDOrgan);
+            string ORGAN =  " " + organizations1.NameOrganization + " , ИНН " + organizations1.INN + " , " + organizations1.Surname + " " + organizations1.Name + " " + organizations1.Patronymic + " , " + organizations1.Address;
+            string Text3 = "Покупатель: " + ORGAN ;
+            doc.Add(new iTextSharp.text.Paragraph( Text3, font));
+            doc.Add(new iTextSharp.text.Paragraph(Text2, font));
+            
+
+
+            PdfPCell cell = new PdfPCell();
+            PdfPTable table = new PdfPTable(3);
+            for (int j = 2; j < NumberAndSumma.Count; j++)
             {
-                // Page Options
-                PdfPage pdfPage = document.AddPage();
-                pdfPage.Height = 842;//842
-                pdfPage.Width = 590;
-
-                // Get an XGraphics object for drawing
-                XGraphics graph = XGraphics.FromPdfPage(pdfPage);
-
-                // Text format
-                XStringFormat format = new XStringFormat();
-                format.LineAlignment = XLineAlignment.Near;
-                format.Alignment = XStringAlignment.Near;
-                var tf = new XTextFormatter(graph);
-
-                XFont fontParagraph = new XFont("Verdana", 8, XFontStyle.Regular);
-
-                // Row elements
-                int el1_width = 80;
-                int el2_width = 380;
-
-                // page structure options
-                double lineHeight = 20;
-                int marginLeft = 20;
-                int marginTop = 20;
-
-                int el_height = 30;
-                int rect_height = 17;
-
-                int interLine_X_1 = 2;
-                int interLine_X_2 = 2 * interLine_X_1;
-
-                int offSetX_1 = el1_width;
-                int offSetX_2 = el1_width + el2_width;
-
-                XSolidBrush rect_style1 = new XSolidBrush(XColors.LightGray);
-                XSolidBrush rect_style2 = new XSolidBrush(XColors.DarkGreen);
-                XSolidBrush rect_style3 = new XSolidBrush(XColors.Red);
-
-                for (int i = 0; i < countNumber+1; i++)
-                {
-                    double dist_Y = lineHeight * (i + 1); //
-                    double dist_Y2 = dist_Y - 2;
-
-                    // header della G
-                    if (i == 0)
-                    {
-                        graph.DrawRectangle(rect_style2, marginLeft, marginTop, pdfPage.Width - 2 * marginLeft, rect_height);
-
-                        tf.DrawString("Номер телефона", fontParagraph, XBrushes.White,
-                                      new XRect(marginLeft, marginTop, el1_width, el_height), format);
-
-                        tf.DrawString("Тариф", fontParagraph, XBrushes.White,
-                                      new XRect(marginLeft + offSetX_1 + interLine_X_1, marginTop, el2_width, el_height), format);
-
-                        tf.DrawString("Оплата", fontParagraph, XBrushes.White,
-                                      new XRect(marginLeft + offSetX_2 + 2 * interLine_X_2, marginTop, el1_width, el_height), format);
-
-                        foreach (string j in NumberAndSumma)
-                        {
-
-
-                            // stampo il primo elemento insieme all'header
-                            graph.DrawRectangle(rect_style1, marginLeft, dist_Y2 + marginTop, el1_width, rect_height);
-                            tf.DrawString(j, fontParagraph, XBrushes.Black,
-                                          new XRect(marginLeft, dist_Y + marginTop, el1_width, el_height), format);
-
-                            //ELEMENT 2 - BIG 380
-                            graph.DrawRectangle(rect_style1, marginLeft + offSetX_1 + interLine_X_1, dist_Y2 + marginTop, el2_width, rect_height);
-                            tf.DrawString(
-                                j+1,
-                                fontParagraph,
-                                XBrushes.Black,
-                                new XRect(marginLeft + offSetX_1 + interLine_X_1, dist_Y + marginTop, el2_width, el_height),
-                                format);
-
-
-                            //ELEMENT 3 - SMALL 80
-
-                            graph.DrawRectangle(rect_style1, marginLeft + offSetX_2 + interLine_X_2, dist_Y2 + marginTop, el1_width, rect_height);
-                            tf.DrawString(
-                                j+2,
-                                fontParagraph,
-                                XBrushes.Black,
-                                new XRect(marginLeft + offSetX_2 + 2 * interLine_X_2, dist_Y + marginTop, el1_width, el_height),
-                                format);
-                        }
-
-                    }
-                    else
-                    {
-
-                        //if (i % 2 == 1)
-                        //{
-                        //  graph.DrawRectangle(TextBackgroundBrush, marginLeft, lineY - 2 + marginTop, pdfPage.Width - marginLeft - marginRight, lineHeight - 2);
-                        //}
-
-                        //ELEMENT 1 - SMALL 80
-                        graph.DrawRectangle(rect_style1, marginLeft, marginTop + dist_Y2, el1_width, rect_height);
-                        tf.DrawString(
-
-                            "text1",
-                            fontParagraph,
-                            XBrushes.Black,
-                            new XRect(marginLeft, marginTop + dist_Y, el1_width, el_height),
-                            format);
-
-                        //ELEMENT 2 - BIG 380
-                        graph.DrawRectangle(rect_style1, marginLeft + offSetX_1 + interLine_X_1, dist_Y2 + marginTop, el2_width, rect_height);
-                        tf.DrawString(
-                            "text2",
-                            fontParagraph,
-                            XBrushes.Black,
-                            new XRect(marginLeft + offSetX_1 + interLine_X_1, marginTop + dist_Y, el2_width, el_height),
-                            format);
-
-
-                        //ELEMENT 3 - SMALL 80
-
-                        graph.DrawRectangle(rect_style1, marginLeft + offSetX_2 + interLine_X_2, dist_Y2 + marginTop, el1_width, rect_height);
-                        tf.DrawString(
-                            "text3",
-                            fontParagraph,
-                            XBrushes.Black,
-                            new XRect(marginLeft + offSetX_2 + 2 * interLine_X_2, marginTop + dist_Y, el1_width, el_height),
-                            format);
-
-                    }
-
-                }
-
-
+                double a = Convert.ToDouble(NumberAndSumma[j]);
+                summ = summ + a;
+                j = j + 2;
             }
 
+            table.AddCell(new iTextSharp.text.Paragraph("Номер телефона", font));
+            table.AddCell(new iTextSharp.text.Paragraph("Тариф", font));
+            table.AddCell(new iTextSharp.text.Paragraph("Стоимость, руб", font));
+            for (int j = 0; j < NumberAndSumma.Count; j++)
+            {
+                table.AddCell(NumberAndSumma[j]);
+                table.AddCell(new iTextSharp.text.Paragraph(NumberAndSumma[j + 1], font));
+                table.AddCell(NumberAndSumma[j + 2]);
+                j = j + 2;
+            }
+            cell = new PdfPCell(new Phrase(new iTextSharp.text.Paragraph("Итоговая сумма к оплате", font)));
+            cell.Colspan = 2;
+            table.AddCell(cell);
+            string b = Convert.ToString(summ);
+            table.AddCell(b);
 
-            const string filename = "FirstPDFDocument.pdf";
-            document.Save(filename);
+            doc.Add(table);
+            doc.Close();
+            Process.Start("Test.pdf");
 
-            //Load PDF File for viewing
-            Process.Start(filename);
+        }
 
-            //byte[] bytes = null;
-            //using (MemoryStream stream = new MemoryStream())
-            //{
-            //    document.Save(stream, true);
-            //    bytes = stream.ToArray();
-            //}
+        public string GetMonth(int a)
+        {
+            if(a ==1)
+            {
+                return "Январь";
+            }
+            if (a == 2)
+            {
+                return "Февраль";
+            }
+            if (a == 3)
+            {
+                return "Март";
+            }
+            if (a == 4)
+            {
+                return "Апрель";
+            }
+            if (a == 5)
+            {
+                return "Май";
+            }
+            if (a == 6)
+            {
+                return "Июнь";
+            }
+            if (a == 7)
+            {
+                return "Июль";
+            }
+            if (a == 8)
+            {
+                return "Август";
+            }
+            if (a == 9)
+            {
+                return "Сентябрь";
+            }
+            if (a == 10)
+            {
+                return "Октябрь";
+            }
+            if (a == 11)
+            {
+                return "Ноябрь";
+            }
+            else
+            {
+                return "Декабрь";
+            }
 
-            //SendFileToResponse(bytes, "HelloWorld_test.pdf");
         }
     }
 }
