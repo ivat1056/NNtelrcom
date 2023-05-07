@@ -13,6 +13,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Reflection.Emit;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -26,8 +28,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using static System.Net.Mime.MediaTypeNames;
+using MimeKit;
+using MailKit;
+using MailKit.Net.Smtp;
+using Org.BouncyCastle.Crypto.Macs;
+using Org.BouncyCastle.Utilities.Net;
+using Org.BouncyCastle.Utilities;
+
 
 namespace NNtelrcom.Pages
 {
@@ -56,6 +64,10 @@ namespace NNtelrcom.Pages
             InitializeComponent();
             CBOrgan.DisplayMemberPath = "NameOrganization";
 
+
+
+            
+
         }
 
         private void CBOrgan_TextChanged(object sender, TextChangedEventArgs e)
@@ -70,12 +82,59 @@ namespace NNtelrcom.Pages
 
         private void CBOrgan_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
+            
 
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
+            MimeMessage message = new MimeMessage();
+            message.From.Add(new MailboxAddress("NN Telecom", "nntelecom1234@rambler.ru"));
+            //add the receiver email address
+            message.To.Add(MailboxAddress.Parse("ivat1056@gmail.com"));
+            // add the message subject
+            message.Subject = "Wuuf!.";
+            // add the message body as plain text the "plain" string passed to the TextPart
+            // indicates that it's plain text and not HTML for example
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Yes, 
+                Hello!. 
+                всем привет ."
+            };
+
+            // ask the user to enter the email
+
+            string emailAddress = "nntelecom1234@rambler.ru";
+            // ask the user to enter the password
+
+            string password = "YsP@@V@wf12";
+
+            MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient();
+
+            try
+            {
+                client.Connect("smtp.rambler.ru", 465, true);
+                client.Authenticate(emailAddress, password);
+
+                client.Send(message);
+
+                MessageBox.Show("Сообщение отправлено");
+            }
+            catch (Exception ex)
+            {
+
+                //in case of an error display the message.
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // at any case always disconnect from the client
+                client.Disconnect(true);
+                // and dispose of the client object
+                client.Dispose();
+            }
+
 
         }
 
@@ -323,6 +382,13 @@ namespace NNtelrcom.Pages
             doc.Add(table);
             doc.Close();
             Process.Start("Test.pdf");
+
+
+
+            
+
+
+
 
         }
 
