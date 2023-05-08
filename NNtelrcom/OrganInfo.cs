@@ -12,18 +12,18 @@ namespace NNtelrcom
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class OrganInfo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
-        {
-            this.Employ = new HashSet<Employ>();
-        }
-    
-        public int Role_ID { get; set; }
+        public int IdInfoorgan { get; set; }
         public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employ> Employ { get; set; }
+        public string INN { get; set; }
+        public string KPPBank { get; set; }
+        public string CheckBank { get; set; }
+        public string Adress { get; set; }
+        public string Phone { get; set; }
+        public string IndexO { get; set; }
+        public string KPPOrgan { get; set; }
+        public string Checkorgan { get; set; }
+        public string NameBank { get; set; }
     }
 }

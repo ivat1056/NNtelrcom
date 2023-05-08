@@ -41,6 +41,7 @@ namespace NNtelrcom
         public virtual DbSet<HostB> HostB { get; set; }
         public virtual DbSet<MainPBX> MainPBX { get; set; }
         public virtual DbSet<MKD_ID> MKD_ID { get; set; }
+        public virtual DbSet<OrganInfo> OrganInfo { get; set; }
         public virtual DbSet<Organizations> Organizations { get; set; }
         public virtual DbSet<PBX_In> PBX_In { get; set; }
         public virtual DbSet<PBX_Out> PBX_Out { get; set; }
