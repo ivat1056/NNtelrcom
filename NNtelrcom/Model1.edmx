@@ -161,6 +161,22 @@
           <Property Name="MKD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="OrganInfo">
+          <Key>
+            <PropertyRef Name="IdInfoorgan" />
+          </Key>
+          <Property Name="IdInfoorgan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="INN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="KPPBank" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CheckBank" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IndexO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="KPPOrgan" Type="nchar" MaxLength="10" />
+          <Property Name="Checkorgan" Type="nvarchar(max)" />
+          <Property Name="NameBank" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Organizations">
           <Key>
             <PropertyRef Name="IDOrganization" />
@@ -172,6 +188,9 @@
           <Property Name="Patronymic" Type="nvarchar(max)" />
           <Property Name="Address" Type="nvarchar(max)" />
           <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="KPP" Type="nvarchar(max)" />
+          <Property Name="IndexO" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="PBX_In">
           <Key>
@@ -652,18 +671,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Role_ID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Role_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="ATC" EntityType="Self.ATC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CallTermination" EntityType="Self.CallTermination" Schema="dbo" store:Type="Tables" />
@@ -681,6 +688,7 @@
           <EntitySet Name="HostB" EntityType="Self.HostB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainPBX" EntityType="Self.MainPBX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MKD_ID" EntityType="Self.MKD_ID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrganInfo" EntityType="Self.OrganInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PBX_In" EntityType="Self.PBX_In" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PBX_Out" EntityType="Self.PBX_Out" Schema="dbo" store:Type="Tables" />
@@ -811,10 +819,6 @@
             <End Role="Floor" EntitySet="Floor" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -837,6 +841,7 @@
           <EntitySet Name="HostB" EntityType="Model.HostB" />
           <EntitySet Name="MainPBX" EntityType="Model.MainPBX" />
           <EntitySet Name="MKD_ID" EntityType="Model.MKD_ID" />
+          <EntitySet Name="OrganInfo" EntityType="Model.OrganInfo" />
           <EntitySet Name="Organizations" EntityType="Model.Organizations" />
           <EntitySet Name="PBX_In" EntityType="Model.PBX_In" />
           <EntitySet Name="PBX_Out" EntityType="Model.PBX_Out" />
@@ -966,10 +971,6 @@
           <AssociationSet Name="FK_Rate_TypeRate" Association="Model.FK_Rate_TypeRate">
             <End Role="TypeRate" EntitySet="TypeRate" />
             <End Role="Rate" EntitySet="Rate" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Role" Association="Model.FK_Users_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ATC">
@@ -1164,6 +1165,22 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ATC" Relationship="Model.FK_ATC_MKD_ID" FromRole="MKD_ID" ToRole="ATC" />
         </EntityType>
+        <EntityType Name="OrganInfo">
+          <Key>
+            <PropertyRef Name="IdInfoorgan" />
+          </Key>
+          <Property Name="IdInfoorgan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KPPBank" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CheckBank" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IndexO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KPPOrgan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Checkorgan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameBank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Organizations">
           <Key>
             <PropertyRef Name="IDOrganization" />
@@ -1175,6 +1192,9 @@
           <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KPP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IndexO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PhonesOrganizations" Relationship="Model.FK_PhonesOrganizations_Organizations" FromRole="Organizations" ToRole="PhonesOrganizations" />
         </EntityType>
         <EntityType Name="PBX_In">
@@ -1259,7 +1279,6 @@
           <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Employ" Relationship="Model.FK_Employ_Role" FromRole="Role" ToRole="Employ" />
-          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Role" FromRole="Role" ToRole="Users" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1339,7 +1358,6 @@
           <Property Name="Role_ID" Type="Int32" />
           <NavigationProperty Name="Floor" Relationship="Model.FK_Users_Floor" FromRole="Users" ToRole="Floor" />
           <NavigationProperty Name="Photo" Relationship="Model.FK_Photo_Users" FromRole="Users" ToRole="Photo" />
-          <NavigationProperty Name="Role" Relationship="Model.FK_Users_Role" FromRole="Users" ToRole="Role" />
         </EntityType>
         <Association Name="FK_ATC_CallTermination">
           <End Type="Model.CallTermination" Role="CallTermination" Multiplicity="0..1" />
@@ -1677,18 +1695,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Role">
-          <End Type="Model.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="Model.Users" Role="Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Role_ID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Role_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1867,9 +1873,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="OrganInfo">
+            <EntityTypeMapping TypeName="Model.OrganInfo">
+              <MappingFragment StoreEntitySet="OrganInfo">
+                <ScalarProperty Name="NameBank" ColumnName="NameBank" />
+                <ScalarProperty Name="Checkorgan" ColumnName="Checkorgan" />
+                <ScalarProperty Name="KPPOrgan" ColumnName="KPPOrgan" />
+                <ScalarProperty Name="IndexO" ColumnName="IndexO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="CheckBank" ColumnName="CheckBank" />
+                <ScalarProperty Name="KPPBank" ColumnName="KPPBank" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdInfoorgan" ColumnName="IdInfoorgan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Organizations">
             <EntityTypeMapping TypeName="Model.Organizations">
               <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="IndexO" ColumnName="IndexO" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
