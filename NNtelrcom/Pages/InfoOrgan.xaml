@@ -1,0 +1,60 @@
+﻿<Page x:Class="NNtelrcom.Pages.InfoOrgan"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NNtelrcom.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InfoOrgan">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal"  HorizontalAlignment="Center" >
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Margin="10" HorizontalAlignment="Stretch" MinWidth="300" MaxHeight="60" Header="Название организации">
+                        <TextBox Name="NameOrgan"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="КПП">
+                        <TextBox Name="KPPOrgan"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Счет банка">
+                        <TextBox Name="CeckOrgan"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="ИНН">
+                        <TextBox Name="INN"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Индекс">
+                        <TextBox Name="IndexO"/>
+                    </GroupBox>
+                    
+                    
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Адрес организации">
+                        <TextBox Name="Adress"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Телефон организации">
+                        <TextBox Name="Phone"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Название банка">
+                        <TextBox Name="NameBank"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Счет банка">
+                        <TextBox Name="CheckB"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="БИК">
+                        <TextBox Name="bk"/>
+                    </GroupBox>
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel  Margin="50,0,50,0" Orientation="Vertical">
+                <Button Name="btnSave" Margin="10" Content="Сохранить данные" Click="btnSave_Click" />
+                <Button Name="btn_back" Margin="10" Content="Назад" Click="btn_back_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

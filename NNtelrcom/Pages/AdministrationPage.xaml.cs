@@ -24,17 +24,18 @@ namespace NNtelrcom.Pages
         public AdministrationPage()
         {
             InitializeComponent();
-            DbList.ItemsSource = Base.ep.Employ.ToString(); 
+            Users.MouseLeftButtonUp += TypeRatebtn_MouseLeftButtonUp;
+            Organisation.MouseLeftButtonUp += TypeRatebtn2_MouseLeftButtonUp;
         }
 
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private void TypeRatebtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            FrameClass.administrationf.Navigate(new EmployPage());
         }
 
-        private void btnDell_Click(object sender, RoutedEventArgs e)
+        private void TypeRatebtn2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            FrameClass.administrationf.Navigate(new InfoOrgan());
         }
     }
 }

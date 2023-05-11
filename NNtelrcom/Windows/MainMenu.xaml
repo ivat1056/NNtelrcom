@@ -36,18 +36,18 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="5*"/>
             
 
         </Grid.RowDefinitions>
 
 
-        <StackPanel x:Name="Nav" Grid.Row="0" Margin="0,0,0,10" >
+        <StackPanel x:Name="Nav" Grid.Row="0" >
 
             <materialDesign:ColorZone
               Mode="PrimaryLight">
-                <StackPanel Orientation="Horizontal" Height="59">
+                <StackPanel Orientation="Horizontal" Height="50" >
                     <ToggleButton Name="MenuNave" MouseLeftButtonDown="MenuNave_MouseLeftButtonDown"   Click="MenuNave_Click" Style="{StaticResource MaterialDesignHamburgerToggleButton}"/>
                     <TextBlock  Margin="16,0,0,0" FontSize="22" VerticalAlignment="Center" Text="НН Телеком" />
 
@@ -292,14 +292,14 @@
 
         </StackPanel>
 
+        <Frame Name="administrationFrame" Grid.Row="1"   Height="auto" Width="auto" />
 
 
-        
         <Frame Name="frameOrg" Grid.Row="1"   Height="auto" Width="auto"/>
         
         <Frame Name="PersonalAccauntframe" Grid.Row="1"   Height="auto" Width="auto"/>
 
-        <Frame Name="administrationFrame" Grid.Row="1"   Height="auto" Width="auto"/>
+       
 
     </Grid>
 </Window>

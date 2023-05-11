@@ -3,36 +3,32 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:NNtelrcom.Pages"
+      xmlns:local="clr-namespace:NNtelrcom.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdministrationPage">
 
     <Grid>
-        <DataGrid Name="DbList" Grid.Row="0" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Surname}"/>
-                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Отчество" Width="*" Binding="{Binding Patronymic}"/>
-                <DataGridTextColumn Header="Логин" Width="*" Binding="{Binding Login}"/>
-                <DataGridTextColumn Header="Пароль" Width="*" Binding="{Binding Password}"/>
-                <DataGridTextColumn Header="Роль" Width="*" Binding="{Binding Role.Name}"/>
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnUpdate" Click="btnUpdate_Click" Uid="{Binding Id}"  HorizontalAlignment="Center" FontSize="14"  Content="Редактировать"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
+            
+            <TabItem Width="auto"  Name="Users" Height="163"  Background="Aqua"  >
+                <TabItem.Header >
+                    <StackPanel Width="334" Orientation="Horizontal" Height="101" Background="Aqua">
+                        <materialDesign:PackIcon Margin="10,0,0,0" Width="92" x:Name="TypeRatebtn"  MouseLeftButtonUp="TypeRatebtn_MouseLeftButtonUp" Height="100" Kind="Users" />
+                        <TextBlock FontSize="30" Margin="10,0,0,0"  Text="Сотрудники" Height="50" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
 
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnDell" Click="btnDell_Click" Uid="{Binding Id}"  HorizontalAlignment="Center" FontSize="14"  Content="Удалить"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+
+            <TabItem Width="auto"  Name="Organisation" Height="163"  Background="Aqua"  >
+                <TabItem.Header >
+                    <StackPanel Width="334" Orientation="Horizontal" Height="101" Background="Aqua">
+                        <materialDesign:PackIcon Margin="10,0,0,0" Width="92" x:Name="TypeRatebtn2" MouseLeftButtonUp="TypeRatebtn2_MouseLeftButtonUp" Height="100" Kind="OfficeBuilding" />
+                        <TextBlock FontSize="30" Margin="10,0,0,0"  Text="Организация" Height="50" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+        </StackPanel>
     </Grid>
 </Page>

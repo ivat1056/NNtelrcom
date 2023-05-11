@@ -57,9 +57,9 @@ namespace NNtelrcom.Windows
             Phone.MouseLeftButtonUp += Phonebtn_MouseLeftButtonDown;
             Calc.MouseLeftButtonDown += Calc_MouseLeftButtonDown;
 
-            frameOrg.Visibility = Visibility.Hidden;
-            PersonalAccauntframe.Visibility = Visibility.Hidden;
-            administrationFrame.Visibility = Visibility.Hidden;
+            frameOrg.Visibility = Visibility.Collapsed;
+            PersonalAccauntframe.Visibility = Visibility.Collapsed;
+            administrationFrame.Visibility = Visibility.Collapsed;
 
             GeneralMenu.Visibility = Visibility.Visible;
 
@@ -82,8 +82,8 @@ namespace NNtelrcom.Windows
             FrameClass.frameOrg = frameOrg;
             FrameClass.frameOrg.Navigate(new OrganizationPage());
 
-            //FrameClass.administrationf = administrationFrame;
-            //FrameClass.frameOrg.Navigate(new AdministrationPage());
+            FrameClass.administrationf = administrationFrame;   // 
+            FrameClass.administrationf.Navigate(new AdministrationPage());
         }
 
         private void Administration_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

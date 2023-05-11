@@ -214,6 +214,9 @@
     <Compile Include="Pages\CdCGPage.xaml.cs">
       <DependentUpon>CdCGPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EmployPage.xaml.cs">
+      <DependentUpon>EmployPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EmtyTablePage.xaml.cs">
       <DependentUpon>EmtyTablePage.xaml</DependentUpon>
     </Compile>
@@ -234,6 +237,9 @@
     </Compile>
     <Compile Include="Pages\HostPortBPage.xaml.cs">
       <DependentUpon>HostPortBPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InfoOrgan.xaml.cs">
+      <DependentUpon>InfoOrgan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPBXPage.xaml.cs">
       <DependentUpon>MainPBXPage.xaml</DependentUpon>
@@ -387,6 +393,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EmployPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EmtyTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -412,6 +422,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HostPortBPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InfoOrgan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

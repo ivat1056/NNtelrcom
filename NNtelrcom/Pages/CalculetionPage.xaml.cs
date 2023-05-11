@@ -35,6 +35,7 @@ using MailKit.Net.Smtp;
 using Org.BouncyCastle.Crypto.Macs;
 using Org.BouncyCastle.Utilities.Net;
 using Org.BouncyCastle.Utilities;
+using iTextSharp.text.pdf.parser;
 
 
 namespace NNtelrcom.Pages
@@ -89,32 +90,59 @@ namespace NNtelrcom.Pages
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MimeMessage message = new MimeMessage();
-            message.From.Add(new MailboxAddress("NN Telecom", "nntelecom1234@rambler.ru"));
+            message.From.Add(new MailboxAddress("NN Telecom", "nntelecom52@gmail.com"));
             //add the receiver email address
             message.To.Add(MailboxAddress.Parse("ivat1056@gmail.com"));
             // add the message subject
             message.Subject = "Wuuf!.";
             // add the message body as plain text the "plain" string passed to the TextPart
             // indicates that it's plain text and not HTML for example
-            message.Body = new TextPart("plain")
+
+            var body = new TextPart("plain")
             {
-                Text = @"Yes, 
-                Hello!. 
-                всем привет ."
+                Text = @"Hey Alice,
+
+                    What are you up to this weekend? Monica is throwing one of her parties on
+                    Saturday. I was hoping you could make it.
+
+                    Will you be my +1?
+
+                    -- Joey
+                    "
             };
+
+
+            // create an image attachment for the file located at path
+            var attachment = new MimePart("Test", "pdf")
+            {
+                Content = new MimeContent(File.OpenRead("Test.pdf")),
+                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                ContentTransferEncoding = ContentEncoding.Base64,
+                FileName = System.IO.Path.GetFileName("Test.pdf")
+            };
+
+            // now create the multipart/mixed container to hold the message text and the
+            // image attachment
+            var multipart = new Multipart("mixed");
+            multipart.Add(body);
+            multipart.Add(attachment);
+
+            //now set the multipart/ mixed as the message body
+            message.Body = multipart;
+
 
             // ask the user to enter the email
 
-            string emailAddress = "nntelecom1234@rambler.ru";
+            string emailAddress = "nntelecom52@gmail.com";
             // ask the user to enter the password
 
-            string password = "YsP@@V@wf12";
+            string password = "rcwzkwcqaxjxbhyl"; 
 
             MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient();
 
             try
             {
-                client.Connect("smtp.rambler.ru", 465, true);
+                client.Connect("smtp.gmail.com", 465, true);
                 client.Authenticate(emailAddress, password);
 
                 client.Send(message);
