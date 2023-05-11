@@ -30,7 +30,6 @@ namespace NNtelrcom
         public string Password { get; set; }
         public Nullable<int> Role_ID { get; set; }
     
-        public virtual Floor Floor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Photo> Photo { get; set; }
     }

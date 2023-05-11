@@ -77,6 +77,8 @@
           <Property Name="Login" Type="nvarchar(max)" />
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="IDRole" Type="int" />
+          <Property Name="IDfloor" Type="int" />
+          <Property Name="DataBirsday" Type="date" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -112,23 +114,6 @@
           </Key>
           <Property Name="IDGateOut" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Home_photo">
-          <Key>
-            <PropertyRef Name="ID_Photo" />
-          </Key>
-          <Property Name="ID_Photo" Type="int" Nullable="false" />
-          <Property Name="ID_home" Type="int" Nullable="false" />
-          <Property Name="path" Type="nvarchar(max)" />
-          <Property Name="pathBin" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="HomeTa">
-          <Key>
-            <PropertyRef Name="ID_Home" />
-          </Key>
-          <Property Name="ID_Home" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Cost" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="HostA">
           <Key>
@@ -168,14 +153,14 @@
           <Property Name="IdInfoorgan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="INN" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="KPPBank" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="KPP" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CheckBank" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IndexO" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="KPPOrgan" Type="nchar" MaxLength="10" />
-          <Property Name="Checkorgan" Type="nvarchar(max)" />
-          <Property Name="NameBank" Type="nvarchar(max)" />
+          <Property Name="Checkorgan" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="NameBank" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Bik" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Organizations">
           <Key>
@@ -191,6 +176,7 @@
           <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="KPP" Type="nvarchar(max)" />
           <Property Name="IndexO" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="PBX_In">
           <Key>
@@ -551,6 +537,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employ_Floor">
+          <End Role="Floor" Type="Self.Floor" Multiplicity="0..1" />
+          <End Role="Employ" Type="Self.Employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor">
+              <PropertyRef Name="Floor_ID" />
+            </Principal>
+            <Dependent Role="Employ">
+              <PropertyRef Name="IDfloor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employ_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Employ" Type="Self.Employ" Multiplicity="*" />
@@ -560,18 +558,6 @@
             </Principal>
             <Dependent Role="Employ">
               <PropertyRef Name="IDRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Home_photo_Home">
-          <End Role="HomeTa" Type="Self.HomeTa" Multiplicity="1" />
-          <End Role="Home_photo" Type="Self.Home_photo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HomeTa">
-              <PropertyRef Name="ID_Home" />
-            </Principal>
-            <Dependent Role="Home_photo">
-              <PropertyRef Name="ID_home" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -659,18 +645,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Floor">
-          <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Floor">
-              <PropertyRef Name="Floor_ID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Floor_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="ATC" EntityType="Self.ATC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CallTermination" EntityType="Self.CallTermination" Schema="dbo" store:Type="Tables" />
@@ -682,8 +656,6 @@
           <EntitySet Name="Floor" EntityType="Self.Floor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GateIN" EntityType="Self.GateIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GateOut" EntityType="Self.GateOut" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Home_photo" EntityType="Self.Home_photo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HomeTa" EntityType="Self.HomeTa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HostA" EntityType="Self.HostA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HostB" EntityType="Self.HostB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainPBX" EntityType="Self.MainPBX" Schema="dbo" store:Type="Tables" />
@@ -779,13 +751,13 @@
             <End Role="TypeReleaseDirection" EntitySet="TypeReleaseDirection" />
             <End Role="CallTermination" EntitySet="CallTermination" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employ_Floor" Association="Self.FK_Employ_Floor">
+            <End Role="Floor" EntitySet="Floor" />
+            <End Role="Employ" EntitySet="Employ" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employ_Role" Association="Self.FK_Employ_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Employ" EntitySet="Employ" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Home_photo_Home" Association="Self.FK_Home_photo_Home">
-            <End Role="HomeTa" EntitySet="HomeTa" />
-            <End Role="Home_photo" EntitySet="Home_photo" />
           </AssociationSet>
           <AssociationSet Name="FK_MainPBX_PBX_In" Association="Self.FK_MainPBX_PBX_In">
             <End Role="PBX_In" EntitySet="PBX_In" />
@@ -815,10 +787,6 @@
             <End Role="TypeRate" EntitySet="TypeRate" />
             <End Role="Rate" EntitySet="Rate" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Floor" Association="Self.FK_Users_Floor">
-            <End Role="Floor" EntitySet="Floor" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -835,8 +803,6 @@
           <EntitySet Name="Floor" EntityType="Model.Floor" />
           <EntitySet Name="GateIN" EntityType="Model.GateIN" />
           <EntitySet Name="GateOut" EntityType="Model.GateOut" />
-          <EntitySet Name="Home_photo" EntityType="Model.Home_photo" />
-          <EntitySet Name="HomeTa" EntityType="Model.HomeTa" />
           <EntitySet Name="HostA" EntityType="Model.HostA" />
           <EntitySet Name="HostB" EntityType="Model.HostB" />
           <EntitySet Name="MainPBX" EntityType="Model.MainPBX" />
@@ -932,17 +898,13 @@
             <End Role="TypeReleaseDirection" EntitySet="TypeReleaseDirection" />
             <End Role="CallTermination" EntitySet="CallTermination" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employ_Floor" Association="Model.FK_Employ_Floor">
+            <End Role="Floor" EntitySet="Floor" />
+            <End Role="Employ" EntitySet="Employ" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employ_Role" Association="Model.FK_Employ_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Employ" EntitySet="Employ" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Floor" Association="Model.FK_Users_Floor">
-            <End Role="Floor" EntitySet="Floor" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Home_photo_Home" Association="Model.FK_Home_photo_Home">
-            <End Role="HomeTa" EntitySet="HomeTa" />
-            <End Role="Home_photo" EntitySet="Home_photo" />
           </AssociationSet>
           <AssociationSet Name="FK_MainPBX_PBX_In" Association="Model.FK_MainPBX_PBX_In">
             <End Role="PBX_In" EntitySet="PBX_In" />
@@ -1066,6 +1028,9 @@
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IDRole" Type="Int32" />
+          <Property Name="IDfloor" Type="Int32" />
+          <Property Name="DataBirsday" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Floor" Relationship="Model.FK_Employ_Floor" FromRole="Employ" ToRole="Floor" />
           <NavigationProperty Name="Role" Relationship="Model.FK_Employ_Role" FromRole="Employ" ToRole="Role" />
         </EntityType>
         <EntityType Name="Event">
@@ -1090,7 +1055,7 @@
           </Key>
           <Property Name="Floor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="Model.FK_Users_Floor" FromRole="Floor" ToRole="Users" />
+          <NavigationProperty Name="Employ" Relationship="Model.FK_Employ_Floor" FromRole="Floor" ToRole="Employ" />
         </EntityType>
         <EntityType Name="GateIN">
           <Key>
@@ -1107,25 +1072,6 @@
           <Property Name="IDGateOut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ATC" Relationship="Model.FK_ATC_GateOut" FromRole="GateOut" ToRole="ATC" />
-        </EntityType>
-        <EntityType Name="Home_photo">
-          <Key>
-            <PropertyRef Name="ID_Photo" />
-          </Key>
-          <Property Name="ID_Photo" Type="Int32" Nullable="false" />
-          <Property Name="ID_home" Type="Int32" Nullable="false" />
-          <Property Name="path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="pathBin" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="HomeTa" Relationship="Model.FK_Home_photo_Home" FromRole="Home_photo" ToRole="HomeTa" />
-        </EntityType>
-        <EntityType Name="HomeTa">
-          <Key>
-            <PropertyRef Name="ID_Home" />
-          </Key>
-          <Property Name="ID_Home" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Cost" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Home_photo" Relationship="Model.FK_Home_photo_Home" FromRole="HomeTa" ToRole="Home_photo" />
         </EntityType>
         <EntityType Name="HostA">
           <Key>
@@ -1172,14 +1118,14 @@
           <Property Name="IdInfoorgan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="INN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="KPPBank" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KPP" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CheckBank" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IndexO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="KPPOrgan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Checkorgan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NameBank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Checkorgan" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NameBank" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bik" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Organizations">
           <Key>
@@ -1195,6 +1141,7 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="KPP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IndexO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="PhonesOrganizations" Relationship="Model.FK_PhonesOrganizations_Organizations" FromRole="Organizations" ToRole="PhonesOrganizations" />
         </EntityType>
         <EntityType Name="PBX_In">
@@ -1356,7 +1303,6 @@
           <Property Name="Login" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
           <Property Name="Role_ID" Type="Int32" />
-          <NavigationProperty Name="Floor" Relationship="Model.FK_Users_Floor" FromRole="Users" ToRole="Floor" />
           <NavigationProperty Name="Photo" Relationship="Model.FK_Photo_Users" FromRole="Users" ToRole="Photo" />
         </EntityType>
         <Association Name="FK_ATC_CallTermination">
@@ -1575,6 +1521,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employ_Floor">
+          <End Type="Model.Floor" Role="Floor" Multiplicity="0..1" />
+          <End Type="Model.Employ" Role="Employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor">
+              <PropertyRef Name="Floor_ID" />
+            </Principal>
+            <Dependent Role="Employ">
+              <PropertyRef Name="IDfloor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employ_Role">
           <End Type="Model.Role" Role="Role" Multiplicity="0..1" />
           <End Type="Model.Employ" Role="Employ" Multiplicity="*" />
@@ -1584,30 +1542,6 @@
             </Principal>
             <Dependent Role="Employ">
               <PropertyRef Name="IDRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_Floor">
-          <End Type="Model.Floor" Role="Floor" Multiplicity="1" />
-          <End Type="Model.Users" Role="Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Floor">
-              <PropertyRef Name="Floor_ID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Floor_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Home_photo_Home">
-          <End Type="Model.HomeTa" Role="HomeTa" Multiplicity="1" />
-          <End Type="Model.Home_photo" Role="Home_photo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HomeTa">
-              <PropertyRef Name="ID_Home" />
-            </Principal>
-            <Dependent Role="Home_photo">
-              <PropertyRef Name="ID_home" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1769,6 +1703,8 @@
           <EntitySetMapping Name="Employ">
             <EntityTypeMapping TypeName="Model.Employ">
               <MappingFragment StoreEntitySet="Employ">
+                <ScalarProperty Name="DataBirsday" ColumnName="DataBirsday" />
+                <ScalarProperty Name="IDfloor" ColumnName="IDfloor" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -1819,25 +1755,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Home_photo">
-            <EntityTypeMapping TypeName="Model.Home_photo">
-              <MappingFragment StoreEntitySet="Home_photo">
-                <ScalarProperty Name="pathBin" ColumnName="pathBin" />
-                <ScalarProperty Name="path" ColumnName="path" />
-                <ScalarProperty Name="ID_home" ColumnName="ID_home" />
-                <ScalarProperty Name="ID_Photo" ColumnName="ID_Photo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HomeTa">
-            <EntityTypeMapping TypeName="Model.HomeTa">
-              <MappingFragment StoreEntitySet="HomeTa">
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID_Home" ColumnName="ID_Home" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="HostA">
             <EntityTypeMapping TypeName="Model.HostA">
               <MappingFragment StoreEntitySet="HostA">
@@ -1876,14 +1793,14 @@
           <EntitySetMapping Name="OrganInfo">
             <EntityTypeMapping TypeName="Model.OrganInfo">
               <MappingFragment StoreEntitySet="OrganInfo">
+                <ScalarProperty Name="Bik" ColumnName="Bik" />
                 <ScalarProperty Name="NameBank" ColumnName="NameBank" />
                 <ScalarProperty Name="Checkorgan" ColumnName="Checkorgan" />
-                <ScalarProperty Name="KPPOrgan" ColumnName="KPPOrgan" />
                 <ScalarProperty Name="IndexO" ColumnName="IndexO" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="CheckBank" ColumnName="CheckBank" />
-                <ScalarProperty Name="KPPBank" ColumnName="KPPBank" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
                 <ScalarProperty Name="INN" ColumnName="INN" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IdInfoorgan" ColumnName="IdInfoorgan" />
@@ -1893,6 +1810,7 @@
           <EntitySetMapping Name="Organizations">
             <EntityTypeMapping TypeName="Model.Organizations">
               <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="IndexO" ColumnName="IndexO" />
                 <ScalarProperty Name="KPP" ColumnName="KPP" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

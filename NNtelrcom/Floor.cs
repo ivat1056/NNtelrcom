@@ -17,13 +17,13 @@ namespace NNtelrcom
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Floor()
         {
-            this.Users = new HashSet<Users>();
+            this.Employ = new HashSet<Employ>();
         }
     
         public int Floor_ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Employ> Employ { get; set; }
     }
 }

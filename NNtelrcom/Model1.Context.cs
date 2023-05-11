@@ -35,8 +35,6 @@ namespace NNtelrcom
         public virtual DbSet<Floor> Floor { get; set; }
         public virtual DbSet<GateIN> GateIN { get; set; }
         public virtual DbSet<GateOut> GateOut { get; set; }
-        public virtual DbSet<Home_photo> Home_photo { get; set; }
-        public virtual DbSet<HomeTa> HomeTa { get; set; }
         public virtual DbSet<HostA> HostA { get; set; }
         public virtual DbSet<HostB> HostB { get; set; }
         public virtual DbSet<MainPBX> MainPBX { get; set; }

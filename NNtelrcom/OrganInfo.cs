@@ -17,13 +17,13 @@ namespace NNtelrcom
         public int IdInfoorgan { get; set; }
         public string Name { get; set; }
         public string INN { get; set; }
-        public string KPPBank { get; set; }
+        public string KPP { get; set; }
         public string CheckBank { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
         public string IndexO { get; set; }
-        public string KPPOrgan { get; set; }
         public string Checkorgan { get; set; }
         public string NameBank { get; set; }
+        public string Bik { get; set; }
     }
 }

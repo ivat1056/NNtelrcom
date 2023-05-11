@@ -21,7 +21,10 @@ namespace NNtelrcom
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> IDRole { get; set; }
+        public Nullable<int> IDfloor { get; set; }
+        public Nullable<System.DateTime> DataBirsday { get; set; }
     
+        public virtual Floor Floor { get; set; }
         public virtual Role Role { get; set; }
     }
 }

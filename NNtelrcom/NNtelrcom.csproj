@@ -154,12 +154,6 @@
     <Compile Include="GateOut.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="HomeTa.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Home_photo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="HostA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -6,40 +6,38 @@
     <edmx:Diagrams>
       <Diagram DiagramId="0311cd7e13dc4191bf43aea9a89f04d6" Name="Diagram1">
         <EntityTypeShape EntityType="Model.ATC" Width="1.5" PointX="5.25" PointY="1.25" />
-        <EntityTypeShape EntityType="Model.CallTermination" Width="1.5" PointX="3" PointY="3.75" />
-        <EntityTypeShape EntityType="Model.Cat" Width="1.5" PointX="3" PointY="17" />
-        <EntityTypeShape EntityType="Model.CgPCdPh" Width="1.5" PointX="3" PointY="19.375" />
-        <EntityTypeShape EntityType="Model.Employ" Width="1.5" PointX="15" PointY="10" />
-        <EntityTypeShape EntityType="Model.Event" Width="1.5" PointX="3" PointY="26.625" />
-        <EntityTypeShape EntityType="Model.Fax" Width="1.5" PointX="3" PointY="36" />
-        <EntityTypeShape EntityType="Model.Floor" Width="1.5" PointX="7.75" PointY="1.75" />
-        <EntityTypeShape EntityType="Model.GateIN" Width="1.5" PointX="3" PointY="14.625" />
-        <EntityTypeShape EntityType="Model.GateOut" Width="1.5" PointX="3" PointY="31.25" />
-        <EntityTypeShape EntityType="Model.Home_photo" Width="1.5" PointX="8" PointY="13.875" />
-        <EntityTypeShape EntityType="Model.HomeTa" Width="1.5" PointX="5.75" PointY="14" />
-        <EntityTypeShape EntityType="Model.HostA" Width="1.5" PointX="3" PointY="12.375" />
-        <EntityTypeShape EntityType="Model.HostB" Width="1.5" PointX="3" PointY="7.625" />
-        <EntityTypeShape EntityType="Model.MainPBX" Width="1.5" PointX="3" PointY="40" />
-        <EntityTypeShape EntityType="Model.MKD_ID" Width="1.5" PointX="3" PointY="33.625" />
-        <EntityTypeShape EntityType="Model.OrganInfo" Width="1.5" PointX="10.75" PointY="13.75" />
-        <EntityTypeShape EntityType="Model.Organizations" Width="1.5" PointX="10" PointY="9.625" />
-        <EntityTypeShape EntityType="Model.PBX_In" Width="1.5" PointX="0.75" PointY="43" />
-        <EntityTypeShape EntityType="Model.PBX_Out" Width="1.5" PointX="0.75" PointY="38.25" />
-        <EntityTypeShape EntityType="Model.PBXType" Width="1.5" PointX="0.75" PointY="40.625" />
-        <EntityTypeShape EntityType="Model.PhonesOrganizations" Width="1.5" PointX="12.25" PointY="6.125" />
-        <EntityTypeShape EntityType="Model.Photo" Width="1.5" PointX="12.25" PointY="1.5" />
-        <EntityTypeShape EntityType="Model.Q931Cause" Width="1.5" PointX="0.75" PointY="4.375" />
-        <EntityTypeShape EntityType="Model.Rate" Width="1.5" PointX="10" PointY="6" />
-        <EntityTypeShape EntityType="Model.RecordNumber" Width="1.5" PointX="3" PointY="28.875" />
-        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="12.75" PointY="10.375" />
-        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="10.75" />
-        <EntityTypeShape EntityType="Model.Type" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="Model.TypeCause" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="Model.TypeEstablishFlag" Width="1.5" PointX="0.75" PointY="9.875" />
-        <EntityTypeShape EntityType="Model.TypeRate" Width="1.5" PointX="7.75" PointY="6.375" />
-        <EntityTypeShape EntityType="Model.TypeReleaseDirection" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="Model.UnusedParameters" Width="1.5" PointX="3" PointY="23.25" />
-        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="Model.CallTermination" Width="1.5" PointX="3" PointY="38.75" />
+        <EntityTypeShape EntityType="Model.Cat" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.CgPCdPh" Width="1.5" PointX="3" PointY="27.375" />
+        <EntityTypeShape EntityType="Model.Employ" Width="1.5" PointX="8" PointY="11" />
+        <EntityTypeShape EntityType="Model.Event" Width="1.5" PointX="3" PointY="14.625" />
+        <EntityTypeShape EntityType="Model.Fax" Width="1.5" PointX="3" PointY="19.375" />
+        <EntityTypeShape EntityType="Model.Floor" Width="1.5" PointX="5.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.GateIN" Width="1.5" PointX="3" PointY="45.5" />
+        <EntityTypeShape EntityType="Model.GateOut" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="Model.HostA" Width="1.5" PointX="3" PointY="31.25" />
+        <EntityTypeShape EntityType="Model.HostB" Width="1.5" PointX="3" PointY="33.625" />
+        <EntityTypeShape EntityType="Model.MainPBX" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.MKD_ID" Width="1.5" PointX="3" PointY="25" />
+        <EntityTypeShape EntityType="Model.OrganInfo" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.Organizations" Width="1.5" PointX="10" PointY="6.25" />
+        <EntityTypeShape EntityType="Model.PBX_In" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.PBX_Out" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="Model.PBXType" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.PhonesOrganizations" Width="1.5" PointX="12.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.Photo" Width="1.5" PointX="13" PointY="11.5" />
+        <EntityTypeShape EntityType="Model.Q931Cause" Width="1.5" PointX="0.75" PointY="38.25" />
+        <EntityTypeShape EntityType="Model.Rate" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="Model.RecordNumber" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Type" Width="1.5" PointX="3" PointY="17" />
+        <EntityTypeShape EntityType="Model.TypeCause" Width="1.5" PointX="0.75" PointY="36" />
+        <EntityTypeShape EntityType="Model.TypeEstablishFlag" Width="1.5" PointX="0.75" PointY="40.875" />
+        <EntityTypeShape EntityType="Model.TypeRate" Width="1.5" PointX="7.75" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.TypeReleaseDirection" Width="1.5" PointX="0.75" PointY="43.125" />
+        <EntityTypeShape EntityType="Model.UnusedParameters" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="10.75" PointY="11" />
         <AssociationConnector Association="Model.FK_ATC_CallTermination" />
         <AssociationConnector Association="Model.FK_ATC_Cat" />
         <AssociationConnector Association="Model.FK_ATC_CgPCdPh" />
@@ -58,9 +56,8 @@
         <AssociationConnector Association="Model.FK_CallTermination_TypeCause" />
         <AssociationConnector Association="Model.FK_CallTermination_TypeEstablishFlag" />
         <AssociationConnector Association="Model.FK_CallTermination_TypeReleaseDirection" />
+        <AssociationConnector Association="Model.FK_Employ_Floor" />
         <AssociationConnector Association="Model.FK_Employ_Role" />
-        <AssociationConnector Association="Model.FK_Users_Floor" />
-        <AssociationConnector Association="Model.FK_Home_photo_Home" />
         <AssociationConnector Association="Model.FK_MainPBX_PBX_In" />
         <AssociationConnector Association="Model.FK_MainPBX_PBX_Out" />
         <AssociationConnector Association="Model.FK_MainPBX_PBXType" />
