@@ -25,5 +25,7 @@ namespace NNtelrcom
         public string Checkorgan { get; set; }
         public string NameBank { get; set; }
         public string Bik { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

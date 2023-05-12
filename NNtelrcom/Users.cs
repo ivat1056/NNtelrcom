@@ -14,12 +14,6 @@ namespace NNtelrcom
     
     public partial class Users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Photo = new HashSet<Photo>();
-        }
-    
         public int ID { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
@@ -29,8 +23,5 @@ namespace NNtelrcom
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> Role_ID { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Photo> Photo { get; set; }
     }
 }

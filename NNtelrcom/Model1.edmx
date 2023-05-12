@@ -161,6 +161,8 @@
           <Property Name="Checkorgan" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="NameBank" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Bik" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Organizations">
           <Key>
@@ -207,15 +209,6 @@
           <Property Name="IDOrganixation" Type="int" />
           <Property Name="IDRate" Type="int" />
           <Property Name="Phone" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Photo">
-          <Key>
-            <PropertyRef Name="id_photo" />
-          </Key>
-          <Property Name="id_photo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_user" Type="int" Nullable="false" />
-          <Property Name="path" Type="nvarchar(max)" />
-          <Property Name="binPath" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Q931Cause">
           <Key>
@@ -621,18 +614,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Photo_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Photo">
-              <PropertyRef Name="id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Rate_TypeRate">
           <End Role="TypeRate" Type="Self.TypeRate" Multiplicity="0..1" />
           <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
@@ -666,7 +647,6 @@
           <EntitySet Name="PBX_Out" EntityType="Self.PBX_Out" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PBXType" EntityType="Self.PBXType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhonesOrganizations" EntityType="Self.PhonesOrganizations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Q931Cause" EntityType="Self.Q931Cause" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecordNumber" EntityType="Self.RecordNumber" Schema="dbo" store:Type="Tables" />
@@ -779,10 +759,6 @@
             <End Role="Rate" EntitySet="Rate" />
             <End Role="PhonesOrganizations" EntitySet="PhonesOrganizations" />
           </AssociationSet>
-          <AssociationSet Name="FK_Photo_Users" Association="Self.FK_Photo_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Photo" EntitySet="Photo" />
-          </AssociationSet>
           <AssociationSet Name="FK_Rate_TypeRate" Association="Self.FK_Rate_TypeRate">
             <End Role="TypeRate" EntitySet="TypeRate" />
             <End Role="Rate" EntitySet="Rate" />
@@ -813,7 +789,6 @@
           <EntitySet Name="PBX_Out" EntityType="Model.PBX_Out" />
           <EntitySet Name="PBXType" EntityType="Model.PBXType" />
           <EntitySet Name="PhonesOrganizations" EntityType="Model.PhonesOrganizations" />
-          <EntitySet Name="Photo" EntityType="Model.Photo" />
           <EntitySet Name="Q931Cause" EntityType="Model.Q931Cause" />
           <EntitySet Name="Rate" EntityType="Model.Rate" />
           <EntitySet Name="RecordNumber" EntityType="Model.RecordNumber" />
@@ -925,10 +900,6 @@
           <AssociationSet Name="FK_PhonesOrganizations_Rate" Association="Model.FK_PhonesOrganizations_Rate">
             <End Role="Rate" EntitySet="Rate" />
             <End Role="PhonesOrganizations" EntitySet="PhonesOrganizations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Photo_Users" Association="Model.FK_Photo_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Photo" EntitySet="Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Rate_TypeRate" Association="Model.FK_Rate_TypeRate">
             <End Role="TypeRate" EntitySet="TypeRate" />
@@ -1126,6 +1097,8 @@
           <Property Name="Checkorgan" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="NameBank" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Bik" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Organizations">
           <Key>
@@ -1178,16 +1151,6 @@
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Organizations" Relationship="Model.FK_PhonesOrganizations_Organizations" FromRole="PhonesOrganizations" ToRole="Organizations" />
           <NavigationProperty Name="Rate" Relationship="Model.FK_PhonesOrganizations_Rate" FromRole="PhonesOrganizations" ToRole="Rate" />
-        </EntityType>
-        <EntityType Name="Photo">
-          <Key>
-            <PropertyRef Name="id_photo" />
-          </Key>
-          <Property Name="id_photo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_user" Type="Int32" Nullable="false" />
-          <Property Name="path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="binPath" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Users" Relationship="Model.FK_Photo_Users" FromRole="Photo" ToRole="Users" />
         </EntityType>
         <EntityType Name="Q931Cause">
           <Key>
@@ -1303,7 +1266,6 @@
           <Property Name="Login" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
           <Property Name="Role_ID" Type="Int32" />
-          <NavigationProperty Name="Photo" Relationship="Model.FK_Photo_Users" FromRole="Users" ToRole="Photo" />
         </EntityType>
         <Association Name="FK_ATC_CallTermination">
           <End Type="Model.CallTermination" Role="CallTermination" Multiplicity="0..1" />
@@ -1605,18 +1567,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Photo_Users">
-          <End Type="Model.Users" Role="Users" Multiplicity="1" />
-          <End Type="Model.Photo" Role="Photo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Photo">
-              <PropertyRef Name="id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Rate_TypeRate">
           <End Type="Model.TypeRate" Role="TypeRate" Multiplicity="0..1" />
           <End Type="Model.Rate" Role="Rate" Multiplicity="*" />
@@ -1793,6 +1743,8 @@
           <EntitySetMapping Name="OrganInfo">
             <EntityTypeMapping TypeName="Model.OrganInfo">
               <MappingFragment StoreEntitySet="OrganInfo">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Bik" ColumnName="Bik" />
                 <ScalarProperty Name="NameBank" ColumnName="NameBank" />
                 <ScalarProperty Name="Checkorgan" ColumnName="Checkorgan" />
@@ -1855,16 +1807,6 @@
                 <ScalarProperty Name="IDRate" ColumnName="IDRate" />
                 <ScalarProperty Name="IDOrganixation" ColumnName="IDOrganixation" />
                 <ScalarProperty Name="IDPhoneOrganozation" ColumnName="IDPhoneOrganozation" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Photo">
-            <EntityTypeMapping TypeName="Model.Photo">
-              <MappingFragment StoreEntitySet="Photo">
-                <ScalarProperty Name="binPath" ColumnName="binPath" />
-                <ScalarProperty Name="path" ColumnName="path" />
-                <ScalarProperty Name="id_user" ColumnName="id_user" />
-                <ScalarProperty Name="id_photo" ColumnName="id_photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

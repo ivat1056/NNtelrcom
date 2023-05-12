@@ -29,7 +29,7 @@ namespace NNtelrcom.Pages
             NameOrgan.Text = organ.Name;
             KPPOrgan.Text = organ.KPP;
             CeckOrgan.Text = organ.Checkorgan;
-            //Email.Text = organ.Email;
+            Email.Text = organ.Email;
             Adress.Text = organ.Adress;
             Phone.Text = organ.Phone;
             NameBank.Text = organ.NameBank;
@@ -37,7 +37,7 @@ namespace NNtelrcom.Pages
             CheckB.Text = organ.CheckBank;
             bk.Text = organ.Bik;
             INN.Text = organ.INN;
-            //Password.Text = organ.Password;
+            Password.Text = organ.Password;
 
         }
 

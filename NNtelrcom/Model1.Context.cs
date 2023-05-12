@@ -45,7 +45,6 @@ namespace NNtelrcom
         public virtual DbSet<PBX_Out> PBX_Out { get; set; }
         public virtual DbSet<PBXType> PBXType { get; set; }
         public virtual DbSet<PhonesOrganizations> PhonesOrganizations { get; set; }
-        public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Q931Cause> Q931Cause { get; set; }
         public virtual DbSet<Rate> Rate { get; set; }
         public virtual DbSet<RecordNumber> RecordNumber { get; set; }
