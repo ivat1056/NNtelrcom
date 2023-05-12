@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical">
-            <DataGrid Name="CallTer" Grid.Row="0" AutoGenerateColumns="False" Height="300" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
+            <DataGrid IsReadOnly="True" Name="CallTer" Grid.Row="0" AutoGenerateColumns="False" Height="300" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"/>

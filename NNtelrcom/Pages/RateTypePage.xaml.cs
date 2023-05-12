@@ -21,10 +21,11 @@ namespace NNtelrcom.Pages
     /// </summary>
     public partial class RateTypePage : Page
     {
+        
         public RateTypePage()
         {
             InitializeComponent();
-        dbList.ItemsSource = Base.ep.TypeRate.ToList();
+            dbList.ItemsSource = Base.ep.TypeRate.ToList();
         }
 
 
@@ -34,38 +35,11 @@ namespace NNtelrcom.Pages
 
     }
 
-    private void ADD_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-
-
+    
     private void btnUpdate_Click(object sender, RoutedEventArgs e)
     {
-
+        MessageBox.Show("\n Используя поминутную тарификацию, клиент платит за каждую минуту исходящего звонка. При этом не важно, какой была продолжительность звонка: 1 минуту 5 секунд или 1 минуту 59 секунд, абонент все равно будет платить за 2 минуты.\n По 10-ти секундная тарификация. Клиент платит за каждые 10 секунд\n Посекундная, клиент платит за каждую секунду после 1-ой минуты разговора. \n Пакетный тариф – предложение, которое включает в себя пакет услуг:  минуты, (количество минут прописываются в тарифах) после окончания пакета клиент платит поминутно", "О тарифах");
     }
 
-    private void btnDell_Click(object sender, RoutedEventArgs e)
-    {
-        //if (PBXList.SelectedItems.Count != 0)
-        //{
-        //    foreach (PBXType pBX in PBXList.SelectedItems)
-        //    {
-        //        List<PBXType> hot = Base.ep.PBXType.Where(z => z.IDPBXType == pBX.IDPBXType).ToList();
-        //        foreach (PBXType h in hot)
-        //        {
-        //            if (MessageBox.Show("Вы хотите удалить {0}", Name, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-        //            {
-        //                Base.ep.PBXType.Remove(pBX);
-        //                Base.ep.SaveChanges();
-        //                MessageBox.Show("Успешное удаление!!!");
-        //            }
-
-
-        //        }
-        //    }
-        //}
-    }
 }
 }

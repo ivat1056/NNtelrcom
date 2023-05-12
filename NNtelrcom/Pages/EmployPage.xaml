@@ -5,11 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NNtelrcom.Pages"
       mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EmployPage">
 
     <Grid>
-        <DataGrid Name="DbList" Grid.Row="0" HorizontalAlignment="Center" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
+        <StackPanel>
+            <DataGrid Name="DbList" Grid.Row="0" HorizontalAlignment="Center" IsReadOnly="True"  AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Surname}"/>
                 <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
@@ -34,5 +36,11 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+            <StackPanel Orientation="Horizontal" Width="auto">
+                 <Button Name="Back" Width="auto" Click="Back_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Назад"/>
+                 <Button Name="Add" Width="auto" Click="Add_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Добавить"/>
+
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -10,44 +10,54 @@
 
     <Grid>
         <StackPanel>
-            <StackPanel Margin="10" Orientation="Horizontal"  HorizontalAlignment="Center" >
+            <StackPanel Margin="2" Orientation="Horizontal"  HorizontalAlignment="Center" >
                 <StackPanel Orientation="Vertical">
-                    <GroupBox Margin="10" HorizontalAlignment="Stretch" MinWidth="300" MaxHeight="60" Header="Название организации">
+                    <GroupBox Margin="10"  HorizontalAlignment="Stretch" MinWidth="300" MaxHeight="80" Header="Название организации">
                         <TextBox Name="NameOrgan"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="КПП">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="КПП">
                         <TextBox Name="KPPOrgan"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Счет банка">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Счет банка">
                         <TextBox Name="CeckOrgan"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="ИНН">
-                        <TextBox Name="INN"/>
+
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Электронная пота">
+                        <TextBox Name="Email"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Индекс">
-                        <TextBox Name="IndexO"/>
-                    </GroupBox>
-                    
-                    
+
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical">
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Адрес организации">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Адрес организации">
                         <TextBox Name="Adress"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Телефон организации">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Телефон организации">
                         <TextBox Name="Phone"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Название банка">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Название банка">
                         <TextBox Name="NameBank"/>
                     </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="Счет банка">
-                        <TextBox Name="CheckB"/>
-                    </GroupBox>
-                    <GroupBox Margin="10" MinWidth="300" MaxHeight="60" HorizontalAlignment="Center" Header="БИК">
-                        <TextBox Name="bk"/>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Индекс органиации">
+                        <TextBox Name="IndexO"/>
                     </GroupBox>
                 </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Счет банка">
+                        <TextBox Name="CheckB"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="БИК">
+                        <TextBox Name="bk"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="ИНН">
+                        <TextBox Name="INN"/>
+                    </GroupBox>
+                    <GroupBox Margin="10" MinWidth="300" MaxHeight="80" HorizontalAlignment="Center" Header="Пароль верификации">
+                        <TextBox Name="Password"/>
+                    </GroupBox>
+                </StackPanel>
+
             </StackPanel>
 
 

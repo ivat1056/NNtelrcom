@@ -254,18 +254,21 @@ namespace NNtelrcom.Windows
         {
             FrameClass.frameOrg.Navigate(new RatePage());
             frameOrg.Visibility = Visibility.Visible;
+            GeneralMenu.Visibility = Visibility.Collapsed;
         }
 
         private void Calcbtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             FrameClass.frameOrg.Navigate(new CalculetionPage());
             frameOrg.Visibility = Visibility.Visible;
+
         }
 
         private void Phonebtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             FrameClass.frameOrg.Navigate(new PhonePage());
             frameOrg.Visibility = Visibility.Visible;
+            GeneralMenu.Visibility = Visibility.Collapsed;
         }
 
         private void OrganizationBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -273,6 +276,7 @@ namespace NNtelrcom.Windows
             
             FrameClass.frameOrg.Navigate(new OrganizationPage());
             frameOrg.Visibility = Visibility.Visible;
+            GeneralMenu.Visibility = Visibility.Collapsed;
 
         }
 

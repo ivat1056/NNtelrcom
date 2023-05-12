@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel>
         <StackPanel>
-        <DataGrid Name="dgGeneral" Height="300"  Margin="1" FontSize="12" AutoGenerateColumns="False" CanUserAddRows="False" >
+                <DataGrid Name="dgGeneral" IsReadOnly="True" Height="300"  Margin="1" FontSize="12" AutoGenerateColumns="False" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pbx входящей маршрутизации" Binding="{Binding  PBX_In.Name}" x:Name="Check24" Width="1*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Pbx исходящей маршрутизации" Binding="{Binding  PBX_Out.Name}" x:Name="Check25" Width="1*"></DataGridTextColumn>

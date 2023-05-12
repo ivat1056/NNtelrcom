@@ -94,21 +94,16 @@ namespace NNtelrcom.Pages
             //add the receiver email address
             message.To.Add(MailboxAddress.Parse("ivat1056@gmail.com"));
             // add the message subject
-            message.Subject = "Wuuf!.";
+            message.Subject = "Счёт от ООО «НН Телекома»";
             // add the message body as plain text the "plain" string passed to the TextPart
             // indicates that it's plain text and not HTML for example
 
-            var body = new TextPart("plain")
+            var body = new TextPart("Уважаемый клиент!\r\n\r\nВаш счет в приложении.")
             {
-                Text = @"Hey Alice,
+                Text = @" Подробная информацию по оплате можно узнать по телефону организации  
 
-                    What are you up to this weekend? Monica is throwing one of her parties on
-                    Saturday. I was hoping you could make it.
-
-                    Will you be my +1?
-
-                    -- Joey
-                    "
+                    Благодарим вас за пользование нашими услугами и выбор электронной формы получения счета.
+                "
             };
 
 
@@ -136,7 +131,7 @@ namespace NNtelrcom.Pages
             string emailAddress = "nntelecom52@gmail.com";
             // ask the user to enter the password
 
-            string password = "rcwzkwcqaxjxbhyl"; 
+            string password = "rcwzkwcqaxjxbhyl"; // ключ верификации 
 
             MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient();
 

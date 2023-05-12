@@ -15,14 +15,14 @@
 
         </Grid.RowDefinitions>
 
-        <DataGrid Name="dbList" Grid.Row="0" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
+        <DataGrid IsReadOnly="True" Name="dbList" Grid.Row="0" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название организации" Width="*" Binding="{Binding NameOrganization}"/>
                 <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Surname}"/>
                 <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Отчество" Width="*" Binding="{Binding Patronymic}"/>
                 <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Address}"/>
-                <DataGridTextColumn Header="ИНН" Width="*" Binding="{Binding INN}"/>
+                <DataGridTextColumn Header="Телефон" Width="*" Binding="{Binding Phone}"/>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

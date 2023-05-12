@@ -15,7 +15,7 @@
 
         </Grid.RowDefinitions>
 
-        <DataGrid Name="DataList" Grid.Row="0" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
+        <DataGrid Name="DataList" IsReadOnly="True" Grid.Row="0" AutoGenerateColumns="False" Height="auto" CanUserAddRows="False" FontSize="16" FontFamily="Comic Sans MS" Margin="0,0,0,5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"/>
                 <DataGridTemplateColumn Width="*">

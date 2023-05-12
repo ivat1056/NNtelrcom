@@ -35,7 +35,8 @@ namespace NNtelrcom.Pages
 
         private void TypeRatebtn2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            FrameClass.administrationf.Navigate(new InfoOrgan());
+            OrganInfo organ = Base.ep.OrganInfo.FirstOrDefault(z => z.IdInfoorgan == 1);
+            FrameClass.administrationf.Navigate(new InfoOrgan(organ));
         }
     }
 }

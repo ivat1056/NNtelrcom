@@ -286,6 +286,12 @@
     <Compile Include="Pages\TypeReleaseDirectionPage.xaml.cs">
       <DependentUpon>TypeReleaseDirectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UPDADDEmploy.xaml.cs">
+      <DependentUpon>UPDADDEmploy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDOrganizationPage.xaml.cs">
+      <DependentUpon>UPDADDOrganizationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PBXType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -488,6 +494,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TypeReleaseDirectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDEmploy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDOrganizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
