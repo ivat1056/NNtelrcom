@@ -13,7 +13,7 @@
         TextElement.FontSize="14"
         
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="600" Width="1210"
+        Title="Вывод со всеми параметрами" Height="600" Width="1210"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 

@@ -66,9 +66,6 @@ namespace NNtelrcom.Pages
             CBOrgan.DisplayMemberPath = "NameOrganization";
 
 
-
-            
-
         }
 
         private void CBOrgan_TextChanged(object sender, TextChangedEventArgs e)
@@ -228,9 +225,12 @@ namespace NNtelrcom.Pages
                     {
                         multi = (SumTime / 60) * Cost;
                         string multi2 = Convert.ToString(multi);
-                        NumberAndSumma.Add(NumberAdd);
-                        NumberAndSumma.Add(IDRate);
-                        NumberAndSumma.Add(multi2);
+                        NumberAndSumma.Add(NumberAdd); // номер
+                        NumberAndSumma.Add(IDRate); // тариф
+
+                        NumberAndSumma.Add(Convert.ToString(SumTime)); // минуты
+                        NumberAndSumma.Add(Convert.ToString(Cost));
+                        NumberAndSumma.Add(multi2); // Стоимость
                         multi = 0;
                         SumTime = 0;
                         NumberAdd = "";
@@ -240,9 +240,12 @@ namespace NNtelrcom.Pages
                     {
                         multi = (SumTime / 10) * Cost;
                         string multi2 = Convert.ToString(multi);
-                        NumberAndSumma.Add(NumberAdd);
-                        NumberAndSumma.Add(IDRate);
-                        NumberAndSumma.Add(multi2);
+                        NumberAndSumma.Add(NumberAdd); // номер
+                        NumberAndSumma.Add(IDRate); // тариф
+
+                        NumberAndSumma.Add(Convert.ToString(SumTime)); // минуты
+                        NumberAndSumma.Add(Convert.ToString(Cost));
+                        NumberAndSumma.Add(multi2); // Стоимость
                         multi = 0;
                         SumTime = 0;
                         NumberAdd = "";
@@ -252,9 +255,12 @@ namespace NNtelrcom.Pages
                     {
                         multi = (SumTime - 60) * Cost;
                         string multi2 = Convert.ToString(multi);
-                        NumberAndSumma.Add(NumberAdd);
-                        NumberAndSumma.Add(IDRate);
-                        NumberAndSumma.Add(multi2);
+                        NumberAndSumma.Add(NumberAdd); // номер
+                        NumberAndSumma.Add(IDRate); // тариф
+
+                        NumberAndSumma.Add(Convert.ToString(SumTime)); // минуты
+                        NumberAndSumma.Add(Convert.ToString(Cost));
+                        NumberAndSumma.Add(multi2); // Стоимость
                         multi = 0;
                         SumTime = 0;
                         NumberAdd = "";
@@ -267,9 +273,12 @@ namespace NNtelrcom.Pages
                         if (multi < 0)
                         {
                             string multi2 = Convert.ToString(Cost);
-                            NumberAndSumma.Add(NumberAdd);
-                            NumberAndSumma.Add(IDRate);
-                            NumberAndSumma.Add(multi2);
+                            NumberAndSumma.Add(NumberAdd); // номер
+                            NumberAndSumma.Add(IDRate); // тариф
+
+                            NumberAndSumma.Add(Convert.ToString(SumTime)); // минуты
+                            NumberAndSumma.Add(Convert.ToString(Cost));
+                            NumberAndSumma.Add(multi2); // Стоимость
                             NumberAdd = "";
                             Cost = 0;
                         }
@@ -279,9 +288,12 @@ namespace NNtelrcom.Pages
                             double sK = Convert.ToDouble(rate.Cost);
                             multi = ((SumTime / 60) - kol) * sK;
                             string multi2 = Convert.ToString(Cost);
-                            NumberAndSumma.Add(NumberAdd);
-                            NumberAndSumma.Add(IDRate);
-                            NumberAndSumma.Add(multi2);
+                            NumberAndSumma.Add(NumberAdd); // номер
+                            NumberAndSumma.Add(IDRate); // тариф
+
+                            NumberAndSumma.Add(Convert.ToString(SumTime)); // минуты
+                            NumberAndSumma.Add(Convert.ToString(Cost));
+                            NumberAndSumma.Add(multi2); // Стоимость
                             NumberAdd = "";
                             Cost = 0;
                         }
@@ -323,24 +335,7 @@ namespace NNtelrcom.Pages
 
 
 
-            //PdfContentByte cb = writer.DirectContent;
-
-            //// select the font properties
-            //BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-            //cb.SetColorFill(BaseColor.DARK_GRAY);
-            //cb.SetFontAndSize(bf, 8);
-
-            //// write the text in the pdf content
-            //cb.BeginText();
-            //string text = (new iTextSharp.text.Paragraph("Организация proba ", font));
-            //// put the alignment and coordinates here
-            //cb.ShowTextAligned(1, text, 100, 800, 0);
-            //cb.EndText();
-            //cb.BeginText();
-            //text = "Other random blabla...";
-            //// put the alignment and coordinates here
-            //cb.ShowTextAligned(2, text, 5, 5, 0);
-            //cb.EndText();
+           
 
             doc.Add(new iTextSharp.text.Paragraph("НН Телеком ", font2));
 
@@ -374,30 +369,48 @@ namespace NNtelrcom.Pages
             string Text3 = "Покупатель: " + ORGAN ;
             doc.Add(new iTextSharp.text.Paragraph( Text3, font));
             doc.Add(new iTextSharp.text.Paragraph(Text2, font));
-            
 
+            int numbertable = 1; 
 
             PdfPCell cell = new PdfPCell();
-            PdfPTable table = new PdfPTable(3);
-            for (int j = 2; j < NumberAndSumma.Count; j++)
+            PdfPTable table2 = new PdfPTable(4);
+            PdfPTable table = new PdfPTable(7);
+
+
+            //cell = new PdfPCell(new Phrase(new iTextSharp.text.Paragraph(, font)));
+            //cell.Colspan = 2;
+            //table2.AddCell(cell); // таблица 2 
+
+
+
+            for (int j = 4; j < NumberAndSumma.Count; j++) // 
             {
                 double a = Convert.ToDouble(NumberAndSumma[j]);
                 summ = summ + a;
-                j = j + 2;
+                j = j + 4;
             }
-
+            table.AddCell(new iTextSharp.text.Paragraph("№", font));
             table.AddCell(new iTextSharp.text.Paragraph("Номер телефона", font));
             table.AddCell(new iTextSharp.text.Paragraph("Тариф", font));
-            table.AddCell(new iTextSharp.text.Paragraph("Стоимость, руб", font));
+            table.AddCell(new iTextSharp.text.Paragraph("Количество", font));
+            table.AddCell(new iTextSharp.text.Paragraph("Ед.", font));
+            table.AddCell(new iTextSharp.text.Paragraph("Цена", font));
+            table.AddCell(new iTextSharp.text.Paragraph("Сумма, руб", font));
             for (int j = 0; j < NumberAndSumma.Count; j++)
             {
-                table.AddCell(NumberAndSumma[j]);
-                table.AddCell(new iTextSharp.text.Paragraph(NumberAndSumma[j + 1], font));
-                table.AddCell(NumberAndSumma[j + 2]);
-                j = j + 2;
+                table.AddCell(new iTextSharp.text.Paragraph(Convert.ToString(numbertable))); //номер списка
+                table.AddCell(NumberAndSumma[j]); // номер телефона
+                table.AddCell(new iTextSharp.text.Paragraph(NumberAndSumma[j + 1], font)); // Тариф
+                table.AddCell(new iTextSharp.text.Paragraph(NumberAndSumma[j + 2], font)); // кол во минут
+                table.AddCell(new iTextSharp.text.Paragraph("Секунды", font)); // обозн минуты
+                table.AddCell(new iTextSharp.text.Paragraph(NumberAndSumma[j + 3], font)); // цена
+                table.AddCell(NumberAndSumma[j + 4]);  // Сумма
+                j = j + 4;
+                numbertable = numbertable + 1;
             }
+            numbertable = 1;
             cell = new PdfPCell(new Phrase(new iTextSharp.text.Paragraph("Итоговая сумма к оплате", font)));
-            cell.Colspan = 2;
+            cell.Colspan = 6;
             table.AddCell(cell);
             string b = Convert.ToString(summ);
             table.AddCell(b);
@@ -405,12 +418,6 @@ namespace NNtelrcom.Pages
             doc.Add(table);
             doc.Close();
             Process.Start("Test.pdf");
-
-
-
-            
-
-
 
 
         }

@@ -1,4 +1,5 @@
 ﻿using NNtelrcom.Class;
+using NNtelrcom.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,19 @@ namespace NNtelrcom.Pages
         {
             InitializeComponent();
             dbList.ItemsSource = Base.ep.Organizations.ToList();
+            Back.MouseLeftButtonUp += Back_Click;
+
         }
 
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frameOrg.Visibility = Visibility.Hidden;
-            FrameClass.frameOrg.Navigate(new AdministrationPage());
+           
+           MainMenu mainMenu = new MainMenu();
+           Back.MouseLeftButtonUp += mainMenu.Home_MouseLeftButtonUp;
+          
+
+
 
         }
 
@@ -60,7 +67,7 @@ namespace NNtelrcom.Pages
             {
                 Base.ep.Organizations.Remove(emp);
                 Base.ep.SaveChanges();
-                FrameClass.administrationf.Navigate(new AdministrationPage());
+                FrameClass.frameOrg.Navigate(new AdministrationPage());
             }
         }
     }

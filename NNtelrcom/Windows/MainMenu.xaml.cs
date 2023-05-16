@@ -114,11 +114,11 @@ namespace NNtelrcom.Windows
             administrationFrame.Visibility = Visibility.Collapsed;
         }
 
-        private void Home_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        public void Home_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             GeneralMenu.Visibility = Visibility.Visible;
             MenuATC.Visibility = Visibility.Collapsed;
-            frameOrg.Visibility = Visibility.Hidden;
+            frameOrg.Visibility = Visibility.Collapsed;
             PersonalAccauntframe.Visibility = Visibility.Collapsed;
             administrationFrame.Visibility = Visibility.Collapsed;
         }
@@ -261,6 +261,7 @@ namespace NNtelrcom.Windows
         {
             FrameClass.frameOrg.Navigate(new CalculetionPage());
             frameOrg.Visibility = Visibility.Visible;
+            GeneralMenu.Visibility = Visibility.Collapsed;
 
         }
 

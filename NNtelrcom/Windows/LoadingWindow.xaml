@@ -30,7 +30,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.ColumnSpan="2">
             <Button Margin="20" Click="Button_Click"
-                Width="250" Content="Вырать файлы для загрзки" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="250" Content="Выбрать файлы для загрузки" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
             <ListBox Name="lbFiles" Height="100" Width="200"  materialDesign:ListBoxItemAssist.ShowSelection="False"> </ListBox>
         </StackPanel>

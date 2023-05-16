@@ -37,36 +37,31 @@ namespace NNtelrcom.Pages
 
         private void ADD_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameClass.frameOrg.Navigate(new UPDADDPhonesPage());
         }
 
 
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            PhonesOrganizations phones = Base.ep.PhonesOrganizations.FirstOrDefault(x => x.IDPhoneOrganozation == index);
+            FrameClass.frameOrg.Navigate(new UPDADDPhonesPage(phones));
         }
 
         private void btnDell_Click(object sender, RoutedEventArgs e)
         {
-            //if (PBXList.SelectedItems.Count != 0)
-            //{
-            //    foreach (PBXType pBX in PBXList.SelectedItems)
-            //    {
-            //        List<PBXType> hot = Base.ep.PBXType.Where(z => z.IDPBXType == pBX.IDPBXType).ToList();
-            //        foreach (PBXType h in hot)
-            //        {
-            //            if (MessageBox.Show("Вы хотите удалить {0}", Name, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            //            {
-            //                Base.ep.PBXType.Remove(pBX);
-            //                Base.ep.SaveChanges();
-            //                MessageBox.Show("Успешное удаление!!!");
-            //            }
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            PhonesOrganizations phones = Base.ep.PhonesOrganizations.FirstOrDefault(x => x.IDPhoneOrganozation == index);
 
-
-            //        }
-            //    }
-            //}
+            if (MessageBox.Show("Вы уверены что хотите удалить телефон: " + phones.Phone + " ?", "Системное сообщение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                Base.ep.PhonesOrganizations.Remove(phones);
+                Base.ep.SaveChanges();
+                FrameClass.frameOrg.Navigate(new PhonePage());
+            }
         }
     }
 }

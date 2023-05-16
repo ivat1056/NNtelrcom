@@ -62,7 +62,6 @@ namespace NNtelrcom.Pages
 
             Birthday.Text = Convert.ToString(employ.DataBirsday);
 
-
         }
 
             private void btnSave_Click(object sender, RoutedEventArgs e)

@@ -14,7 +14,7 @@
         TextElement.FontSize="14"
         
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="650" Width="1210"
+        Title="НН Телеком" Height="650" Width="1210"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 

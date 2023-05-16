@@ -43,7 +43,7 @@
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Width="auto">
-            <Button Name="Back" Width="auto" Click="Back_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Назад"/>
+            <Button Name="Back"  Width="auto" Click="Back_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Margin="10,0,20,0"  Content="Назад"/>
             <Button Name="ADD" Width="auto" Click="ADD_Click" Height="auto" HorizontalAlignment="Center" FontSize="14" Content="Добавииь"/>
 
         </StackPanel>

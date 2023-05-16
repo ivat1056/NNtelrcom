@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NNtelrcom.Pages
 {
@@ -43,7 +44,29 @@ namespace NNtelrcom.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-           
+            if (NameOrgan.Text != "" && KPPOrgan.Text != "" && CeckOrgan.Text != "" && Email.Text != "" && Adress.Text != "" && Phone.Text != "" && NameBank.Text != ""   && IndexO.Text != "" && CheckB.Text != ""  && bk.Text != "" && INN.Text != "" && Password.Text != "")
+            {
+
+                organ.Name = NameOrgan.Text ;
+                organ.INN = INN.Text;
+                organ.KPP = KPPOrgan.Text ;
+                organ.CheckBank = CheckB.Text;
+                organ.Adress = Adress.Text;
+                organ.Phone = Phone.Text;
+                organ.IndexO = IndexO.Text;
+                organ.Checkorgan = CeckOrgan.Text ;
+                organ.NameBank = NameBank.Text;
+                organ.Bik = bk.Text;
+                organ.Email = Email.Text;
+                organ.Password = Password.Text ;
+                Base.ep.SaveChanges();
+                MessageBox.Show("Данные организации сохранины");
+                FrameClass.administrationf.Navigate(new AdministrationPage());
+            }
+            else
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+            }
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
