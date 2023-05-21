@@ -239,7 +239,7 @@
                     <TabItem.Header >
                         <StackPanel Width="320" Orientation="Horizontal" Height="114" Background="Aqua">
                             <materialDesign:PackIcon  Width="102" x:Name="OrganizationBtn" MouseLeftButtonDown="OrganizationBtn_MouseLeftButtonDown" Height="100" Kind="Domain" />
-                            <TextBlock FontSize="30"  Text="Организации" Height="50" />
+                            <TextBlock FontSize="30"  Text="Абоненты" Height="50" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
