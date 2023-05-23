@@ -41,8 +41,6 @@ namespace NNtelrcom.Pages
         {
             InitializeComponent();
 
-
-
             List<Organizations> raions = Base.ep.Organizations.ToList(); // Заполнение списка организаций
             CBOrgan.Items.Add("Все организации");
             foreach (Organizations raion in raions)
@@ -50,17 +48,26 @@ namespace NNtelrcom.Pages
                 CBOrgan.Items.Add(raion.NameOrganization);
             }
             CBOrgan.SelectedIndex = 0;
-            CBOrgan.DisplayMemberPath = "NameOrganization";
+
 
         }
 
         private void CBOrgan_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string sert = "Все организации";
             CBOrgan.ClearValue(ItemsControl.ItemsSourceProperty);
             CBOrgan.Items.Clear();
             CBOrgan.IsDropDownOpen = true;
-            CBOrgan.ItemsSource = Base.ep.Organizations.Where(x => x.NameOrganization.ToLower().Contains(CBOrgan.Text.ToLower())).ToList();
-
+            List <Organizations> oti = Base.ep.Organizations.Where(x => x.NameOrganization.ToLower().Contains(CBOrgan.Text.ToLower())).ToList();
+            if (sert.ToLower().Contains(CBOrgan.Text.ToLower()))
+            {
+                CBOrgan.Items.Add("Все организации");
+            }
+            foreach (Organizations raion in oti)
+            {
+                CBOrgan.Items.Add(raion.NameOrganization);
+            }
+           
         }
 
         private void CBOrgan_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -71,7 +78,8 @@ namespace NNtelrcom.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.frameOrg.Visibility = Visibility.Hidden;
+
+            FrameClass.frameOrg.Visibility = Visibility.Collapsed;
         }
 
         public void sendmeseg()
@@ -163,7 +171,7 @@ namespace NNtelrcom.Pages
                                 OnData1 = OnData;
                                 TwoData1 = TwoDate;
 
-                                
+
 
 
                                 foreach (Organizations organizations12 in organsList)
@@ -443,14 +451,14 @@ namespace NNtelrcom.Pages
 
                                             NumberAndSumma.Clear();
                                             doc.Close();
-                                        
+
                                         }
 
-                                        
+
                                     }
                                     else
                                     {
-                                      
+
                                         MessageBox.Show("Звонков не обнаружено ");
                                     }
 
@@ -767,7 +775,7 @@ namespace NNtelrcom.Pages
 
 
                                         }
-                                        
+
                                         else
                                         {
                                             MessageBox.Show("Организация не совершила ни одного звонка");

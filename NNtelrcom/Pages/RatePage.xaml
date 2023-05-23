@@ -33,7 +33,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnDell" Click="btnDell_Click" Uid="{Binding IDOrganization}"  HorizontalAlignment="Center" FontSize="14"  Content="Удалить"/>
+                            <Button Name="btnDell" Click="btnDell_Click" Uid="{Binding IDRate}"  HorizontalAlignment="Center" FontSize="14"  Content="Удалить"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -44,7 +44,7 @@
             
             <StackPanel  Margin="50,0,50,0" Orientation="Vertical">
                 <Button Name="btnSave" Margin="10" Content="Сохранить данные" Click="btnSave_Click"  />
-                <Button Name="btn_back" Margin="10" Content="Назад" Click="btn_back_Click" />
+               
             </StackPanel>
         </StackPanel>
     </Grid>

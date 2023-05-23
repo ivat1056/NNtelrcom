@@ -33,10 +33,19 @@ namespace NNtelrcom.Windows
 
     public partial class MainMenu : Window
     {
-
-        public MainMenu()
+        Employ employ;
+        public MainMenu(Employ employ) // 1 -admin 2 - employ
         {
             InitializeComponent();
+            this.employ = employ;
+            if(employ.IDRole == 2) 
+            {
+                BtnUploy.Visibility = Visibility.Collapsed;
+                Atc.Visibility = Visibility.Collapsed;
+                Administration.Visibility = Visibility.Collapsed;
+            }
+
+
             MenuNave.Click += MenuNave_Click;
             btnclose.MouseLeftButtonUp += PackIcon_MouseLeftButtonDown;
             MenuATC.MouseLeftButtonUp += ATCBtn_MouseLeftButtonDown;
@@ -106,7 +115,7 @@ namespace NNtelrcom.Windows
         private void PersonalAccount_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             FrameClass.frameAccaunt = PersonalAccauntframe;
-            FrameClass.frameAccaunt.Navigate(new PersonalAccauntPage());
+            FrameClass.frameAccaunt.Navigate(new PersonalAccauntPage(employ));
             GeneralMenu.Visibility = Visibility.Collapsed;
             MenuATC.Visibility = Visibility.Collapsed;
             frameOrg.Visibility = Visibility.Hidden;
@@ -152,7 +161,7 @@ namespace NNtelrcom.Windows
 
         private void Calc_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            GeneralMenu.Visibility = Visibility.Hidden;
+            
             FrameClass.frameOrg.Navigate(new CalculetionPage());
         }
 
@@ -165,7 +174,7 @@ namespace NNtelrcom.Windows
 
         private void BtnUploy_Click(object sender, RoutedEventArgs e)
         {
-           LoadingWindow loading = new LoadingWindow();
+           LoadingWindow loading = new LoadingWindow(employ);
             this.Close();
             loading.Show();
         }
@@ -206,7 +215,7 @@ namespace NNtelrcom.Windows
         private void AccountBoxOutline_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) // Пункт личного кабинета
         {
             FrameClass.frameAccaunt = PersonalAccauntframe;
-            FrameClass.frameAccaunt.Navigate(new PersonalAccauntPage());
+            FrameClass.frameAccaunt.Navigate(new PersonalAccauntPage(employ));
             GeneralMenu.Visibility = Visibility.Collapsed;
             MenuATC.Visibility = Visibility.Collapsed;
             frameOrg.Visibility = Visibility.Hidden;
@@ -254,14 +263,13 @@ namespace NNtelrcom.Windows
         {
             FrameClass.frameOrg.Navigate(new RatePage());
             frameOrg.Visibility = Visibility.Visible;
-            GeneralMenu.Visibility = Visibility.Collapsed;
+
         }
 
         private void Calcbtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             FrameClass.frameOrg.Navigate(new CalculetionPage());
             frameOrg.Visibility = Visibility.Visible;
-            GeneralMenu.Visibility = Visibility.Collapsed;
 
         }
 
@@ -269,7 +277,7 @@ namespace NNtelrcom.Windows
         {
             FrameClass.frameOrg.Navigate(new PhonePage());
             frameOrg.Visibility = Visibility.Visible;
-            GeneralMenu.Visibility = Visibility.Collapsed;
+           
         }
 
         private void OrganizationBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -277,7 +285,7 @@ namespace NNtelrcom.Windows
             
             FrameClass.frameOrg.Navigate(new OrganizationPage());
             frameOrg.Visibility = Visibility.Visible;
-            GeneralMenu.Visibility = Visibility.Collapsed;
+       
 
         }
 

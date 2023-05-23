@@ -298,6 +298,9 @@
     <Compile Include="Pages\UPDADDPhonesPage.xaml.cs">
       <DependentUpon>UPDADDPhonesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UPDADDRate.xaml.cs">
+      <DependentUpon>UPDADDRate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PBXType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -509,6 +512,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UPDADDPhonesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDRate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

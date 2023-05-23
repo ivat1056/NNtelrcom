@@ -30,20 +30,44 @@ namespace NNtelrcom.Pages
             Organ.DisplayMemberPath = "NameOrganization";
             Rate.DisplayMemberPath = "Name";
 
+
         }
         public UPDADDPhonesPage(PhonesOrganizations phonesOrganizations)
         {
             InitializeComponent();
             btnSave.Visibility = Visibility.Visible;
             this.phonesOrganizations = phonesOrganizations;
-
             
+
 
             Phone.Text = phonesOrganizations.Phone;
 
-            Organ.DisplayMemberPath = "NameOrganization";
-            Rate.DisplayMemberPath = "Name";
+            
+            List<Organizations> raions = Base.ep.Organizations.ToList(); // Заполнение списка организаций
+            foreach (Organizations raion in raions)
+            {
 
+                Organ.Items.Add(raion.NameOrganization);
+            }
+
+            Organizations organizations = Base.ep.Organizations.FirstOrDefault(x => x.IDOrganization == phonesOrganizations.IDOrganixation);
+            Organ.SelectedIndex = Convert.ToInt32(organizations.IDOrganization);
+            Organ.Text = organizations.NameOrganization;
+            Organ.DisplayMemberPath = "NameOrganization";
+
+            
+
+            List<Rate> rt = Base.ep.Rate.ToList(); // Заполнение списка тарифов
+            foreach (Rate r in rt)
+            {
+
+                Rate.Items.Add(r.Name);
+            }
+
+            Rate rt1 = Base.ep.Rate.FirstOrDefault(x => x.IDRate == phonesOrganizations.IDRate);
+            Rate.SelectedIndex = Convert.ToInt32(rt1.IDRate);
+            Rate.Text = rt1.Name;
+            Rate.DisplayMemberPath = "Name";
 
         }
 
@@ -98,16 +122,20 @@ namespace NNtelrcom.Pages
 
         private void Rate_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Rate.ClearValue(ItemsControl.ItemsSourceProperty);
+            Rate.Items.Clear();
             Rate.IsDropDownOpen = true;
             Rate.ItemsSource = Base.ep.Rate.Where(x => x.Name.ToLower().Contains(Rate.Text.ToLower())).ToList();
-           
+
         }
 
         private void Organ_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Organ.ClearValue(ItemsControl.ItemsSourceProperty);
+            Organ.Items.Clear();
             Organ.IsDropDownOpen = true;
             Organ.ItemsSource = Base.ep.Organizations.Where(x => x.NameOrganization.ToLower().Contains(Organ.Text.ToLower())).ToList();
-          
+
         }
     }
 }

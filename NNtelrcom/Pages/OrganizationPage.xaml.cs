@@ -34,11 +34,8 @@ namespace NNtelrcom.Pages
         private void Back_Click(object sender, RoutedEventArgs e)
         {
            
-           MainMenu mainMenu = new MainMenu();
-           Back.MouseLeftButtonUp += mainMenu.Home_MouseLeftButtonUp;
+          FrameClass.frameOrg.Visibility = Visibility.Collapsed;
           
-
-
 
         }
 

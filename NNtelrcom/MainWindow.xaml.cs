@@ -26,16 +26,40 @@ namespace NNtelrcom
         public MainWindow()
         {
             InitializeComponent();
-            
+            Base.ep = new EP3();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        
-            MainMenu mainMenu = new MainMenu();
-            this.Close();
-            mainMenu.Show();
+            if (NameTextBox.Text != "" || PasswordBox2.Password != "")
+            {
 
+                Employ employ = Base.ep.Employ.FirstOrDefault(z => z.Login == NameTextBox.Text);
+                if (employ != null)
+                {
+                    if (employ.Password == PasswordBox2.Password)
+                    {
+
+                        MainMenu mainMenu = new MainMenu(employ);
+                        this.Close();
+                        mainMenu.Show();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пароль введен не верно");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Сотрудник с таким логином не сществует ");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите логин и пароль ");
+            }
+            
         }
     }
 }

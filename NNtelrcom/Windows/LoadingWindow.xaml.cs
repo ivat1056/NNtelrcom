@@ -23,10 +23,11 @@ namespace NNtelrcom.Windows
     /// </summary>
     public partial class LoadingWindow : Window
     {
-        public LoadingWindow()
+        Employ employ;
+        public LoadingWindow(Employ employ)
         {
             InitializeComponent();
-            
+            this.employ = employ;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -267,7 +268,8 @@ namespace NNtelrcom.Windows
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainMenu mainMenu = new MainMenu();
+            
+            MainMenu mainMenu = new MainMenu(employ);
             this.Close();
             mainMenu.Show();
         }

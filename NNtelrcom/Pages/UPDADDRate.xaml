@@ -1,0 +1,40 @@
+﻿<Page x:Class="NNtelrcom.Pages.UPDADDRate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NNtelrcom.Pages"
+      mc:Ignorable="d" 
+      Background="White"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UPDADDRate">
+
+    <Grid>
+        <StackPanel  Orientation="Vertical">
+
+            <StackPanel Margin="10" Orientation="Horizontal"  HorizontalAlignment="Center">
+                <GroupBox Margin="10" HorizontalAlignment="Stretch" MinWidth="300" Header="Название тарифа">
+                    <TextBox Name="NameT"/>
+                </GroupBox>
+                <GroupBox x:Name="VCountM" Margin="10" MinWidth="300"  HorizontalAlignment="Center" Header="Количество минут">
+                    <TextBox Name="CountM"/>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                <GroupBox MinWidth="260"  Header="Стоимость">
+                    <TextBox Name="CostM"/>
+                </GroupBox>
+                <GroupBox Margin="20,0,20,0" MinWidth="150" Header="Тип тарифа">
+                    <ComboBox  x:Name="ComboBox1" SelectionChanged="ComboBox1_SelectionChanged" Height="30" />
+
+                </GroupBox>
+                <GroupBox MinWidth="260"  Header="Описание">
+                    <TextBox Name="Direct"/>
+                </GroupBox>
+            </StackPanel>
+            <Button Name="btnSave" Margin="10" Content="Сохранить данные" Click="btnSave_Click" Visibility="Collapsed"  />
+            <Button Name="btnADD" Margin="10" Content="Добавить данные" Click="btnADD_Click" Visibility="Collapsed"  />
+            <Button Name="btn_back" Margin="10" Content="Назад" Click="btn_back_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

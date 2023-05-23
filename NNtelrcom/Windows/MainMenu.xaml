@@ -135,8 +135,8 @@
 
 
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Stretch" Margin="0,100,0,0" Name="MenuATC" Visibility="Hidden"  HorizontalAlignment="Stretch"  >
-            <materialDesign:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="0,100,0,0" Name="MenuATC" Visibility="Hidden"  HorizontalAlignment="Stretch"  >
+            <materialDesign:Card HorizontalAlignment="Stretch">
                 <TabControl DockPanel.Dock="Bottom" Height="452" Width="auto"  Grid.Row="1"  HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}"  TabStripPlacement="Bottom"   >
 
                     <TabItem Margin="4">
@@ -292,12 +292,11 @@
 
         </StackPanel>
 
-        <Frame Name="administrationFrame" Grid.Row="1"   Height="auto" Width="auto" />
+        <Frame Name="administrationFrame" NavigationUIVisibility="Hidden" Grid.Row="1"   Height="auto" Width="auto" />
 
+        <Frame Name="frameOrg" NavigationUIVisibility="Hidden" Grid.Row="1"   Height="auto" Width="auto"/>
 
-        <Frame Name="frameOrg" Grid.Row="1"   Height="auto" Width="auto"/>
-        
-        <Frame Name="PersonalAccauntframe" Grid.Row="1"   Height="auto" Width="auto"/>
+        <Frame Name="PersonalAccauntframe" Grid.Row="1" NavigationUIVisibility="Hidden"  Height="auto" Width="auto"/>
 
        
 
