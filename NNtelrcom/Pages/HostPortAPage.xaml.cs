@@ -33,36 +33,30 @@ namespace NNtelrcom.Pages
 
         private void ADD_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameClass4.frame4.Navigate(new UPDADDIPAPage());
         }
-
 
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            HostA hotel = Base.ep.HostA.FirstOrDefault(x => x.IDHostA == index);
+            FrameClass4.frame4.Navigate(new UPDADDIPAPage(hotel));
         }
 
         private void btnDell_Click(object sender, RoutedEventArgs e)
         {
-            //if (PBXList.SelectedItems.Count != 0)
-            //{
-            //    foreach (PBXType pBX in PBXList.SelectedItems)
-            //    {
-            //        List<PBXType> hot = Base.ep.PBXType.Where(z => z.IDPBXType == pBX.IDPBXType).ToList();
-            //        foreach (PBXType h in hot)
-            //        {
-            //            if (MessageBox.Show("Вы хотите удалить {0}", Name, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            //            {
-            //                Base.ep.PBXType.Remove(pBX);
-            //                Base.ep.SaveChanges();
-            //                MessageBox.Show("Успешное удаление!!!");
-            //            }
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            HostA emp = Base.ep.HostA.FirstOrDefault(x => x.IDHostA == index);
 
-
-            //        }
-            //    }
-            //}
+            if (MessageBox.Show("Вы уверены что хотите удалить : " + emp.Name + " ?", "Системное сообщение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                Base.ep.HostA.Remove(emp);
+                Base.ep.SaveChanges();
+                FrameClass4.frame4.Navigate(new HostPortAPage());
+            }
         }
     }
 }

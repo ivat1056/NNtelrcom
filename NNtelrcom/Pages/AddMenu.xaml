@@ -21,6 +21,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+        
         <Button Name="MKDIDBtn" Grid.Column="0" Margin="10" Grid.Row="0"  HorizontalAlignment="Stretch" Content="Идентификатор imSwitch 5" Click="MKDIDBtn_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
         <Button Name="EventBtn" Grid.Column="1" Margin="10" Grid.Row="0"  HorizontalAlignment="Stretch" Content="Имя события" Click="EventBtn_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
         <Button Name="Type" Grid.Column="2" Margin="10" Grid.Row="0"  HorizontalAlignment="Stretch" Content="Типы вызова" Click="Type_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />

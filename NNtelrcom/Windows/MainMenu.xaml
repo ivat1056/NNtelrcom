@@ -135,11 +135,11 @@
 
 
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="0,100,0,0" Name="MenuATC" Visibility="Hidden"  HorizontalAlignment="Stretch"  >
-            <materialDesign:Card HorizontalAlignment="Stretch">
-                <TabControl DockPanel.Dock="Bottom" Height="452" Width="auto"  Grid.Row="1"  HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}"  TabStripPlacement="Bottom"   >
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="0,5,0,0" Name="MenuATC" Visibility="Hidden"   >
+            <materialDesign:Card Height="auto ">
+                <TabControl DockPanel.Dock="Bottom" Height="auto" Width="auto"  Grid.Row="1"  HorizontalContentAlignment="Center" materialDesign:ColorZoneAssist.Mode="PrimaryLight" materialDesign:NavigationRailAssist.SelectionCornerRadius="50" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" Style="{StaticResource MaterialDesignNavigationRailTabControl}"  TabStripPlacement="Bottom"   >
 
-                    <TabItem Margin="4">
+                    <TabItem Margin="4" Grid.Row="1" HorizontalAlignment="Stretch">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="ArrowExpandAll" />
@@ -147,10 +147,9 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <StackPanel Orientation="Vertical" Margin="0,94,0,0">
-                            <StackPanel Orientation="Vertical" Height="121" >
-                                <Button Name="General1" HorizontalAlignment="Stretch" Margin="0,0,0,20"  Width="300" Content="С основными параметрами" Click="General1_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
-                                <Button Name="General2" HorizontalAlignment="Stretch" Margin="0,0,0,20"  Width="300" Content="Со всеми параметрами" Click="General2_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
+                        <StackPanel Orientation="Vertical" MinHeight="470" HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" >
+                                <Button Name="General2" HorizontalAlignment="Stretch" Margin="0,0,0,20"  Width="300" Content="Открыть окно со всеми параметрами" Click="General2_Click" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" />
                             </StackPanel>
                         </StackPanel>
 
@@ -164,8 +163,8 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <StackPanel Orientation="Vertical">
-                            <Frame  Name="frame"  HorizontalAlignment="Stretch" ></Frame>
+                        <StackPanel HorizontalAlignment="Stretch"  MinHeight="470" Orientation="Vertical">
+                            <Frame NavigationUIVisibility="Hidden" Name="frame"  HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
 
                     </TabItem>
@@ -177,20 +176,20 @@
                                 <TextBlock HorizontalAlignment="Center" Text="Cd-Cg" />
                             </StackPanel>
                         </TabItem.Header>
-                        <StackPanel Orientation="Vertical">
-                            <Frame Name="frame3" HorizontalAlignment="Stretch" ></Frame>
+                        <StackPanel Orientation="Vertical" MinHeight="470">
+                            <Frame NavigationUIVisibility="Hidden" Name="frame3" HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
                     </TabItem>
 
                     <TabItem>
                         <TabItem.Header>
-                            <StackPanel Width="auto" Height="auto">
+                            <StackPanel Width="auto" Height="auto" >
                                 <materialDesign:PackIcon Width="24" Height="24" HorizontalAlignment="Center" Kind="Images" />
                                 <TextBlock HorizontalAlignment="Center" Text="Исход" />
                             </StackPanel>
                         </TabItem.Header>
-                        <StackPanel Orientation="Vertical">
-                            <Frame Name="frame2" HorizontalAlignment="Stretch" ></Frame>
+                        <StackPanel Orientation="Vertical" MinHeight="470" >
+                            <Frame NavigationUIVisibility="Hidden" Name="frame2" HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
                     </TabItem>
 
@@ -201,8 +200,8 @@
                                 <TextBlock HorizontalAlignment="Center" Text="Пустые" />
                             </StackPanel>
                         </TabItem.Header>
-                        <StackPanel Orientation="Vertical">
-                            <Frame Name="frame5" HorizontalAlignment="Stretch" ></Frame>
+                        <StackPanel Orientation="Vertical" MinHeight="470">
+                            <Frame NavigationUIVisibility="Hidden" Name="frame5" HorizontalAlignment="Stretch" ></Frame>
                         </StackPanel>
                     </TabItem>
 
@@ -213,8 +212,8 @@
                                 <TextBlock HorizontalAlignment="Center" Text="Еще" />
                             </StackPanel>
                         </TabItem.Header>
-                        <StackPanel Orientation="Vertical">
-                            <Frame Name="frame4" HorizontalAlignment="Stretch"></Frame>
+                        <StackPanel Orientation="Vertical" MinHeight="470" HorizontalAlignment="Center">
+                            <Frame NavigationUIVisibility="Hidden"  Name="frame4" Height="auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
                         </StackPanel>
                     </TabItem>
 

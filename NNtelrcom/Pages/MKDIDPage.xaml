@@ -21,7 +21,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnUpdate" Click="btnUpdate_Click" Uid="{Binding Id}"  HorizontalAlignment="Center" FontSize="14"  Content="Редактировать"/>
+                            <Button Name="btnUpdate" Click="btnUpdate_Click" Uid="{Binding MKD_ID1}"  HorizontalAlignment="Center" FontSize="14"  Content="Редактировать"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -29,7 +29,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnDell" Click="btnDell_Click" Uid="{Binding Id}"  HorizontalAlignment="Center" FontSize="14"  Content="Удалить"/>
+                            <Button Name="btnDell" Click="btnDell_Click" Uid="{Binding MKD_ID1}"  HorizontalAlignment="Center" FontSize="14"  Content="Удалить"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -1,19 +1,8 @@
-﻿using iTextSharp.text;
-using NNtelrcom.Class;
+﻿using NNtelrcom.Class;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NNtelrcom.Pages
 {
@@ -41,7 +30,7 @@ namespace NNtelrcom.Pages
         {
             InitializeComponent();
             this.employ = employ;
-           
+
 
             Surname.Text = employ.Surname;
             Name.Text = employ.Name;
@@ -64,7 +53,7 @@ namespace NNtelrcom.Pages
 
         }
 
-            private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (Surname.Text != "" && Name.Text != "" && Otch.Text != "" && ComboBox1.SelectedIndex != -1 && Birthday.Text != "" && login.Text != "" && Role.Text != "" && pass.Text != "")
             {
@@ -94,7 +83,7 @@ namespace NNtelrcom.Pages
 
         private void btnADD_Click(object sender, RoutedEventArgs e)
         {
-            if (Surname.Text != "" && Name.Text != "" && Otch.Text != "" && ComboBox1.SelectedIndex != -1  && Birthday.Text != "" && login.Text != "" && Role.Text != "" && pass.Text != "")
+            if (Surname.Text != "" && Name.Text != "" && Otch.Text != "" && ComboBox1.SelectedIndex != -1 && Birthday.Text != "" && login.Text != "" && Role.Text != "" && pass.Text != "")
             {
                 Role employ = Base.ep.Role.FirstOrDefault(z => z.Name == Role.Text);
                 int a = employ.Role_ID;

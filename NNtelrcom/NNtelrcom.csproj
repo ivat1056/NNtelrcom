@@ -292,6 +292,18 @@
     <Compile Include="Pages\UPDADDEmploy.xaml.cs">
       <DependentUpon>UPDADDEmploy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UPDADDFaxPage.xaml.cs">
+      <DependentUpon>UPDADDFaxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDIPAPage.xaml.cs">
+      <DependentUpon>UPDADDIPAPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDIPBPage.xaml.cs">
+      <DependentUpon>UPDADDIPBPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDNameSobPage.xaml.cs">
+      <DependentUpon>UPDADDNameSobPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UPDADDOrganizationPage.xaml.cs">
       <DependentUpon>UPDADDOrganizationPage.xaml</DependentUpon>
     </Compile>
@@ -300,6 +312,15 @@
     </Compile>
     <Compile Include="Pages\UPDADDRate.xaml.cs">
       <DependentUpon>UPDADDRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDSwift5Page.xaml.cs">
+      <DependentUpon>UPDADDSwift5Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDTypeAbPage.xaml.cs">
+      <DependentUpon>UPDADDTypeAbPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UPDADDTypeCallPage.xaml.cs">
+      <DependentUpon>UPDADDTypeCallPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PBXType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -507,6 +528,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UPDADDFaxPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDIPAPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDIPBPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDNameSobPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\UPDADDOrganizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -516,6 +553,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UPDADDRate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDSwift5Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDTypeAbPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UPDADDTypeCallPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
