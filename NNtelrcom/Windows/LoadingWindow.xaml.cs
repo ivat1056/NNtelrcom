@@ -24,6 +24,7 @@ namespace NNtelrcom.Windows
     public partial class LoadingWindow : Window
     {
         Employ employ;
+
         public LoadingWindow(Employ employ)
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace NNtelrcom.Windows
                 if (openFileDialog.ShowDialog() == true)
                 {
                     foreach (string filename in openFileDialog.FileNames) lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
-                    string file = openFileDialog.FileName;
+                    string file = openFileDialog.FileName; // название файла
 
                 using (StreamReader reader = new StreamReader(file))
                 {

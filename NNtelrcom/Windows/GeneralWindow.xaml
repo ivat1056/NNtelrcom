@@ -32,8 +32,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="11*" />
+           
         </Grid.RowDefinitions>
         
 
@@ -101,7 +101,7 @@
         </DataGrid>
         
 
-        <StackPanel Panel.ZIndex="3" Name="LeftMenu" Orientation="Horizontal" Margin='-1336,45,-800,0' Grid.RowSpan="3">
+        <StackPanel Panel.ZIndex="0" Name="LeftMenu" Orientation="Horizontal" Margin='-1336,45,-800,0' Grid.RowSpan="3">
             <StackPanel >
                 <Button x:Name="btnclose" Content="Скрыть фильтры"  Click="btnclose_Click"/>
                 <CheckBox Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"  Name="Checked1" Checked="Checked1_Checked" Unchecked="Checked1_Unchecked" Content="Внешний входящий номер вызывающего абонента" />

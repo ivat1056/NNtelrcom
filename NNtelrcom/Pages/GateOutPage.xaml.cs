@@ -33,7 +33,7 @@ namespace NNtelrcom.Pages
 
         private void ADD_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass4.frame4.Navigate(new UPDADDGaneOutPage());
+            //FrameClass4.frame4.Navigate(new UPDADDGaneOutPage());
         }
 
 
@@ -42,7 +42,7 @@ namespace NNtelrcom.Pages
             Button btn = (Button)sender;
             int index = Convert.ToInt32(btn.Uid);
             GateOut hotel = Base.ep.GateOut.FirstOrDefault(x => x.IDGateOut == index);
-            FrameClass4.frame4.Navigate(new UPDADDGaneOutPage(hotel));
+            //FrameClass4.frame4.Navigate(new UPDADDGaneOutPage(hotel));
         }
 
         private void btnDell_Click(object sender, RoutedEventArgs e)

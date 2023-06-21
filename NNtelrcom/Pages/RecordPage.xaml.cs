@@ -33,7 +33,7 @@ namespace NNtelrcom.Pages
 
         private void ADD_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass4.frame4.Navigate(new UPDADDRecordPage());
+            //FrameClass4.frame4.Navigate(new UPDADDRecordPage());
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace NNtelrcom.Pages
             Button btn = (Button)sender;
             int index = Convert.ToInt32(btn.Uid);
             Fax hotel = Base.ep.Fax.FirstOrDefault(x => x.IDFax == index);
-            FrameClass4.frame4.Navigate(new UPDADDRecordPage(hotel));
+            //FrameClass4.frame4.Navigate(new UPDADDRecordPage(hotel));
         }
 
         private void btnDell_Click(object sender, RoutedEventArgs e)

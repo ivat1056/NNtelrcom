@@ -35,27 +35,34 @@ namespace NNtelrcom.Pages
 
             
             ComboBox1.SelectedIndex = 0;
-            Birthday.DataContext = Employ.DataBirsday;
+            Birthday.SelectedDate = Employ.DataBirsday;
 
 
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Floor fl = Base.ep.Floor.FirstOrDefault(z => z.Name == ComboBox1.Text);
-            int b = fl.Floor_ID;
-            DateTime dateTime = Convert.ToDateTime(Birthday.Text);
+            try
+            {
+                Floor fl = Base.ep.Floor.FirstOrDefault(z => z.Name == ComboBox1.Text);
+                int b = fl.Floor_ID;
+                DateTime dateTime = Convert.ToDateTime(Birthday.Text);
 
-            Employ.Surname = Surname.Text;
-            Employ.Name = Name.Text;
-            Employ.Patronymic = Otch.Text;
-            Employ.Login = login.Text;
-            Employ.Password = pass.Text;
-            Employ.IDRole = Employ.IDRole;
-            Employ.IDfloor = b;
-            Employ.DataBirsday = dateTime;
-            Base.ep.SaveChanges();
-            MessageBox.Show("Данные личного кабинента обновлены ");
+                Employ.Surname = Surname.Text;
+                Employ.Name = Name.Text;
+                Employ.Patronymic = Otch.Text;
+                Employ.Login = login.Text;
+                Employ.Password = pass.Text;
+                Employ.IDRole = Employ.IDRole;
+                Employ.IDfloor = b;
+                Employ.DataBirsday = dateTime;
+                Base.ep.SaveChanges();
+                MessageBox.Show("Данные личного кабинента обновлены ");
+            }
+            catch
+            {
+
+            }
 
         }
 

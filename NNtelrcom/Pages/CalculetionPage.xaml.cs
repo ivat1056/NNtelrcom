@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Packaging;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -82,12 +83,12 @@ namespace NNtelrcom.Pages
             FrameClass.frameOrg.Visibility = Visibility.Collapsed;
         }
 
-        public void sendmeseg()
+        public void sendmeseg(string email)
         {
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress("NN Telecom", "nntelecom52@gmail.com"));
             //add the receiver email address
-            message.To.Add(MailboxAddress.Parse("ivat1056@gmail.com"));
+            message.To.Add(MailboxAddress.Parse(email));
             // add the message subject
             message.Subject = "Счёт от ООО «НН Телекома»";
 
@@ -95,7 +96,7 @@ namespace NNtelrcom.Pages
 
             var body = new TextPart()
             {
-                Text = @"Уважаемый абонент ! Напоминаем Вам о необходимости оплаты счета по лицевому счету 352011634070 во избежание начисления пени и ограничения доступа."
+                Text = @"Уважаемый абонент ! Напоминаем Вам о необходимости оплаты счета во избежание начисления пени и ограничения доступа."
             };
 
             // create an image attachment for the file located at path
@@ -453,23 +454,22 @@ namespace NNtelrcom.Pages
                                             doc.Close();
 
                                         }
+                                        doc.Close();
 
 
                                     }
                                     else
                                     {
 
-                                        MessageBox.Show("Звонков не обнаружено ");
+                                        
                                     }
 
 
 
                                     // отправка сообщений 
-                                    sendmeseg();
+                                    
 
-
-
-
+                                    sendmeseg(Convert.ToString(organizations12.Email));
 
 
                                 } // create list for date if vs
@@ -790,8 +790,9 @@ namespace NNtelrcom.Pages
                                         Cost = 0;
                                         NumberAdd = "";
                                         NumberAndSumma.Clear();
-                                        sendmeseg();
+                                        sendmeseg(Convert.ToString(organizations1.Email));
                                         MessageBox.Show("Сообщение отправлено");
+                                        doc.Close();
                                     }
 
                                     else
@@ -1183,7 +1184,7 @@ namespace NNtelrcom.Pages
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Звонков не обнаружено ");
+                                        
                                     }
 
 
